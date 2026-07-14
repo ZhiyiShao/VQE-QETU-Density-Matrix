@@ -1,0 +1,100 @@
+experiment: dm_tfim_n4_g4_degree_scan_optimized
+
+paths:
+  qetu_repo: "../../QETU-main"
+  pre_qsp_results: "../../VQE-QSP/results/pre_qsp_tfim_n4_degree_scan.yml"
+  output_dir: "../results/dm_tfim_n4_g4_degree_scan_optimized"
+
+model:
+  name: tfim
+  n_qubits: 4
+  g: 4.0
+  pbc: false
+
+initial_state:
+  type: computational_basis
+  bitstring: "0000"
+
+spectral_scaling:
+  method: exact_spectrum
+  eta: 0.1
+
+oracle:
+  implementation: qetu_main_tfim_control_free
+  tau: 0.5
+  trotter:
+    order: 2
+    steps: 3
+
+ansatz:
+  degree: 2
+  phase_convention: qetu_su2
+  symmetry: full
+
+degree_scan:
+  start: 2
+  stop: 20
+  step: 2
+  seed_mode: base_plus_degree
+
+initialization:
+  method: random_uniform
+  bound: 0.25
+
+loss:
+  type: energy
+  energy_source: measurement_model
+  include_measurement_basis_noise: true
+  success_probability_floor: 0.05
+  success_penalty_weight: 0.0
+  infidelity_weight: 0.0
+
+noise:
+  model: qetu_gatewise_depolarizing
+  training_rate: 0.0
+  evaluation_rates: [0.0]
+  sweep_rates: [0.0, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2]
+  one_qubit_rate_factor: 0.1
+
+training:
+  optimizer: adam
+  device: cpu
+  seed: 7
+  restarts: 3
+  iterations: 25
+  learning_rate: 0.03
+  final_learning_rate: 0.001
+  gradient_clip: 5.0
+  print_interval: 25
+  checkpoint_interval: 25
+  history_phase_interval: 0
+  early_stopping:
+    enabled: false
+    patience: 40
+    min_delta: 1.0e-10
+  polish:
+    enabled: true
+    optimizer: lbfgs
+    max_iterations: 80
+    max_evaluations: 120
+    max_passes: 3
+    rescue_gradient_norm: 1.0e-3
+    rescue_max_iterations: 80
+    rescue_max_evaluations: 120
+    learning_rate: 1.0
+    history_size: 50
+    tolerance_grad: 1.0e-10
+    tolerance_change: 1.0e-12
+    line_search: strong_wolfe
+
+validation:
+  aer_density_matrix:
+    enabled: false
+    atol_noiseless: 1.0e-10
+    atol_noisy: 2.0e-9
+    fail_on_mismatch: true
+  finite_shots:
+    enabled: false
+    shots_per_basis: 20000
+    repetitions: 5
+    seed_simulator: 400001

@@ -1,0 +1,5726 @@
+schema_version: 3
+benchmark: dm_tfim_n4_g4_degree_scan_optimized
+status: complete
+started_at: '2026-07-14T00:02:23+08:00'
+updated_at: '2026-07-14T01:57:05+08:00'
+config:
+  experiment: dm_tfim_n4_g4_degree_scan_optimized
+  model:
+    name: tfim
+    n_qubits: 4
+    g: 4.0
+    pbc: false
+  initial_state:
+    type: computational_basis
+    bitstring: '0000'
+  spectral_scaling:
+    method: exact_spectrum
+    eta: 0.1
+  oracle:
+    implementation: qetu_main_tfim_control_free
+    tau: 0.5
+    trotter:
+      order: 2
+      steps: 3
+  ansatz:
+    degree: 2
+    phase_convention: qetu_su2
+    symmetry: full
+  degree_scan:
+    start: 2
+    stop: 20
+    step: 2
+    seed_mode: base_plus_degree
+  initialization:
+    method: random_uniform
+    bound: 0.25
+  loss:
+    type: energy
+    energy_source: measurement_model
+    include_measurement_basis_noise: true
+    success_probability_floor: 0.05
+    success_penalty_weight: 0.0
+    infidelity_weight: 0.0
+  noise:
+    model: qetu_gatewise_depolarizing
+    training_rate: 0.0
+    evaluation_rates:
+    - 0.0
+    sweep_rates:
+    - 0.0
+    - 1.0e-05
+    - 0.0001
+    - 0.001
+    - 0.01
+    one_qubit_rate_factor: 0.1
+  training:
+    optimizer: adam
+    device: cpu
+    seed: 7
+    restarts: 3
+    iterations: 25
+    learning_rate: 0.03
+    final_learning_rate: 0.001
+    gradient_clip: 5.0
+    print_interval: 25
+    checkpoint_interval: 25
+    history_phase_interval: 0
+    early_stopping:
+      enabled: false
+      patience: 40
+      min_delta: 1.0e-10
+    polish:
+      enabled: true
+      optimizer: lbfgs
+      max_iterations: 80
+      max_evaluations: 120
+      max_passes: 3
+      rescue_gradient_norm: 0.001
+      rescue_max_iterations: 80
+      rescue_max_evaluations: 120
+      learning_rate: 1.0
+      history_size: 50
+      tolerance_grad: 1.0e-10
+      tolerance_change: 1.0e-12
+      line_search: strong_wolfe
+  validation:
+    aer_density_matrix:
+      enabled: false
+      atol_noiseless: 1.0e-10
+      atol_noisy: 2.0e-09
+      fail_on_mismatch: true
+    finite_shots:
+      enabled: false
+      shots_per_basis: 20000
+      repetitions: 5
+      seed_simulator: 400001
+degrees:
+- 2
+- 4
+- 6
+- 8
+- 10
+- 12
+- 14
+- 16
+- 18
+- 20
+noise_rates:
+- 0.0
+- 1.0e-05
+- 0.0001
+- 0.001
+- 0.01
+training_protocol:
+  initialization: random_uniform
+  phase_symmetry: full
+  same_initialization_across_noise_rates_at_fixed_degree: true
+  seed_mode: base_plus_degree
+  loss: normalized_measurement_model_energy
+  success_probability_penalty_weight: 0.0
+  shots_during_training: 0
+  adam_iterations: 25
+  adaptive_lbfgs_polish: true
+records:
+- degree: 2
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 9
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 9
+    phase_symmetry: full
+    trainable_phases:
+    - 0.18512460198504233
+    - -0.10659139545622232
+    - 0.05157407502578093
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 0.39824660780739274
+  - -0.4512850440830949
+  - 0.39824679722868916
+  trainable_phases:
+  - 0.39824660780739274
+  - -0.4512850440830949
+  - 0.39824679722868916
+  best_loss: 0.21133420206076586
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 3.5101936396120663e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.33800890724783866
+    energy_state: -9.345693798510268
+    energy_measurement_model: -9.345693798510258
+    fidelity_ground_space: 0.2348331401559101
+    zz_expectation: 1.8219259726353976
+    x_expectation: 1.8809419564687149
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 6.842046254569361
+    energy_measurement_absolute_error: 6.842046254569372
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.09150355499664484
+    energy_state: -7.25013522076927
+    energy_measurement_model: -7.250135220769266
+    fidelity_ground_space: 0.2468034534709816
+    zz_expectation: 0.7521405806760599
+    x_expectation: 1.6244986600233016
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.5503655615666592
+    - -0.05639603551987449
+    - 0.5503655615666592
+    energy_measurement_absolute_error: 8.937604832310363
+    energy_state_absolute_error: 8.93760483231036
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 8.937604832310363
+    trained_energy_absolute_error: 6.842046254569372
+    absolute_error_reduction: 2.0955585777409915
+    relative_error_reduction: 0.2344653424556578
+    success_probability_change: 0.24650535225119383
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.33800890724783866
+    energy_state: -9.345693798510268
+    energy_measurement_model: -9.345693798510272
+    fidelity_ground_space: 0.2348331401559101
+    zz_expectation: 1.8219259726353976
+    x_expectation: 1.8809419564687186
+    energy_absolute_error: 6.842046254569361
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 100
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 9.9251991
+- degree: 2
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 9
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 11
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1857148986154002
+    - -0.0003610687799425194
+    - 0.05074917881167873
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - -0.35196557935509
+  - 0.528352142635443
+  - -0.3519782352072669
+  trainable_phases:
+  - -0.35196557935509
+  - 0.528352142635443
+  - -0.3519782352072669
+  best_loss: 0.2114426828678596
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 4.684502095371966e-08
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.37011596306015965
+    energy_state: -9.342189200966596
+    energy_measurement_model: -9.342181680298294
+    fidelity_ground_space: 0.23475653632317625
+    zz_expectation: 1.8215209118351943
+    x_expectation: 1.8801651921157752
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 6.845550852113034
+    energy_measurement_absolute_error: 6.845558372781335
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.0915746962228349
+    energy_state: -7.242456338359939
+    energy_measurement_model: -7.242449847557577
+    fidelity_ground_space: 0.24659904515858241
+    zz_expectation: 0.7516539848836248
+    x_expectation: 1.622698965668488
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.5503655615666592
+    - -0.05639603551987449
+    - 0.5503655615666592
+    energy_measurement_absolute_error: 8.945290205522053
+    energy_state_absolute_error: 8.94528371471969
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 8.945290205522053
+    trained_energy_absolute_error: 6.845558372781335
+    absolute_error_reduction: 2.0997318327407175
+    relative_error_reduction: 0.2347304318248416
+    success_probability_change: 0.2785412668373247
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.3700810237770572
+    energy_state: -9.345693748658261
+    energy_measurement_model: -9.345693748658258
+    fidelity_ground_space: 0.23482660175519135
+    zz_expectation: 1.8220856424964116
+    x_expectation: 1.8809020265404617
+    energy_absolute_error: 6.842046304421368
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 148
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 14.195086499999995
+- degree: 2
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 9
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 11
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1857148986154002
+    - -0.0003610687799425194
+    - 0.05074917881167873
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - -0.3520181005005689
+  - 0.5287961526469269
+  - -0.3521446873883489
+  trainable_phases:
+  - -0.3520181005005689
+  - 0.5287961526469269
+  - -0.3521446873883489
+  best_loss: 0.2124165460757879
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 7.148241993934253e-08
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3705535867218517
+    energy_state: -9.310727319792969
+    energy_measurement_model: -9.310652391383892
+    fidelity_ground_space: 0.2340688381022995
+    zz_expectation: 1.8178864122857554
+    x_expectation: 1.873191494774534
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 6.87701273328666
+    energy_measurement_absolute_error: 6.877087661695738
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.09221440191604609
+    energy_state: -7.173949091894881
+    energy_measurement_model: -7.173884825479194
+    fidelity_ground_space: 0.24477558697021382
+    zz_expectation: 0.7473075237182274
+    x_expectation: 1.6066443254402416
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.5503655615666592
+    - -0.05639603551987449
+    - 0.5503655615666592
+    energy_measurement_absolute_error: 9.013855227600436
+    energy_state_absolute_error: 9.013790961184748
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 9.013855227600436
+    trained_energy_absolute_error: 6.877087661695738
+    absolute_error_reduction: 2.136767565904698
+    relative_error_reduction: 0.23705368146605163
+    success_probability_change: 0.2783391848058056
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.3702049091432631
+    energy_state: -9.345688817178099
+    energy_measurement_model: -9.345688817178102
+    fidelity_ground_space: 0.23476746999234097
+    zz_expectation: 1.823527958872074
+    x_expectation: 1.8805402145765069
+    energy_absolute_error: 6.842051235901531
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 129
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 12.36642350000001
+- degree: 2
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 9
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 11
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1857148986154002
+    - -0.0003610687799425194
+    - 0.05074917881167873
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - -0.35250349054654295
+  - 0.5332148504399332
+  - -0.35380663350010444
+  trainable_phases:
+  - -0.35250349054654295
+  - 0.5332148504399332
+  - -0.35380663350010444
+  best_loss: 0.22191701897870145
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 9.064200396885435e-08
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3748642852205298
+    energy_state: -9.003792204518813
+    energy_measurement_model: -9.003070019916509
+    fidelity_ground_space: 0.22738660733367835
+    zz_expectation: 1.781946181569883
+    x_expectation: 1.8052809595866564
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 7.183947848560816
+    energy_measurement_absolute_error: 7.184670033163121
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.09855584784854708
+    energy_state: -6.543796277682534
+    energy_measurement_model: -6.543212582609412
+    fidelity_ground_space: 0.22801855262483622
+    zz_expectation: 0.7068455464494099
+    x_expectation: 1.4590917590400005
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.5503655615666592
+    - -0.05639603551987449
+    - 0.5503655615666592
+    energy_measurement_absolute_error: 9.644527470470218
+    energy_state_absolute_error: 9.643943775397094
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 9.644527470470218
+    trained_energy_absolute_error: 7.184670033163121
+    absolute_error_reduction: 2.4598574373070967
+    relative_error_reduction: 0.2550521469132346
+    success_probability_change: 0.2763084373719827
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.3714482210926926
+    energy_state: -9.34520355399291
+    energy_measurement_model: -9.345203553992917
+    fidelity_ground_space: 0.2341759148648422
+    zz_expectation: 1.8377911981546806
+    x_expectation: 1.876853088959559
+    energy_absolute_error: 6.8425364990867195
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 117
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 6.395026500000014
+- degree: 2
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 9
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 10
+    phase_symmetry: full
+    trainable_phases:
+    - 0.22800085481448767
+    - -0.14615909496042656
+    - 0.16422244263726538
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - 0.35344849129883293
+  - -0.5750596271488253
+  - 0.3713080043859218
+  trainable_phases:
+  - 0.35344849129883293
+  - -0.5750596271488253
+  - 0.3713080043859218
+  best_loss: 0.297728554901979
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 3.940244986307267e-08
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.4119321338089836
+    energy_state: -6.553728994811668
+    energy_measurement_model: -6.548635146815057
+    fidelity_ground_space: 0.1759179305636597
+    zz_expectation: 1.4598809982078005
+    x_expectation: 1.2721885371518142
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 9.634011058267962
+    energy_measurement_absolute_error: 9.639104906264572
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.15674741363472777
+    energy_state: -3.1893024486012775
+    energy_measurement_model: -3.186579034500099
+    fidelity_ground_space: 0.1396430726201197
+    zz_expectation: 0.465888347424688
+    x_expectation: 0.6801726717688528
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.5503655615666592
+    - -0.05639603551987449
+    - 0.5503655615666592
+    energy_measurement_absolute_error: 13.00116101857953
+    energy_state_absolute_error: 12.998437604478351
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 13.00116101857953
+    trained_energy_absolute_error: 9.639104906264572
+    absolute_error_reduction: 3.362056112314958
+    relative_error_reduction: 0.258596605911607
+    success_probability_change: 0.2551847201742558
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.38414241264545407
+    energy_state: -9.302805784943226
+    energy_measurement_model: -9.302805784943228
+    fidelity_ground_space: 0.22823379604215446
+    zz_expectation: 1.9664240594703228
+    x_expectation: 1.8340954313682265
+    energy_absolute_error: 6.884934268136403
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 108
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 3.0626003999999796
+- degree: 4
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 11
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 11
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1857148986154002
+    - -0.0003610687799425194
+    - 0.05074917881167873
+    - -0.23565549581402773
+    - -0.17603695771127204
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.7290141902132392
+  - 0.7793213621829107
+  - 1.4495754696605623
+  - 0.7793212837384091
+  - -0.7290141997966244
+  trainable_phases:
+  - -0.7290141902132392
+  - 0.7793213621829107
+  - 1.4495754696605623
+  - 0.7793212837384091
+  - -0.7290141997966244
+  best_loss: 0.12641185420115453
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.744219713618182e-06
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 8.926184106339053e-05
+    energy_state: -12.095095582207447
+    energy_measurement_model: -12.09509558220744
+    fidelity_ground_space: 0.4219039975011124
+    zz_expectation: 0.9886908352561676
+    x_expectation: 2.776601186737818
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 4.092644470872182
+    energy_measurement_absolute_error: 4.092644470872189
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.08286067406196468
+    energy_state: -8.809124949751364
+    energy_measurement_model: -8.809124949751357
+    fidelity_ground_space: 0.4087658921096159
+    zz_expectation: -0.21424070828475017
+    x_expectation: 2.255841414509027
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.5943884460497912
+    - -0.09284395217771069
+    - -0.10183780760199568
+    - -0.09284395217771069
+    - 0.5943884460497912
+    energy_measurement_absolute_error: 7.378615103328272
+    energy_state_absolute_error: 7.378615103328265
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 7.378615103328272
+    trained_energy_absolute_error: 4.092644470872189
+    absolute_error_reduction: 3.285970632456083
+    relative_error_reduction: 0.44533704312261524
+    success_probability_change: -0.08277141222090129
+  ideal_phase_quality:
+    success_probability_ancilla0: 8.926184106339053e-05
+    energy_state: -12.095095582207447
+    energy_measurement_model: -12.095095582207449
+    fidelity_ground_space: 0.4219039975011124
+    zz_expectation: 0.9886908352561676
+    x_expectation: 2.77660118673782
+    energy_absolute_error: 4.092644470872182
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 299
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 14.620947299999997
+- degree: 4
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 11
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 11
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1857148986154002
+    - -0.0003610687799425194
+    - 0.05074917881167873
+    - -0.23565549581402773
+    - -0.17603695771127204
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.57970151097207
+  - 0.31815119975019757
+  - 0.4039833962966801
+  - 0.3181209896183885
+  - -0.5797268603250298
+  trainable_phases:
+  - -0.57970151097207
+  - 0.31815119975019757
+  - 0.4039833962966801
+  - 0.3181209896183885
+  - -0.5797268603250298
+  best_loss: 0.126803851452678
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.346141091126745e-06
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.20742654373731934
+    energy_state: -12.08241557674975
+    energy_measurement_model: -12.082404482989073
+    fidelity_ground_space: 0.42142088967111846
+    zz_expectation: 0.9886549217664905
+    x_expectation: 2.7734373903056455
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 4.10532447632988
+    energy_measurement_absolute_error: 4.105335570090556
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.08300172349707235
+    energy_state: -8.790210276277394
+    energy_measurement_model: -8.790201273201665
+    fidelity_ground_space: 0.4079694796060303
+    zz_expectation: -0.21286543874206154
+    x_expectation: 2.250766677985932
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.5943884460497912
+    - -0.09284395217771069
+    - -0.10183780760199568
+    - -0.09284395217771069
+    - 0.5943884460497912
+    energy_measurement_absolute_error: 7.397538779877964
+    energy_state_absolute_error: 7.3975297768022354
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 7.397538779877964
+    trained_energy_absolute_error: 4.105335570090556
+    absolute_error_reduction: 3.2922032097874077
+    relative_error_reduction: 0.4450403448701784
+    success_probability_change: 0.12442482024024698
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.20729977425919205
+    energy_state: -12.095094699466857
+    energy_measurement_model: -12.095094699466857
+    fidelity_ground_space: 0.4218409473586906
+    zz_expectation: 0.9893154623989953
+    x_expectation: 2.7764448092669656
+    energy_absolute_error: 4.092645353612772
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 292
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 14.33224300000002
+- degree: 4
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 11
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 11
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1857148986154002
+    - -0.0003610687799425194
+    - 0.05074917881167873
+    - -0.23565549581402773
+    - -0.17603695771127204
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.5802442474682228
+  - 0.31889119292116463
+  - 0.404626689977309
+  - 0.3185857747718783
+  - -0.5804954625385514
+  trainable_phases:
+  - -0.5802442474682228
+  - 0.31889119292116463
+  - 0.404626689977309
+  - 0.3185857747718783
+  - -0.5804954625385514
+  best_loss: 0.13030027787930962
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.4131520091915444e-06
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.20887983135445756
+    energy_state: -11.969315808659006
+    energy_measurement_model: -11.969205998771011
+    fidelity_ground_space: 0.4171138086820048
+    zz_expectation: 0.9883270108177108
+    x_expectation: 2.745219746988325
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 4.218424244420623
+    energy_measurement_absolute_error: 4.218534054308618
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.08426903273628983
+    energy_state: -8.623118373898597
+    energy_measurement_model: -8.62303013523959
+    fidelity_ground_space: 0.40093594203814403
+    zz_expectation: -0.2007475263728718
+    x_expectation: 2.2059444154031156
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.5943884460497912
+    - -0.09284395217771069
+    - -0.10183780760199568
+    - -0.09284395217771069
+    - 0.5943884460497912
+    energy_measurement_absolute_error: 7.564709917840039
+    energy_state_absolute_error: 7.564621679181032
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 7.564709917840039
+    trained_energy_absolute_error: 4.218534054308618
+    absolute_error_reduction: 3.346175863531421
+    relative_error_reduction: 0.4423402747592546
+    success_probability_change: 0.12461079861816773
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.20761584903093777
+    energy_state: -12.09500696697044
+    energy_measurement_model: -12.095006966970434
+    fidelity_ground_space: 0.4212695267722818
+    zz_expectation: 0.9949550555708795
+    x_expectation: 2.775012977849889
+    energy_absolute_error: 4.09273308610919
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 217
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 10.847966499999984
+- degree: 4
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 11
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 11
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1857148986154002
+    - -0.0003610687799425194
+    - 0.05074917881167873
+    - -0.23565549581402773
+    - -0.17603695771127204
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.5855102197947986
+  - 0.32636797613956947
+  - 0.41140547342845357
+  - 0.3229235867606137
+  - -0.5884039074285417
+  trainable_phases:
+  - -0.5855102197947986
+  - 0.32636797613956947
+  - 0.41140547342845357
+  - 0.3229235867606137
+  - -0.5884039074285417
+  best_loss: 0.16240091192780556
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 5.134946846371888e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.22322597812463793
+    energy_state: -10.930927264441648
+    energy_measurement_model: -10.929932559738832
+    fidelity_ground_space: 0.37785927011329995
+    zz_expectation: 0.983880236416621
+    x_expectation: 2.486513080830553
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 5.256812788637982
+    energy_measurement_absolute_error: 5.257807493340797
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.09673308800718657
+    energy_state: -7.2141886841933465
+    energy_measurement_model: -7.213457148352716
+    fidelity_ground_space: 0.34179157869736815
+    zz_expectation: -0.10116972205688995
+    x_expectation: 1.8286567176024016
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.5943884460497912
+    - -0.09284395217771069
+    - -0.10183780760199568
+    - -0.09284395217771069
+    - 0.5943884460497912
+    energy_measurement_absolute_error: 8.974282904726913
+    energy_state_absolute_error: 8.973551368886284
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 8.974282904726913
+    trained_energy_absolute_error: 5.257807493340797
+    absolute_error_reduction: 3.7164754113861154
+    relative_error_reduction: 0.4141250561009819
+    success_probability_change: 0.12649289011745135
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.21095854099070027
+    energy_state: -12.0862085775565
+    energy_measurement_model: -12.086208577556498
+    fidelity_ground_space: 0.41528492472133804
+    zz_expectation: 1.0522680566407794
+    x_expectation: 2.7584851302289297
+    energy_absolute_error: 4.10153147552313
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 199
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 10.123718600000018
+- degree: 4
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 11
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 11
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1857148986154002
+    - -0.0003610687799425194
+    - 0.05074917881167873
+    - -0.23565549581402773
+    - -0.17603695771127204
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.46442599669278506
+  - 0.5701713969639846
+  - 0.47703056060542703
+  - 0.1644636843544367
+  - -0.8257471663146387
+  trainable_phases:
+  - -0.46442599669278506
+  - 0.5701713969639846
+  - 0.47703056060542703
+  - 0.1644636843544367
+  - -0.8257471663146387
+  best_loss: 0.33109392183226266
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 4.638411512252918e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3935668056616518
+    energy_state: -5.4729795384963955
+    energy_measurement_model: -5.468415373528955
+    fidelity_ground_space: 0.16651085097394422
+    zz_expectation: 0.9088145710652601
+    x_expectation: 1.1399002006159236
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 10.714760514583233
+    energy_measurement_absolute_error: 10.719324679550674
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.2026621571812431
+    energy_state: -2.283045212485752
+    energy_measurement_model: -2.2809202879121444
+    fidelity_ground_space: 0.14028246749348663
+    zz_expectation: 0.1581206388795253
+    x_expectation: 0.5306999122581548
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.5943884460497912
+    - -0.09284395217771069
+    - -0.10183780760199568
+    - -0.09284395217771069
+    - 0.5943884460497912
+    energy_measurement_absolute_error: 13.906819765167485
+    energy_state_absolute_error: 13.904694840593876
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 13.906819765167485
+    trained_energy_absolute_error: 10.719324679550674
+    absolute_error_reduction: 3.1874950856168116
+    relative_error_reduction: 0.22920373884477557
+    success_probability_change: 0.1909046484804087
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.3394048985316266
+    energy_state: -10.179798814610148
+    energy_measurement_model: -10.179798814610145
+    fidelity_ground_space: 0.26229385923453113
+    zz_expectation: 1.6218960786642482
+    x_expectation: 2.139475683986474
+    energy_absolute_error: 6.007941238469481
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 140
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 6.754499199999998
+- degree: 6
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 13
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 13
+    phase_symmetry: full
+    trainable_phases:
+    - 0.18239879350829324
+    - 0.1776512574660295
+    - 0.15551169939217108
+    - -0.1192768192917617
+    - -0.2114002711407893
+    - 0.22323289022303167
+    - 0.056895845523550925
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 2.0554590723202857
+  - -0.01346556030852275
+  - -1.0348457077377797
+  - 0.4432337020656978
+  - -1.034844875466682
+  - -0.01346636093867426
+  - -1.0861330947377748
+  trainable_phases:
+  - 2.0554590723202857
+  - -0.01346556030852275
+  - -1.0348457077377797
+  - 0.4432337020656978
+  - -1.034844875466682
+  - -0.01346636093867426
+  - -1.0861330947377748
+  best_loss: 0.08840978400956022
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 8.102027487263125e-07
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.0885963381995805
+    energy_state: -13.325430849688273
+    energy_measurement_model: -13.325430849688269
+    fidelity_ground_space: 0.5938169522366966
+    zz_expectation: 0.8414516216164026
+    x_expectation: 3.1209948070179667
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 2.862309203391357
+    energy_measurement_absolute_error: 2.8623092033913604
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07205137239221353
+    energy_state: -11.193605821486372
+    energy_measurement_model: -11.19360582148637
+    fidelity_ground_space: 0.6541714211813126
+    zz_expectation: 0.5929385781151865
+    x_expectation: 2.650166810842796
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.6515573403131056
+    - -0.09856627111071159
+    - -0.12061866125601206
+    - -0.12473854936215067
+    - -0.12061866125601206
+    - -0.09856627111071159
+    - 0.6515573403131056
+    energy_measurement_absolute_error: 4.994134231593259
+    energy_state_absolute_error: 4.994134231593257
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 4.994134231593259
+    trained_energy_absolute_error: 2.8623092033913604
+    absolute_error_reduction: 2.1318250282018987
+    relative_error_reduction: 0.42686578480726795
+    success_probability_change: 0.016544965807366974
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.0885963381995805
+    energy_state: -13.325430849688273
+    energy_measurement_model: -13.325430849688273
+    fidelity_ground_space: 0.5938169522366966
+    zz_expectation: 0.8414516216164026
+    x_expectation: 3.1209948070179676
+    energy_absolute_error: 2.862309203391357
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 673
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 94.20748760000006
+- degree: 6
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 13
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 13
+    phase_symmetry: full
+    trainable_phases:
+    - 0.18239879350829324
+    - 0.1776512574660295
+    - 0.15551169939217108
+    - -0.1192768192917617
+    - -0.2114002711407893
+    - 0.22323289022303167
+    - 0.056895845523550925
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 2.084167057669969
+  - 0.08182209602806045
+  - -0.8814969026595922
+  - 0.6032212966515456
+  - -0.880882493737623
+  - 0.08129746275927996
+  - -1.0570728510593366
+  trainable_phases:
+  - 2.084167057669969
+  - 0.08182209602806045
+  - -0.8814969026595922
+  - 0.6032212966515456
+  - -0.880882493737623
+  - 0.08129746275927996
+  - -1.0570728510593366
+  best_loss: 0.08950084696013705
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 7.594527370170436e-07
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.14780040817131637
+    energy_state: -13.29011961142573
+    energy_measurement_model: -13.290107162837302
+    fidelity_ground_space: 0.5917537601378254
+    zz_expectation: 0.8415311937805543
+    x_expectation: 3.112143992264187
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 2.897620441653899
+    energy_measurement_absolute_error: 2.8976328902423276
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07226866526542575
+    energy_state: -11.153497348247603
+    energy_measurement_model: -11.153486786009267
+    fidelity_ground_space: 0.65188522921484
+    zz_expectation: 0.5912590281151635
+    x_expectation: 2.640556939473526
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.6515573403131056
+    - -0.09856627111071159
+    - -0.12061866125601206
+    - -0.12473854936215067
+    - -0.12061866125601206
+    - -0.09856627111071159
+    - 0.6515573403131056
+    energy_measurement_absolute_error: 5.034253267070362
+    energy_state_absolute_error: 5.034242704832026
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 5.034253267070362
+    trained_energy_absolute_error: 2.8976328902423276
+    absolute_error_reduction: 2.1366203768280343
+    relative_error_reduction: 0.4244165447145692
+    success_probability_change: 0.07553174290589063
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.14750622289192106
+    energy_state: -13.325408712537017
+    energy_measurement_model: -13.325408712537023
+    fidelity_ground_space: 0.5932570029876892
+    zz_expectation: 0.8427351393372118
+    x_expectation: 3.120668393299953
+    energy_absolute_error: 2.862331340542612
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 431
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 90.78937729999996
+- degree: 6
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 13
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 13
+    phase_symmetry: full
+    trainable_phases:
+    - 0.18239879350829324
+    - 0.1776512574660295
+    - 0.15551169939217108
+    - -0.1192768192917617
+    - -0.2114002711407893
+    - 0.22323289022303167
+    - 0.056895845523550925
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 2.0861623415372783
+  - 0.08040071596088394
+  - -0.889797537599613
+  - 0.6131477066440834
+  - -0.8835020541402576
+  - 0.075088207772942
+  - -1.0518843510356612
+  trainable_phases:
+  - 2.0861623415372783
+  - 0.08040071596088394
+  - -0.889797537599613
+  - 0.6131477066440834
+  - -0.8835020541402576
+  - 0.075088207772942
+  - -1.0518843510356612
+  best_loss: 0.09903163951879049
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.2026369244156838e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.15180560352164768
+    energy_state: -12.98166456863251
+    energy_measurement_model: -12.981543177958686
+    fidelity_ground_space: 0.5736323586076661
+    zz_expectation: 0.8425971868360446
+    x_expectation: 3.0347364977806603
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 3.206075484447119
+    energy_measurement_absolute_error: 3.206196875120943
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07421934250922224
+    energy_state: -10.803947504076529
+    energy_measurement_model: -10.803845230570769
+    fidelity_ground_space: 0.6319695038710701
+    zz_expectation: 0.5765969279397135
+    x_expectation: 2.556812075657764
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.6515573403131056
+    - -0.09856627111071159
+    - -0.12061866125601206
+    - -0.12473854936215067
+    - -0.12061866125601206
+    - -0.09856627111071159
+    - 0.6515573403131056
+    energy_measurement_absolute_error: 5.383894822508861
+    energy_state_absolute_error: 5.3837925490031004
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 5.383894822508861
+    trained_energy_absolute_error: 3.206196875120943
+    absolute_error_reduction: 2.1776979473879177
+    relative_error_reduction: 0.40448374628037853
+    success_probability_change: 0.07758626101242544
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.14889030663016245
+    energy_state: -13.32316244398067
+    energy_measurement_model: -13.323162443980669
+    fidelity_ground_space: 0.5880447687239648
+    zz_expectation: 0.854581968583098
+    x_expectation: 3.117145118849393
+    energy_absolute_error: 2.8645776090989585
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 332
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 22.63727750000004
+- degree: 6
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 13
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 13
+    phase_symmetry: full
+    trainable_phases:
+    - 0.18239879350829324
+    - 0.1776512574660295
+    - 0.15551169939217108
+    - -0.1192768192917617
+    - -0.2114002711407893
+    - 0.22323289022303167
+    - 0.056895845523550925
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 0.7880924746657696
+  - 1.4302985256405485
+  - -0.260248169916121
+  - -0.3554326600705311
+  - -0.3522727917061572
+  - -0.25179110790839276
+  - -0.9218504867823363
+  trainable_phases:
+  - 0.7880924746657696
+  - 1.4302985256405485
+  - -0.260248169916121
+  - -0.3554326600705311
+  - -0.3522727917061572
+  - -0.25179110790839276
+  - -0.9218504867823363
+  best_loss: 0.16176433781131638
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.1798042749020274e-06
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.19419498350407277
+    energy_state: -10.951547380973674
+    energy_measurement_model: -10.950541952383324
+    fidelity_ground_space: 0.42703833466947655
+    zz_expectation: 0.8972614774916434
+    x_expectation: 2.51332011872292
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 5.236192672105956
+    energy_measurement_absolute_error: 5.237198100696306
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.09324353589686035
+    energy_state: -8.161369913277868
+    energy_measurement_model: -8.160600167413806
+    fidelity_ground_space: 0.48205831457467796
+    zz_expectation: 0.46391127269310417
+    x_expectation: 1.9241722236801753
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.6515573403131056
+    - -0.09856627111071159
+    - -0.12061866125601206
+    - -0.12473854936215067
+    - -0.12061866125601206
+    - -0.09856627111071159
+    - 0.6515573403131056
+    energy_measurement_absolute_error: 8.027139885665823
+    energy_state_absolute_error: 8.026370139801761
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 8.027139885665823
+    trained_energy_absolute_error: 5.237198100696306
+    absolute_error_reduction: 2.7899417849695176
+    relative_error_reduction: 0.3475636185126854
+    success_probability_change: 0.10095144760721242
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.1752788448806691
+    energy_state: -12.899113068747173
+    energy_measurement_model: -12.899113068747177
+    fidelity_ground_space: 0.5003757180110537
+    zz_expectation: 1.020171417623757
+    x_expectation: 2.969735412780855
+    energy_absolute_error: 3.2886269843324563
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 195
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 31.31598059999999
+- degree: 6
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 13
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 15
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09637168398257617
+    - 0.15790855566802875
+    - -0.07779662110357166
+    - -0.2275809121547906
+    - 0.035798628516865494
+    - -0.17687728663820124
+    - 0.1093856884377356
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - 0.45773041512322354
+  - -0.6327657665352997
+  - -0.5278119654478051
+  - -0.1331693427550169
+  - 0.10254342287638041
+  - 0.11325922177562919
+  - 0.8513574648522426
+  trainable_phases:
+  - 0.45773041512322354
+  - -0.6327657665352997
+  - -0.5278119654478051
+  - -0.1331693427550169
+  - 0.10254342287638041
+  - 0.11325922177562919
+  - 0.8513574648522426
+  best_loss: 0.3586682289106323
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.0656064663040007e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.42558162749435946
+    energy_state: -4.579716948006792
+    energy_measurement_model: -4.5756839432720735
+    fidelity_ground_space: 0.13912282291641165
+    zz_expectation: 0.5467122132940576
+    x_expectation: 1.007242932494504
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 11.608023105072839
+    energy_measurement_absolute_error: 11.612056109807556
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.2425440095337661
+    energy_state: -1.8225486092664207
+    energy_measurement_model: -1.8208772807717408
+    fidelity_ground_space: 0.13763870316127366
+    zz_expectation: 0.15122011458798273
+    x_expectation: 0.4174142915459395
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.6515573403131056
+    - -0.09856627111071159
+    - -0.12061866125601206
+    - -0.12473854936215067
+    - -0.12061866125601206
+    - -0.09856627111071159
+    - 0.6515573403131056
+    energy_measurement_absolute_error: 14.366862772307888
+    energy_state_absolute_error: 14.36519144381321
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 14.366862772307888
+    trained_energy_absolute_error: 11.612056109807556
+    absolute_error_reduction: 2.7548066625003322
+    relative_error_reduction: 0.19174726634197545
+    success_probability_change: 0.18303761796059337
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.3702736990562388
+    energy_state: -10.415489008311376
+    energy_measurement_model: -10.415489008311377
+    fidelity_ground_space: 0.23239151325046822
+    zz_expectation: 1.3096130707773574
+    x_expectation: 2.276468984383505
+    energy_absolute_error: 5.772251044768254
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 177
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 23.10355450000003
+- degree: 8
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 15
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 16
+    phase_symmetry: full
+    trainable_phases:
+    - 0.03345841943968253
+    - -0.03462792725490721
+    - -0.20296308726923773
+    - -0.07596022478200226
+    - 0.060754519190339695
+    - -0.23917249840864474
+    - 0.18731618897276886
+    - 0.1770247657634711
+    - -0.2278478921058576
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -0.691223658607512
+  - 0.12367850171988248
+  - 0.10709653295343413
+  - 0.13561813958519098
+  - 0.12848923409223367
+  - 0.1356181413738473
+  - 0.10709657007778084
+  - 0.12367848035492113
+  - -0.6912236148856845
+  trainable_phases:
+  - -0.691223658607512
+  - 0.12367850171988248
+  - 0.10709653295343413
+  - 0.13561813958519098
+  - 0.12848923409223367
+  - 0.1356181413738473
+  - 0.10709657007778084
+  - 0.12367848035492113
+  - -0.6912236148856845
+  best_loss: 0.007406047342458902
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.8002824654149034e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.06483456144337021
+    energy_state: -15.947965714678576
+    energy_measurement_model: -15.94796571467857
+    fidelity_ground_space: 0.980512761047957
+    zz_expectation: 0.510125728716825
+    x_expectation: 3.859459996490436
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 0.23977433840105356
+    energy_measurement_absolute_error: 0.23977433840105888
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.06211340950505759
+    energy_state: -15.351874000950117
+    energy_measurement_model: -15.351874000950101
+    fidelity_ground_space: 0.9306573135129171
+    zz_expectation: 0.6094354452835391
+    x_expectation: 3.6856096389166404
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.7000611369685399
+    - -0.0838889830060876
+    - -0.11360503213146211
+    - -0.13133444703039165
+    - -0.14075320705910865
+    - -0.13133444703039165
+    - -0.11360503213146211
+    - -0.0838889830060876
+    - 0.7000611369685399
+    energy_measurement_absolute_error: 0.8358660521295285
+    energy_state_absolute_error: 0.8358660521295125
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.8358660521295285
+    trained_energy_absolute_error: 0.23977433840105888
+    absolute_error_reduction: 0.5960917137284696
+    relative_error_reduction: 0.7131426287858109
+    success_probability_change: 0.002721151938312627
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.06483456144337021
+    energy_state: -15.947965714678576
+    energy_measurement_model: -15.947965714678574
+    fidelity_ground_space: 0.980512761047957
+    zz_expectation: 0.510125728716825
+    x_expectation: 3.859459996490437
+    energy_absolute_error: 0.23977433840105356
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 208
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 61.06470079999997
+- degree: 8
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 15
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 17
+    phase_symmetry: full
+    trainable_phases:
+    - 0.17253739639895077
+    - -0.16951345441544652
+    - 0.02887227368284606
+    - -0.06596002916786436
+    - -0.1425290182191158
+    - -0.05708798120540076
+    - -0.035917750453195785
+    - 0.055671554249490274
+    - 0.11819293525664326
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - 0.6693986851155773
+  - -0.16679530331821057
+  - -0.16345404258716334
+  - -0.20732914686769588
+  - -0.20371487367009422
+  - -0.20730588984643994
+  - -0.16341280179914142
+  - -0.166758040116481
+  - 0.6694168486294627
+  trainable_phases:
+  - 0.6693986851155773
+  - -0.16679530331821057
+  - -0.16345404258716334
+  - -0.20732914686769588
+  - -0.20371487367009422
+  - -0.20730588984643994
+  - -0.16341280179914142
+  - -0.166758040116481
+  - 0.6694168486294627
+  best_loss: 0.009561744087494693
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.268021507417357e-06
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08622008007790244
+    energy_state: -15.878189368356649
+    energy_measurement_model: -15.878173997594752
+    fidelity_ground_space: 0.9760813786558655
+    zz_expectation: 0.5074274849195504
+    x_expectation: 3.8426866281688006
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 0.3095506847229803
+    energy_measurement_absolute_error: 0.30956605548487737
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.062414371219136164
+    energy_state: -15.265855987238945
+    energy_measurement_model: -15.265841326472712
+    fidelity_ground_space: 0.9255068823159536
+    zz_expectation: 0.6050897742976178
+    x_expectation: 3.6651878880437736
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.7000611369685399
+    - -0.0838889830060876
+    - -0.11360503213146211
+    - -0.13133444703039165
+    - -0.14075320705910865
+    - -0.13133444703039165
+    - -0.11360503213146211
+    - -0.0838889830060876
+    - 0.7000611369685399
+    energy_measurement_absolute_error: 0.9218987266069174
+    energy_state_absolute_error: 0.9218840658406844
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.9218987266069174
+    trained_energy_absolute_error: 0.30956605548487737
+    absolute_error_reduction: 0.61233267112204
+    relative_error_reduction: 0.6642081754204752
+    success_probability_change: 0.023805708858766275
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08590055183382443
+    energy_state: -15.94796234692587
+    energy_measurement_model: -15.947962346925872
+    fidelity_ground_space: 0.9804726571535174
+    zz_expectation: 0.509844427543621
+    x_expectation: 3.8595294798455626
+    energy_absolute_error: 0.2397777061537596
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 228
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 31.567895999999905
+- degree: 8
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 15
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 16
+    phase_symmetry: full
+    trainable_phases:
+    - 0.03345841943968253
+    - -0.03462792725490721
+    - -0.20296308726923773
+    - -0.07596022478200226
+    - 0.060754519190339695
+    - -0.23917249840864474
+    - 0.18731618897276886
+    - 0.1770247657634711
+    - -0.2278478921058576
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -0.6700735156114686
+  - 0.16643014120910982
+  - 0.16433930196591406
+  - 0.20830479387505152
+  - 0.20501440717127517
+  - 0.20805025630911134
+  - 0.16388894485188388
+  - 0.16603532870779247
+  - -0.6702752517904549
+  trainable_phases:
+  - -0.6700735156114686
+  - 0.16643014120910982
+  - 0.16433930196591406
+  - 0.20830479387505152
+  - 0.20501440717127517
+  - 0.20805025630911134
+  - 0.16388894485188388
+  - 0.16603532870779247
+  - -0.6702752517904549
+  best_loss: 0.02818845411461735
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 4.936817267248648e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08916602045340402
+    energy_state: -15.275273228544247
+    energy_measurement_model: -15.275125317668445
+    fidelity_ground_space: 0.9377581847010145
+    zz_expectation: 0.4841856483100862
+    x_expectation: 3.6977349173395897
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 0.9124668245353824
+    energy_measurement_absolute_error: 0.912614735411184
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.06511361290066073
+    energy_state: -14.529954338653534
+    energy_measurement_model: -14.529814718783303
+    fidelity_ground_space: 0.8814615093582753
+    zz_expectation: 0.5679673163317547
+    x_expectation: 3.490461850612887
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.7000611369685399
+    - -0.0838889830060876
+    - -0.11360503213146211
+    - -0.13133444703039165
+    - -0.14075320705910865
+    - -0.13133444703039165
+    - -0.11360503213146211
+    - -0.0838889830060876
+    - 0.7000611369685399
+    energy_measurement_absolute_error: 1.6579253342963263
+    energy_state_absolute_error: 1.6577857144260957
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 1.6579253342963263
+    trained_energy_absolute_error: 0.912614735411184
+    absolute_error_reduction: 0.7453105988851423
+    relative_error_reduction: 0.44954412811447547
+    success_probability_change: 0.024052407552743293
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08598201738838608
+    energy_state: -15.947588824076973
+    energy_measurement_model: -15.947588824076973
+    fidelity_ground_space: 0.9800382022343374
+    zz_expectation: 0.5073407961793354
+    x_expectation: 3.8600620069744096
+    energy_absolute_error: 0.24015122900265595
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 213
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 62.895761799999946
+- degree: 8
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 15
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 17
+    phase_symmetry: full
+    trainable_phases:
+    - 0.17253739639895077
+    - -0.16951345441544652
+    - 0.02887227368284606
+    - -0.06596002916786436
+    - -0.1425290182191158
+    - -0.05708798120540076
+    - -0.035917750453195785
+    - 0.055671554249490274
+    - 0.11819293525664326
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - 0.6861374655210168
+  - -0.15705859849027703
+  - -0.18145630698786164
+  - -0.23165646616027225
+  - -0.23291825174653358
+  - -0.22195565249827398
+  - -0.165873813046721
+  - -0.14555270521098107
+  - 0.6928050360968614
+  trainable_phases:
+  - 0.6861374655210168
+  - -0.15705859849027703
+  - -0.18145630698786164
+  - -0.23165646616027225
+  - -0.23291825174653358
+  - -0.22195565249827398
+  - -0.165873813046721
+  - -0.14555270521098107
+  - 0.6928050360968614
+  best_loss: 0.15958860355121293
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.9249198137808693e-06
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.12067974461332215
+    energy_state: -11.02204951052628
+    energy_measurement_model: -11.020982393637592
+    fidelity_ground_space: 0.6539455416485267
+    zz_expectation: 0.35088062379226226
+    x_expectation: 2.6675254424613324
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 5.1656905425533495
+    energy_measurement_absolute_error: 5.1667576594420375
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.09119596727328687
+    energy_state: -9.66491482379016
+    energy_measurement_model: -9.663980956600152
+    fidelity_ground_space: 0.5914444767485632
+    zz_expectation: 0.32624292385463705
+    x_expectation: 2.3344345081863787
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.7000611369685399
+    - -0.0838889830060876
+    - -0.11360503213146211
+    - -0.13133444703039165
+    - -0.14075320705910865
+    - -0.13133444703039165
+    - -0.11360503213146211
+    - -0.0838889830060876
+    - 0.7000611369685399
+    energy_measurement_absolute_error: 6.523759096479477
+    energy_state_absolute_error: 6.52282522928947
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 6.523759096479477
+    trained_energy_absolute_error: 5.1667576594420375
+    absolute_error_reduction: 1.3570014370374395
+    relative_error_reduction: 0.20800912740167557
+    success_probability_change: 0.02948377734003528
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.09024038392663118
+    energy_state: -15.754247600681738
+    energy_measurement_model: -15.754247600681738
+    fidelity_ground_space: 0.9421488367320883
+    zz_expectation: 0.5184570874124024
+    x_expectation: 3.808947628317334
+    energy_absolute_error: 0.4334924523978909
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 257
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 33.520497000000205
+- degree: 8
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 15
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 17
+    phase_symmetry: full
+    trainable_phases:
+    - 0.17253739639895077
+    - -0.16951345441544652
+    - 0.02887227368284606
+    - -0.06596002916786436
+    - -0.1425290182191158
+    - -0.05708798120540076
+    - -0.035917750453195785
+    - 0.055671554249490274
+    - 0.11819293525664326
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - 0.39138683196769763
+  - -0.7143564629198056
+  - -0.4805888327154526
+  - -0.034820828482517996
+  - 0.15951437568063076
+  - 0.10004929261575102
+  - 0.02270185292262017
+  - -0.06961852621925102
+  - 0.699322507231015
+  trainable_phases:
+  - 0.39138683196769763
+  - -0.7143564629198056
+  - -0.4805888327154526
+  - -0.034820828482517996
+  - 0.15951437568063076
+  - 0.10004929261575102
+  - 0.02270185292262017
+  - -0.06961852621925102
+  - 0.699322507231015
+  best_loss: 0.38249389673688855
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 5.017955351970784e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.4526456898735942
+    energy_state: -3.807728399211521
+    energy_measurement_model: -3.804316508547157
+    fidelity_ground_space: 0.12247843161648986
+    zz_expectation: 0.3958377348526529
+    x_expectation: 0.852119693423626
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 12.380011653868108
+    energy_measurement_absolute_error: 12.383423544532473
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.279330777113909
+    energy_state: -1.5335399348359218
+    energy_measurement_model: -1.5319942118293228
+    fidelity_ground_space: 0.12711114502668683
+    zz_expectation: -0.012183071762142589
+    x_expectation: 0.38604432089786633
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.7000611369685399
+    - -0.0838889830060876
+    - -0.11360503213146211
+    - -0.13133444703039165
+    - -0.14075320705910865
+    - -0.13133444703039165
+    - -0.11360503213146211
+    - -0.0838889830060876
+    - 0.7000611369685399
+    energy_measurement_absolute_error: 14.655745841250306
+    energy_state_absolute_error: 14.654200118243708
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 14.655745841250306
+    trained_energy_absolute_error: 12.383423544532473
+    absolute_error_reduction: 2.2723222967178334
+    relative_error_reduction: 0.15504651358800978
+    success_probability_change: 0.1733149127596852
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.40850642274058513
+    energy_state: -10.379421770169895
+    energy_measurement_model: -10.379421770169895
+    fidelity_ground_space: 0.2176031872146672
+    zz_expectation: 1.2656666608713552
+    x_expectation: 2.278438777324635
+    energy_absolute_error: 5.808318282909735
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 160
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 13.932905000000005
+- degree: 10
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 17
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 19
+    phase_symmetry: full
+    trainable_phases:
+    - -0.03981060213536958
+    - 0.21293467240835184
+    - -0.11306500605085895
+    - -0.21997569793873667
+    - -0.09472827084344404
+    - 0.1090926289360385
+    - 0.14048279088409155
+    - 0.019349918039796465
+    - -0.09416729108808974
+    - 0.2081748646945748
+    - 0.2140377557598287
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - 0.4063775946288066
+  - 0.4056573623292876
+  - -0.3024585134390687
+  - -0.5528448650966284
+  - -0.38010248190331053
+  - 1.3059903026711055
+  - -0.3801008221102746
+  - -0.5528478630995304
+  - -0.30245610105669574
+  - 0.4056565848441851
+  - 0.406377517632976
+  trainable_phases:
+  - 0.4063775946288066
+  - 0.4056573623292876
+  - -0.3024585134390687
+  - -0.5528448650966284
+  - -0.38010248190331053
+  - 1.3059903026711055
+  - -0.3801008221102746
+  - -0.5528478630995304
+  - -0.30245610105669574
+  - 0.4056565848441851
+  - 0.406377517632976
+  best_loss: 0.0013551240350614347
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 9.565302732389242e-07
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.0674777399408982
+    energy_state: -16.143867261841113
+    energy_measurement_model: -16.143867261841113
+    fidelity_ground_space: 0.9955474916278637
+    zz_expectation: 0.3867657048585568
+    x_expectation: 3.939275389245639
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 0.04387279123851684
+    energy_measurement_absolute_error: 0.04387279123851684
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.06670207915411934
+    energy_state: -15.812481291957171
+    energy_measurement_model: -15.812481291957146
+    fidelity_ground_space: 0.9696905545408265
+    zz_expectation: 0.6461566589796868
+    x_expectation: 3.791581158244365
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.7339722736997261
+    - -0.06282623157996037
+    - -0.09302440245664512
+    - -0.11827762838420774
+    - -0.1388181069408403
+    - -0.14435472304484698
+    - -0.1388181069408403
+    - -0.11827762838420774
+    - -0.09302440245664512
+    - -0.06282623157996037
+    - 0.7339722736997261
+    energy_measurement_absolute_error: 0.3752587611224829
+    energy_state_absolute_error: 0.37525876112245804
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.3752587611224829
+    trained_energy_absolute_error: 0.04387279123851684
+    absolute_error_reduction: 0.33138596988396607
+    relative_error_reduction: 0.8830865637692682
+    success_probability_change: 0.0007756607867788617
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.0674777399408982
+    energy_state: -16.143867261841113
+    energy_measurement_model: -16.143867261841113
+    fidelity_ground_space: 0.9955474916278637
+    zz_expectation: 0.3867657048585568
+    x_expectation: 3.9392753892456387
+    energy_absolute_error: 0.04387279123851684
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 522
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 149.4013387
+- degree: 10
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 17
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 18
+    phase_symmetry: full
+    trainable_phases:
+    - -0.050347115391213615
+    - 0.10870733964410806
+    - -0.1095883359819983
+    - -0.20863754100094184
+    - 0.23488565964642988
+    - 0.03196337268397603
+    - 0.07216048107562323
+    - 0.03843573175130455
+    - -0.012319515135031989
+    - -0.1887990050760715
+    - -0.09320193938839094
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - 0.7311026097435818
+  - -0.09034110027641917
+  - -0.143980734651171
+  - -0.18538975366142996
+  - -0.18438081254330285
+  - -0.20617061861555186
+  - -0.18432468081678577
+  - -0.18533977023493975
+  - -0.143886106945307
+  - -0.0902248686599143
+  - 0.7312042828158911
+  trainable_phases:
+  - 0.7311026097435818
+  - -0.09034110027641917
+  - -0.143980734651171
+  - -0.18538975366142996
+  - -0.18438081254330285
+  - -0.20617061861555186
+  - -0.18432468081678577
+  - -0.18533977023493975
+  - -0.143886106945307
+  - -0.0902248686599143
+  - 0.7312042828158911
+  best_loss: 0.004033162574170994
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 4.4694462820998175e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08416641279658031
+    energy_state: -16.057180150582962
+    energy_measurement_model: -16.057164478394643
+    fidelity_ground_space: 0.9901119744465596
+    zz_expectation: 0.38499183846888185
+    x_expectation: 3.91804315998144
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 0.1305599024966675
+    energy_measurement_absolute_error: 0.13057557468498615
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.06706798986167523
+    energy_state: -15.710614050619292
+    energy_measurement_model: -15.7105989815384
+    fidelity_ground_space: 0.9635101708699849
+    zz_expectation: 0.6415331750116163
+    x_expectation: 3.767266451631696
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.7339722736997261
+    - -0.06282623157996037
+    - -0.09302440245664512
+    - -0.11827762838420774
+    - -0.1388181069408403
+    - -0.14435472304484698
+    - -0.1388181069408403
+    - -0.11827762838420774
+    - -0.09302440245664512
+    - -0.06282623157996037
+    - 0.7339722736997261
+    energy_measurement_absolute_error: 0.4771410715412294
+    energy_state_absolute_error: 0.4771260024603379
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.4771410715412294
+    trained_energy_absolute_error: 0.13057557468498615
+    absolute_error_reduction: 0.34656549685624327
+    relative_error_reduction: 0.7263375918086247
+    success_probability_change: 0.017098422934905086
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08378714109855874
+    energy_state: -16.143865585298396
+    energy_measurement_model: -16.143865585298393
+    fidelity_ground_space: 0.9955382144797801
+    zz_expectation: 0.3871610539066554
+    x_expectation: 3.9391761328479347
+    energy_absolute_error: 0.04387446778123305
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 483
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 93.40327570000011
+- degree: 10
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 17
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 18
+    phase_symmetry: full
+    trainable_phases:
+    - -0.050347115391213615
+    - 0.10870733964410806
+    - -0.1095883359819983
+    - -0.20863754100094184
+    - 0.23488565964642988
+    - 0.03196337268397603
+    - 0.07216048107562323
+    - 0.03843573175130455
+    - -0.012319515135031989
+    - -0.1887990050760715
+    - -0.09320193938839094
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - 0.7316869070750247
+  - -0.09129189839905161
+  - -0.14487277136668553
+  - -0.1854685997688601
+  - -0.18578389723590982
+  - -0.20677005539490656
+  - -0.18517583897537637
+  - -0.18491521710442438
+  - -0.14385508926197366
+  - -0.0900607839778349
+  - 0.7327582951484795
+  trainable_phases:
+  - 0.7316869070750247
+  - -0.09129189839905161
+  - -0.14487277136668553
+  - -0.1854685997688601
+  - -0.18578389723590982
+  - -0.20677005539490656
+  - -0.18517583897537637
+  - -0.18491521710442438
+  - -0.14385508926197366
+  - -0.0900607839778349
+  - 0.7327582951484795
+  best_loss: 0.02698715780174824
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.5098226133414753e-06
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08761760740267366
+    energy_state: -15.314167308093435
+    energy_measurement_model: -15.314017862547342
+    fidelity_ground_space: 0.9435367813072211
+    zz_expectation: 0.36961269801949814
+    x_expectation: 3.736101291131961
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 0.8735727449861947
+    energy_measurement_absolute_error: 0.8737221905322876
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07034737447107606
+    energy_state: -14.845056009309506
+    energy_measurement_model: -14.844913581602095
+    fidelity_ground_space: 0.9110203892869574
+    zz_expectation: 0.6022852682567426
+    x_expectation: 3.560657078336338
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.7339722736997261
+    - -0.06282623157996037
+    - -0.09302440245664512
+    - -0.11827762838420774
+    - -0.1388181069408403
+    - -0.14435472304484698
+    - -0.1388181069408403
+    - -0.11827762838420774
+    - -0.09302440245664512
+    - -0.06282623157996037
+    - 0.7339722736997261
+    energy_measurement_absolute_error: 1.3428264714775349
+    energy_state_absolute_error: 1.3426840437701237
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 1.3428264714775349
+    trained_energy_absolute_error: 0.8737221905322876
+    absolute_error_reduction: 0.46910428094524725
+    relative_error_reduction: 0.3493409542553058
+    success_probability_change: 0.0172702329315976
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08383858271321201
+    energy_state: -16.143690454326016
+    energy_measurement_model: -16.143690454326016
+    fidelity_ground_space: 0.9954364808585586
+    zz_expectation: 0.3905184303375965
+    x_expectation: 3.938293005997105
+    energy_absolute_error: 0.04404959875361314
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 421
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 68.47636219999993
+- degree: 10
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 17
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 18
+    phase_symmetry: full
+    trainable_phases:
+    - -0.050347115391213615
+    - 0.10870733964410806
+    - -0.1095883359819983
+    - -0.20863754100094184
+    - 0.23488565964642988
+    - 0.03196337268397603
+    - 0.07216048107562323
+    - 0.03843573175130455
+    - -0.012319515135031989
+    - -0.1887990050760715
+    - -0.09320193938839094
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - 0.7346704168737124
+  - -0.10352186897979943
+  - -0.16301636975287082
+  - -0.20821415427273893
+  - -0.22917225720964085
+  - -0.2318490810257572
+  - -0.19393589354018648
+  - -0.16423620918164206
+  - -0.11443623914753465
+  - -0.061055321849373456
+  - 0.7632645498509087
+  trainable_phases:
+  - 0.7346704168737124
+  - -0.10352186897979943
+  - -0.16301636975287082
+  - -0.20821415427273893
+  - -0.22917225720964085
+  - -0.2318490810257572
+  - -0.19393589354018648
+  - -0.16423620918164206
+  - -0.11443623914753465
+  - -0.061055321849373456
+  - 0.7632645498509087
+  best_loss: 0.18007271408832856
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.8257275508507533e-06
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.12509953430729415
+    energy_state: -10.358805152537592
+    energy_measurement_model: -10.357799480450838
+    fidelity_ground_space: 0.6185046888122194
+    zz_expectation: 0.30208428514217933
+    x_expectation: 2.513928798827165
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 5.828934900542038
+    energy_measurement_absolute_error: 5.829940572628791
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.10181120396823332
+    energy_state: -9.38051998821912
+    energy_measurement_model: -9.379617621816076
+    fidelity_ground_space: 0.5811822782989059
+    zz_expectation: 0.3568559578470421
+    x_expectation: 2.2556904159922584
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.7339722736997261
+    - -0.06282623157996037
+    - -0.09302440245664512
+    - -0.11827762838420774
+    - -0.1388181069408403
+    - -0.14435472304484698
+    - -0.1388181069408403
+    - -0.11827762838420774
+    - -0.09302440245664512
+    - -0.06282623157996037
+    - 0.7339722736997261
+    energy_measurement_absolute_error: 6.808122431263554
+    energy_state_absolute_error: 6.807220064860509
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 6.808122431263554
+    trained_energy_absolute_error: 5.829940572628791
+    absolute_error_reduction: 0.9781818586347626
+    relative_error_reduction: 0.1436786527432082
+    success_probability_change: 0.02328833033906083
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.0888851486668186
+    energy_state: -15.867768456573113
+    energy_measurement_model: -15.867768456573117
+    fidelity_ground_space: 0.9514683471560882
+    zz_expectation: 0.46940393014482695
+    x_expectation: 3.8495911316070726
+    energy_absolute_error: 0.31997159650651597
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 283
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 47.187331300000096
+- degree: 10
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 17
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 18
+    phase_symmetry: full
+    trainable_phases:
+    - -0.050347115391213615
+    - 0.10870733964410806
+    - -0.1095883359819983
+    - -0.20863754100094184
+    - 0.23488565964642988
+    - 0.03196337268397603
+    - 0.07216048107562323
+    - 0.03843573175130455
+    - -0.012319515135031989
+    - -0.1887990050760715
+    - -0.09320193938839094
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - 0.8958404583837343
+  - 0.3502028079904429
+  - 0.43044711928541046
+  - -1.2412507278217266
+  - 0.17572176218416136
+  - 0.22247264038975256
+  - 0.14540844139895404
+  - 0.009955903937201693
+  - -0.04457276116396969
+  - -0.08434371268470109
+  - -0.8148922674545789
+  trainable_phases:
+  - 0.8958404583837343
+  - 0.3502028079904429
+  - 0.43044711928541046
+  - -1.2412507278217266
+  - 0.17572176218416136
+  - 0.22247264038975256
+  - 0.14540844139895404
+  - 0.009955903937201693
+  - -0.04457276116396969
+  - -0.08434371268470109
+  - -0.8148922674545789
+  best_loss: 0.4037857150623785
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.7952292552042861e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.45365471660901246
+    energy_state: -3.1176441859605495
+    energy_measurement_model: -3.1149836679263005
+    fidelity_ground_space: 0.10944940449087054
+    zz_expectation: 0.45712615171302523
+    x_expectation: 0.6644643790533188
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 13.070095867119079
+    energy_measurement_absolute_error: 13.07275638515333
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.3141303794642621
+    energy_state: -1.2377122206479991
+    energy_measurement_model: -1.2364999676731863
+    fidelity_ground_space: 0.11341560415613627
+    zz_expectation: 0.025459245837016753
+    x_expectation: 0.3027601804590424
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.7339722736997261
+    - -0.06282623157996037
+    - -0.09302440245664512
+    - -0.11827762838420774
+    - -0.1388181069408403
+    - -0.14435472304484698
+    - -0.1388181069408403
+    - -0.11827762838420774
+    - -0.09302440245664512
+    - -0.06282623157996037
+    - 0.7339722736997261
+    energy_measurement_absolute_error: 14.951240085406443
+    energy_state_absolute_error: 14.95002783243163
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 14.951240085406443
+    trained_energy_absolute_error: 13.07275638515333
+    absolute_error_reduction: 1.8784837002531134
+    relative_error_reduction: 0.12564066187972311
+    success_probability_change: 0.13952433714475038
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.44246715070620624
+    energy_state: -9.874951683047046
+    energy_measurement_model: -9.874951683047046
+    fidelity_ground_space: 0.2018925909750494
+    zz_expectation: 1.581383441844436
+    x_expectation: 2.0733920603006526
+    energy_absolute_error: 6.3127883700325835
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 235
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 45.89907270000003
+- degree: 12
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 19
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 21
+    phase_symmetry: full
+    trainable_phases:
+    - 0.14055879440873548
+    - 0.052923514785484016
+    - 0.10490059520421258
+    - -0.20545106353889553
+    - 0.06535720793695216
+    - 0.24040535111222638
+    - -0.03829741382012197
+    - -0.19379845832632886
+    - 0.2291332226829212
+    - 0.0879910924608534
+    - -0.1514036320275272
+    - 0.0860296282633935
+    - 0.24637081386829646
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - -0.09335179384503745
+  - 0.4520834236533533
+  - -0.7270156559213796
+  - -0.8774187498830219
+  - 0.8991707266693707
+  - 0.0923615895239589
+  - 0.7416531819156948
+  - 0.0923600023354334
+  - 0.8991690797799787
+  - -0.8774175204885326
+  - -0.7270169398729198
+  - 0.45208586739186263
+  - -0.09335152638857735
+  trainable_phases:
+  - -0.09335179384503745
+  - 0.4520834236533533
+  - -0.7270156559213796
+  - -0.8774187498830219
+  - 0.8991707266693707
+  - 0.0923615895239589
+  - 0.7416531819156948
+  - 0.0923600023354334
+  - 0.8991690797799787
+  - -0.8774175204885326
+  - -0.7270169398729198
+  - 0.45208586739186263
+  - -0.09335152638857735
+  best_loss: 0.0004317523896354614
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 5.357824200775574e-07
+    polish_passes: 3
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07824979720565477
+    energy_state: -16.173761862178214
+    energy_measurement_model: -16.173761862178193
+    fidelity_ground_space: 0.9986434450940682
+    zz_expectation: 0.35515172208564744
+    x_expectation: 3.9546525350231367
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 0.013978190901415388
+    energy_measurement_absolute_error: 0.013978190901436705
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.0690831686512531
+    energy_state: -16.085921570083233
+    energy_measurement_model: -16.08592157008322
+    fidelity_ground_space: 0.9927580405564873
+    zz_expectation: 0.42270263465079894
+    x_expectation: 3.915804733858105
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.755375791554405
+    - -0.04362207624112191
+    - -0.06983959810189022
+    - -0.09621692454567476
+    - -0.12202816058447974
+    - -0.13881597482868457
+    - -0.14613437531612883
+    - -0.13881597482868457
+    - -0.12202816058447974
+    - -0.09621692454567476
+    - -0.06983959810189022
+    - -0.04362207624112191
+    - 0.755375791554405
+    energy_measurement_absolute_error: 0.10181848299641061
+    energy_state_absolute_error: 0.1018184829963964
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.10181848299641061
+    trained_energy_absolute_error: 0.013978190901436705
+    absolute_error_reduction: 0.0878402920949739
+    relative_error_reduction: 0.8627146025940156
+    success_probability_change: 0.009166628554401673
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.07824979720565477
+    energy_state: -16.173761862178214
+    energy_measurement_model: -16.173761862178214
+    fidelity_ground_space: 0.9986434450940682
+    zz_expectation: 0.35515172208564744
+    x_expectation: 3.9546525350231416
+    energy_absolute_error: 0.013978190901415388
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 956
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 369.3934537
+- degree: 12
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 19
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 20
+    phase_symmetry: full
+    trainable_phases:
+    - -0.10996201868492034
+    - -0.019426645098528927
+    - -0.18914015371177906
+    - 0.011304175859466248
+    - -0.04541579561289755
+    - -0.21418022639766754
+    - -0.2005166620907341
+    - 0.24314418198337345
+    - 0.09703394117879333
+    - -0.025655769868440648
+    - 0.070088404294881
+    - -0.11475557177275136
+    - -0.09906301650901889
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -1.0595984602898882
+  - -0.16365205392625493
+  - -0.041224376574776844
+  - 0.13716176445462835
+  - 0.1958159846063925
+  - 0.20498792325536064
+  - -1.502258915445431
+  - -0.06202138838086402
+  - 0.04024830191769846
+  - 0.18425424146724811
+  - 0.4153584508431041
+  - 0.48214254655294253
+  - 1.1667599957615877
+  trainable_phases:
+  - -1.0595984602898882
+  - -0.16365205392625493
+  - -0.041224376574776844
+  - 0.13716176445462835
+  - 0.1958159846063925
+  - 0.20498792325536064
+  - -1.502258915445431
+  - -0.06202138838086402
+  - 0.04024830191769846
+  - 0.18425424146724811
+  - 0.4153584508431041
+  - 0.48214254655294253
+  - 1.1667599957615877
+  best_loss: 0.005260192484344478
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 6.081417774277647e-06
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08403408884402785
+    energy_state: -16.01745446768713
+    energy_measurement_model: -16.01743879594816
+    fidelity_ground_space: 0.9877961558967338
+    zz_expectation: 0.3457155189460944
+    x_expectation: 3.917930819250516
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 0.17028558539249872
+    energy_measurement_absolute_error: 0.17030125713147015
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.06951646564203576
+    energy_state: -15.96665824287024
+    energy_measurement_model: -15.966642697581413
+    fidelity_ground_space: 0.9854676769461871
+    zz_expectation: 0.4213694093086161
+    x_expectation: 3.8863183220681994
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.755375791554405
+    - -0.04362207624112191
+    - -0.06983959810189022
+    - -0.09621692454567476
+    - -0.12202816058447974
+    - -0.13881597482868457
+    - -0.14613437531612883
+    - -0.13881597482868457
+    - -0.12202816058447974
+    - -0.09621692454567476
+    - -0.06983959810189022
+    - -0.04362207624112191
+    - 0.755375791554405
+    energy_measurement_absolute_error: 0.22109735549821607
+    energy_state_absolute_error: 0.22108181020938922
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.22109735549821607
+    trained_energy_absolute_error: 0.17030125713147015
+    absolute_error_reduction: 0.05079609836674592
+    relative_error_reduction: 0.22974539090385354
+    success_probability_change: 0.014517623201992097
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.0833564052176634
+    energy_state: -16.15625021727839
+    energy_measurement_model: -16.156250217278387
+    fidelity_ground_space: 0.9969324814664368
+    zz_expectation: 0.345747204779379
+    x_expectation: 3.952625753124752
+    energy_absolute_error: 0.03148983580123854
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 693
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 274.37045979999994
+- degree: 12
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 19
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 19
+    phase_symmetry: full
+    trainable_phases:
+    - -0.03981060213536958
+    - 0.21293467240835184
+    - -0.11306500605085895
+    - -0.21997569793873667
+    - -0.09472827084344404
+    - 0.1090926289360385
+    - 0.14048279088409155
+    - 0.019349918039796465
+    - -0.09416729108808974
+    - 0.2081748646945748
+    - 0.2140377557598287
+    - -0.03173951214691956
+    - -0.04515369879226583
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 0.7875147208792601
+  - 1.5728228836629201
+  - -1.5728845868848547
+  - -1.5015294884498183
+  - 0.1281873051558624
+  - 0.17728666528504
+  - 0.1822130251632963
+  - 0.2079537168717076
+  - 0.2078107468956416
+  - 0.1815504631720093
+  - 0.17686769528593294
+  - 0.1275721880571674
+  - -0.7149148990295018
+  trainable_phases:
+  - 0.7875147208792601
+  - 1.5728228836629201
+  - -1.5728845868848547
+  - -1.5015294884498183
+  - 0.1281873051558624
+  - 0.17728666528504
+  - 0.1822130251632963
+  - 0.2079537168717076
+  - 0.2078107468956416
+  - 0.1815504631720093
+  - 0.17686769528593294
+  - 0.1275721880571674
+  - -0.7149148990295018
+  best_loss: 0.03341830736079805
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 2.9042657372827167e-06
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08938010810165872
+    energy_state: -15.105953309019034
+    energy_measurement_model: -15.10580630793859
+    fidelity_ground_space: 0.9288887126289194
+    zz_expectation: 0.4058452654816271
+    x_expectation: 3.6749902606142406
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 1.0817867440605955
+    energy_measurement_absolute_error: 1.0819337451410398
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.073396715321699
+    energy_state: -14.961546317458588
+    energy_measurement_model: -14.961400801670178
+    fidelity_ground_space: 0.924060587384026
+    zz_expectation: 0.4099674780771419
+    x_expectation: 3.637858330898259
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.755375791554405
+    - -0.04362207624112191
+    - -0.06983959810189022
+    - -0.09621692454567476
+    - -0.12202816058447974
+    - -0.13881597482868457
+    - -0.14613437531612883
+    - -0.13881597482868457
+    - -0.12202816058447974
+    - -0.09621692454567476
+    - -0.06983959810189022
+    - -0.04362207624112191
+    - 0.755375791554405
+    energy_measurement_absolute_error: 1.2263392514094509
+    energy_state_absolute_error: 1.2261937356210417
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 1.2263392514094509
+    trained_energy_absolute_error: 1.0819337451410398
+    absolute_error_reduction: 0.1444055062684111
+    relative_error_reduction: 0.1177533101892022
+    success_probability_change: 0.01598339277995972
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08488537202219905
+    energy_state: -16.075055082070016
+    energy_measurement_model: -16.075055082070016
+    fidelity_ground_space: 0.9898981203115852
+    zz_expectation: 0.43474689392826515
+    x_expectation: 3.9100770470354376
+    energy_absolute_error: 0.11268497100961383
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 612
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 244.74193639999976
+- degree: 12
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 19
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 19
+    phase_symmetry: full
+    trainable_phases:
+    - -0.03981060213536958
+    - 0.21293467240835184
+    - -0.11306500605085895
+    - -0.21997569793873667
+    - -0.09472827084344404
+    - 0.1090926289360385
+    - 0.14048279088409155
+    - 0.019349918039796465
+    - -0.09416729108808974
+    - 0.2081748646945748
+    - 0.2140377557598287
+    - -0.03173951214691956
+    - -0.04515369879226583
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 0.7793271030171796
+  - 1.486990027353837
+  - -0.166422919010353
+  - -0.27602647588841167
+  - -0.32854629750068565
+  - -0.3014733058917929
+  - -0.24552590684476483
+  - -0.1269279229237319
+  - -0.07162835089963826
+  - -0.012117810492656478
+  - 0.024981784218233827
+  - 0.03196739719772923
+  - -0.7484912868185671
+  trainable_phases:
+  - 0.7793271030171796
+  - 1.486990027353837
+  - -0.166422919010353
+  - -0.27602647588841167
+  - -0.32854629750068565
+  - -0.3014733058917929
+  - -0.24552590684476483
+  - -0.1269279229237319
+  - -0.07162835089963826
+  - -0.012117810492656478
+  - 0.024981784218233827
+  - 0.03196739719772923
+  - -0.7484912868185671
+  best_loss: 0.19861461891969515
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 2.0636541672175808e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.15901562459409047
+    energy_state: -9.758424058811663
+    energy_measurement_model: -9.757496409452632
+    fidelity_ground_space: 0.5030881007427989
+    zz_expectation: 0.48193046853113036
+    x_expectation: 2.3188914852303752
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 6.4293159942679665
+    energy_measurement_absolute_error: 6.430243643626998
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.11033837942233121
+    energy_state: -8.941595771212034
+    energy_measurement_model: -8.940734787077787
+    fidelity_ground_space: 0.5582923237395031
+    zz_expectation: 0.33175442879923106
+    x_expectation: 2.152245089569639
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.755375791554405
+    - -0.04362207624112191
+    - -0.06983959810189022
+    - -0.09621692454567476
+    - -0.12202816058447974
+    - -0.13881597482868457
+    - -0.14613437531612883
+    - -0.13881597482868457
+    - -0.12202816058447974
+    - -0.09621692454567476
+    - -0.06983959810189022
+    - -0.04362207624112191
+    - 0.755375791554405
+    energy_measurement_absolute_error: 7.2470052660018425
+    energy_state_absolute_error: 7.246144281867595
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 7.2470052660018425
+    trained_energy_absolute_error: 6.430243643626998
+    absolute_error_reduction: 0.8167616223748446
+    relative_error_reduction: 0.11270332949895182
+    success_probability_change: 0.048677245171759254
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.11873883972416874
+    energy_state: -14.52028278178972
+    energy_measurement_model: -14.520282781789723
+    fidelity_ground_space: 0.7433204591988914
+    zz_expectation: 0.7452886630486062
+    x_expectation: 3.443748529685279
+    energy_absolute_error: 1.6674572712899085
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 369
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 89.88761779999959
+- degree: 12
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 19
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 19
+    phase_symmetry: full
+    trainable_phases:
+    - -0.03981060213536958
+    - 0.21293467240835184
+    - -0.11306500605085895
+    - -0.21997569793873667
+    - -0.09472827084344404
+    - 0.1090926289360385
+    - 0.14048279088409155
+    - 0.019349918039796465
+    - -0.09416729108808974
+    - 0.2081748646945748
+    - 0.2140377557598287
+    - -0.03173951214691956
+    - -0.04515369879226583
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.2985056872713665
+  - 0.7937827335228702
+  - 0.39807547804471444
+  - -0.09984632761496837
+  - -0.17531245613644142
+  - -0.03226494887566966
+  - 0.028366239055829023
+  - 0.06800816497730455
+  - 0.045797372210477416
+  - 0.015634803828061372
+  - 0.0021816743115121717
+  - -0.004958594564691943
+  - -0.7947397501073348
+  trainable_phases:
+  - -0.2985056872713665
+  - 0.7937827335228702
+  - 0.39807547804471444
+  - -0.09984632761496837
+  - -0.17531245613644142
+  - -0.03226494887566966
+  - 0.028366239055829023
+  - 0.06800816497730455
+  - 0.045797372210477416
+  - 0.015634803828061372
+  - 0.0021816743115121717
+  - -0.004958594564691943
+  - -0.7947397501073348
+  best_loss: 0.42064591769229076
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 2.6578708274330884e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.4812653194199936
+    energy_state: -2.5713061158706507
+    energy_measurement_model: -2.5691265130957595
+    fidelity_ground_space: 0.09895410579607032
+    zz_expectation: 0.39170334098269044
+    x_expectation: 0.5443557930282673
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 13.616433937208978
+    energy_measurement_absolute_error: 13.618613539983869
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.3429427002719382
+    energy_state: -0.9808736793369515
+    energy_measurement_model: -0.9799922023451751
+    fidelity_ground_space: 0.10154594382666005
+    zz_expectation: 0.09939668756025577
+    x_expectation: 0.22014887869622984
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.755375791554405
+    - -0.04362207624112191
+    - -0.06983959810189022
+    - -0.09621692454567476
+    - -0.12202816058447974
+    - -0.13881597482868457
+    - -0.14613437531612883
+    - -0.13881597482868457
+    - -0.12202816058447974
+    - -0.09621692454567476
+    - -0.06983959810189022
+    - -0.04362207624112191
+    - 0.755375791554405
+    energy_measurement_absolute_error: 15.207747850734455
+    energy_state_absolute_error: 15.206866373742677
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 15.207747850734455
+    trained_energy_absolute_error: 13.618613539983869
+    absolute_error_reduction: 1.5891343107505858
+    relative_error_reduction: 0.10449504596920568
+    success_probability_change: 0.13832261914805544
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.4776642244279572
+    energy_state: -9.298211316643343
+    energy_measurement_model: -9.298211316643343
+    fidelity_ground_space: 0.186906074409036
+    zz_expectation: 1.9712247639477085
+    x_expectation: 1.8317466381739085
+    energy_absolute_error: 6.8895287364362865
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 206
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 27.960175199999867
+- degree: 14
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 21
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 21
+    phase_symmetry: full
+    trainable_phases:
+    - 0.14055879440873548
+    - 0.052923514785484016
+    - 0.10490059520421258
+    - -0.20545106353889553
+    - 0.06535720793695216
+    - 0.24040535111222638
+    - -0.03829741382012197
+    - -0.19379845832632886
+    - 0.2291332226829212
+    - 0.0879910924608534
+    - -0.1514036320275272
+    - 0.0860296282633935
+    - 0.24637081386829646
+    - -0.1452572629967524
+    - 0.17692989925626668
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 0.7856710692767832
+  - 0.012040449028681621
+  - 0.01008274817042798
+  - -0.08048943615346493
+  - 0.0071562657111883254
+  - 0.664856097710746
+  - -0.3354444455381955
+  - -1.3194216805921797
+  - 0.46861027233096797
+  - 0.7572281750977723
+  - -0.5842177051469664
+  - -1.123355220364095
+  - -1.0308767826640057
+  - -0.45702357187259324
+  - 0.7033042518085422
+  trainable_phases:
+  - 0.7856710692767832
+  - 0.012040449028681621
+  - 0.01008274817042798
+  - -0.08048943615346493
+  - 0.0071562657111883254
+  - 0.664856097710746
+  - -0.3354444455381955
+  - -1.3194216805921797
+  - 0.46861027233096797
+  - 0.7572281750977723
+  - -0.5842177051469664
+  - -1.123355220364095
+  - -1.0308767826640057
+  - -0.45702357187259324
+  - 0.7033042518085422
+  best_loss: 0.0005813992360254243
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 0.14068492701480598
+    polish_passes: 3
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.00019841896950434688
+    energy_state: -16.168916973679963
+    energy_measurement_model: -16.168916973679945
+    fidelity_ground_space: 0.9981917033300087
+    zz_expectation: 0.3889897196551787
+    x_expectation: 3.944981813506191
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 0.018823079399666653
+    energy_measurement_absolute_error: 0.018823079399684417
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07038532957357434
+    energy_state: -16.170512474271906
+    energy_measurement_model: -16.170512474271884
+    fidelity_ground_space: 0.9983747575786148
+    zz_expectation: 0.3441437082137627
+    x_expectation: 3.9565921915145306
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.7731648804229079
+    - -0.03194787324478687
+    - -0.04574836905670665
+    - -0.07439637429353096
+    - -0.0974524508871828
+    - -0.12275643381496604
+    - -0.13773634919117894
+    - -0.14494174269417615
+    - -0.13773634919117894
+    - -0.12275643381496604
+    - -0.0974524508871828
+    - -0.07439637429353096
+    - -0.04574836905670665
+    - -0.03194787324478687
+    - 0.7731648804229079
+    energy_measurement_absolute_error: 0.017227578807744948
+    energy_state_absolute_error: 0.01722757880772363
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.017227578807744948
+    trained_energy_absolute_error: 0.018823079399684417
+    absolute_error_reduction: -0.0015955005919394694
+    relative_error_reduction: -0.09261316460918961
+    success_probability_change: -0.07018691060407
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.00019841896950434688
+    energy_state: -16.168916973679963
+    energy_measurement_model: -16.168916973679963
+    fidelity_ground_space: 0.9981917033300087
+    zz_expectation: 0.3889897196551787
+    x_expectation: 3.944981813506196
+    energy_absolute_error: 0.018823079399666653
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 1036
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 384.52429590000065
+- degree: 14
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 21
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 22
+    phase_symmetry: full
+    trainable_phases:
+    - -0.06682654228396195
+    - -0.15035231031245855
+    - -0.20572081336936054
+    - 0.07659584380045997
+    - -0.020331477628026617
+    - 0.2438378094401008
+    - 0.17578403492556538
+    - 0.16848066161852226
+    - -0.22428061626237034
+    - 0.027672577680770305
+    - 0.05373226317633362
+    - -0.22492935246345852
+    - -0.011336023646385585
+    - -0.08521809534746566
+    - -0.14175715910655762
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -0.814420371319879
+  - -0.05193210716819241
+  - -0.09537483312398498
+  - -0.04986155666480219
+  - 1.5376400092006808
+  - 1.4867676634113387
+  - -0.1336528179664258
+  - -0.19562057200847427
+  - -0.18584912155817213
+  - -0.1958408330819097
+  - -0.1677400303753025
+  - -0.13479666334308238
+  - -0.09582375999444359
+  - -0.052065942452237834
+  - -0.8144717421463468
+  trainable_phases:
+  - -0.814420371319879
+  - -0.05193210716819241
+  - -0.09537483312398498
+  - -0.04986155666480219
+  - 1.5376400092006808
+  - 1.4867676634113387
+  - -0.1336528179664258
+  - -0.19562057200847427
+  - -0.18584912155817213
+  - -0.1958408330819097
+  - -0.1677400303753025
+  - -0.13479666334308238
+  - -0.09582375999444359
+  - -0.052065942452237834
+  - -0.8144717421463468
+  best_loss: 0.0041512961267651935
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 5.430141324065445e-07
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.0831048755672546
+    energy_state: -16.053355546412277
+    energy_measurement_model: -16.05333984791276
+    fidelity_ground_space: 0.9910769208460712
+    zz_expectation: 0.3548560496491329
+    x_expectation: 3.9246209495659063
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 0.13438450666735235
+    energy_measurement_absolute_error: 0.13440020516686957
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07088658388093515
+    energy_state: -16.033985683816198
+    energy_measurement_model: -16.033969992868915
+    fidelity_ground_space: 0.9900221673634503
+    zz_expectation: 0.3430384428857467
+    x_expectation: 3.922732887495792
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.7731648804229079
+    - -0.03194787324478687
+    - -0.04574836905670665
+    - -0.07439637429353096
+    - -0.0974524508871828
+    - -0.12275643381496604
+    - -0.13773634919117894
+    - -0.14494174269417615
+    - -0.13773634919117894
+    - -0.12275643381496604
+    - -0.0974524508871828
+    - -0.07439637429353096
+    - -0.04574836905670665
+    - -0.03194787324478687
+    - 0.7731648804229079
+    energy_measurement_absolute_error: 0.15377006021071438
+    energy_state_absolute_error: 0.15375436926343156
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.15377006021071438
+    trained_energy_absolute_error: 0.13440020516686957
+    absolute_error_reduction: 0.019369855043844808
+    relative_error_reduction: 0.12596636183468932
+    success_probability_change: 0.012218291686319452
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08258975354116435
+    energy_state: -16.17364733396006
+    energy_measurement_model: -16.17364733396006
+    fidelity_ground_space: 0.9986060501771153
+    zz_expectation: 0.35589880402431934
+    x_expectation: 3.9544371324839345
+    energy_absolute_error: 0.014092719119570774
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 691
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 279.4201769000001
+- degree: 14
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 21
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 22
+    phase_symmetry: full
+    trainable_phases:
+    - -0.06682654228396195
+    - -0.15035231031245855
+    - -0.20572081336936054
+    - 0.07659584380045997
+    - -0.020331477628026617
+    - 0.2438378094401008
+    - 0.17578403492556538
+    - 0.16848066161852226
+    - -0.22428061626237034
+    - 0.027672577680770305
+    - 0.05373226317633362
+    - -0.22492935246345852
+    - -0.011336023646385585
+    - -0.08521809534746566
+    - -0.14175715910655762
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -0.8102656850835541
+  - -0.05220136766245087
+  - -0.095048451446619
+  - -0.04538290681176127
+  - 1.5184360854443124
+  - 1.4796166917845772
+  - -0.1176547100455152
+  - -0.19502002697269916
+  - -0.190381852338541
+  - -0.1951577927729251
+  - -0.170782813448088
+  - -0.13609773490648536
+  - -0.09529150005565645
+  - -0.05144589646882558
+  - -0.8093140925710216
+  trainable_phases:
+  - -0.8102656850835541
+  - -0.05220136766245087
+  - -0.095048451446619
+  - -0.04538290681176127
+  - 1.5184360854443124
+  - 1.4796166917845772
+  - -0.1176547100455152
+  - -0.19502002697269916
+  - -0.190381852338541
+  - -0.1951577927729251
+  - -0.170782813448088
+  - -0.13609773490648536
+  - -0.09529150005565645
+  - -0.05144589646882558
+  - -0.8093140925710216
+  best_loss: 0.035413261940502386
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 2.19975698288008e-05
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08795830265834974
+    energy_state: -15.041365585369778
+    energy_measurement_model: -15.04121869563068
+    fidelity_ground_space: 0.9275321345115437
+    zz_expectation: 0.35239167640435676
+    x_expectation: 3.672206754806581
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 1.146374467709851
+    energy_measurement_absolute_error: 1.1465213574489486
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.075371802151471
+    energy_state: -14.893352876032838
+    energy_measurement_model: -14.89320727857585
+    fidelity_ground_space: 0.9202840655158624
+    zz_expectation: 0.33360717843443
+    x_expectation: 3.639900025035355
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.7731648804229079
+    - -0.03194787324478687
+    - -0.04574836905670665
+    - -0.07439637429353096
+    - -0.0974524508871828
+    - -0.12275643381496604
+    - -0.13773634919117894
+    - -0.14494174269417615
+    - -0.13773634919117894
+    - -0.12275643381496604
+    - -0.0974524508871828
+    - -0.07439637429353096
+    - -0.04574836905670665
+    - -0.03194787324478687
+    - 0.7731648804229079
+    energy_measurement_absolute_error: 1.2945327745037787
+    energy_state_absolute_error: 1.2943871770467918
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 1.2945327745037787
+    trained_energy_absolute_error: 1.1465213574489486
+    absolute_error_reduction: 0.14801141705483012
+    relative_error_reduction: 0.11433578196702356
+    success_probability_change: 0.012586500506878734
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08283006161085149
+    energy_state: -16.172442211872923
+    energy_measurement_model: -16.17244221187292
+    fidelity_ground_space: 0.9982976766460095
+    zz_expectation: 0.3628312432885476
+    x_expectation: 3.952402742146093
+    energy_absolute_error: 0.015297841206706408
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 688
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 282.6852749000004
+- degree: 14
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 21
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 22
+    phase_symmetry: full
+    trainable_phases:
+    - -0.06682654228396195
+    - -0.15035231031245855
+    - -0.20572081336936054
+    - 0.07659584380045997
+    - -0.020331477628026617
+    - 0.2438378094401008
+    - 0.17578403492556538
+    - 0.16848066161852226
+    - -0.22428061626237034
+    - 0.027672577680770305
+    - 0.05373226317633362
+    - -0.22492935246345852
+    - -0.011336023646385585
+    - -0.08521809534746566
+    - -0.14175715910655762
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -0.6505212627835211
+  - 0.3233911402714189
+  - 0.4759087787222578
+  - 0.4436302885771264
+  - 0.23443294358304545
+  - 0.03965438590159209
+  - -0.09061074756234255
+  - -0.06347485138708331
+  - 0.004748596980288067
+  - 0.03235078289544946
+  - 0.043254570416615845
+  - 0.008306772625167547
+  - -0.01637095948450762
+  - -0.03113750961308437
+  - -0.813833966223164
+  trainable_phases:
+  - -0.6505212627835211
+  - 0.3233911402714189
+  - 0.4759087787222578
+  - 0.4436302885771264
+  - 0.23443294358304545
+  - 0.03965438590159209
+  - -0.09061074756234255
+  - -0.06347485138708331
+  - 0.004748596980288067
+  - 0.03235078289544946
+  - 0.043254570416615845
+  - 0.008306772625167547
+  - -0.01637095948450762
+  - -0.03113750961308437
+  - -0.813833966223164
+  best_loss: 0.2097295980826183
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 5.190772519305548e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.29957900900444606
+    energy_state: -9.398475633201084
+    energy_measurement_model: -9.397643622683038
+    fidelity_ground_space: 0.27107713134437217
+    zz_expectation: 1.0783704528172722
+    x_expectation: 2.0798182924664412
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 6.7892644198785455
+    energy_measurement_absolute_error: 6.790096430396591
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.11773955385747499
+    energy_state: -8.417408745637047
+    energy_measurement_model: -8.416593896756574
+    fidelity_ground_space: 0.5268909156704873
+    zz_expectation: 0.26891994097918526
+    x_expectation: 2.0369184889443472
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.7731648804229079
+    - -0.03194787324478687
+    - -0.04574836905670665
+    - -0.07439637429353096
+    - -0.0974524508871828
+    - -0.12275643381496604
+    - -0.13773634919117894
+    - -0.14494174269417615
+    - -0.13773634919117894
+    - -0.12275643381496604
+    - -0.0974524508871828
+    - -0.07439637429353096
+    - -0.04574836905670665
+    - -0.03194787324478687
+    - 0.7731648804229079
+    energy_measurement_absolute_error: 7.771146156323056
+    energy_state_absolute_error: 7.770331307442582
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 7.771146156323056
+    trained_energy_absolute_error: 6.790096430396591
+    absolute_error_reduction: 0.9810497259264643
+    relative_error_reduction: 0.12624260388259784
+    success_probability_change: 0.18183945514697109
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.2792638478037891
+    energy_state: -11.75846389427965
+    energy_measurement_model: -11.75846389427965
+    fidelity_ground_space: 0.32120565557502234
+    zz_expectation: 1.345601997231962
+    x_expectation: 2.6032154742619222
+    energy_absolute_error: 4.429276158799979
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 430
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 138.34011650000002
+- degree: 14
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 21
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 23
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09696654032868213
+    - 0.07072911043911528
+    - -0.1856778878411819
+    - -0.19314597493433533
+    - 0.07667276066729367
+    - 0.17672855298258033
+    - -0.14911043277979685
+    - -0.140990681457132
+    - 0.1082923179617914
+    - -0.014650164665362453
+    - -0.04238903467964428
+    - -0.07542609764119024
+    - -0.218073123428154
+    - -0.022666917044220913
+    - -0.09927336020016125
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - -0.23976728380149037
+  - 0.82746165597823
+  - 0.3298481944136018
+  - -0.16068675036290925
+  - -0.15733970125098384
+  - 0.007870099316005685
+  - 0.036209614927115386
+  - 0.05797542182266868
+  - 0.029695079175712458
+  - 0.010335643554113982
+  - 0.0052582312279558785
+  - -0.002050205523616011
+  - -0.0062910751413194355
+  - -0.0026415541824502675
+  - -0.7867476579786015
+  trainable_phases:
+  - -0.23976728380149037
+  - 0.82746165597823
+  - 0.3298481944136018
+  - -0.16068675036290925
+  - -0.15733970125098384
+  - 0.007870099316005685
+  - 0.036209614927115386
+  - 0.05797542182266868
+  - 0.029695079175712458
+  - 0.010335643554113982
+  - 0.0052582312279558785
+  - -0.002050205523616011
+  - -0.0062910751413194355
+  - -0.0026415541824502675
+  - -0.7867476579786015
+  best_loss: 0.43376876920144636
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 5.785093524951814e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.49150994307106644
+    energy_state: -2.146149495904193
+    energy_measurement_model: -2.1442678951250116
+    fidelity_ground_space: 0.09159078710400884
+    zz_expectation: 0.2645487167263655
+    x_expectation: 0.4699297945996615
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 14.041590557175436
+    energy_measurement_absolute_error: 14.043472157954618
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.36691512682934013
+    energy_state: -0.770280652853855
+    energy_measurement_model: -0.7695792484518459
+    fidelity_ground_space: 0.09194070578840477
+    zz_expectation: 0.06887625084654755
+    x_expectation: 0.17517574940132458
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.7731648804229079
+    - -0.03194787324478687
+    - -0.04574836905670665
+    - -0.07439637429353096
+    - -0.0974524508871828
+    - -0.12275643381496604
+    - -0.13773634919117894
+    - -0.14494174269417615
+    - -0.13773634919117894
+    - -0.12275643381496604
+    - -0.0974524508871828
+    - -0.07439637429353096
+    - -0.04574836905670665
+    - -0.03194787324478687
+    - 0.7731648804229079
+    energy_measurement_absolute_error: 15.418160804627783
+    energy_state_absolute_error: 15.417459400225773
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 15.418160804627783
+    trained_energy_absolute_error: 14.043472157954618
+    absolute_error_reduction: 1.3746886466731656
+    relative_error_reduction: 0.08916035213879406
+    success_probability_change: 0.1245948162417263
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.5119446091396056
+    energy_state: -8.825945664942877
+    energy_measurement_model: -8.825945664942877
+    fidelity_ground_space: 0.1747203592698061
+    zz_expectation: 1.5908251934613935
+    x_expectation: 1.8087801178703709
+    energy_absolute_error: 7.361794388136753
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 178
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 75.23438869999973
+- degree: 16
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 23
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 24
+    phase_symmetry: full
+    trainable_phases:
+    - -0.0848655816653423
+    - -0.047411342180428084
+    - 0.03736890966359602
+    - 0.003199883635074008
+    - 0.03210625371512538
+    - 0.03484365525420097
+    - 0.1870582656203706
+    - -0.20678476950451347
+    - 0.1212376353432813
+    - 0.1601836322173743
+    - 0.10608003501358276
+    - -0.045037196406751134
+    - 0.22147688732764131
+    - -0.23452543184793967
+    - 0.15146998439681775
+    - 0.05102431263099505
+    - -0.2294368842015328
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -0.8124817852105464
+  - -0.04356363490087434
+  - 0.0038272409644921623
+  - -0.004812156139317292
+  - -0.27048203967527495
+  - -0.1991214270848265
+  - 0.6250619135025928
+  - 0.07492352829818127
+  - 2.0131902738509995
+  - -0.03746111814720621
+  - 0.6825859116284647
+  - -0.16225324602303548
+  - -0.29800879481200004
+  - -0.011935589732845031
+  - 0.011760534711743986
+  - -0.04292155935907438
+  - -0.814841777652171
+  trainable_phases:
+  - -0.8124817852105464
+  - -0.04356363490087434
+  - 0.0038272409644921623
+  - -0.004812156139317292
+  - -0.27048203967527495
+  - -0.1991214270848265
+  - 0.6250619135025928
+  - 0.07492352829818127
+  - 2.0131902738509995
+  - -0.03746111814720621
+  - 0.6825859116284647
+  - -0.16225324602303548
+  - -0.29800879481200004
+  - -0.011935589732845031
+  - 0.011760534711743986
+  - -0.04292155935907438
+  - -0.814841777652171
+  best_loss: 3.7096669180945667e-07
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 9.96295047719646e-06
+    polish_passes: 3
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.045777618573871644
+    energy_state: -16.18772804285487
+    energy_measurement_model: -16.18772804285487
+    fidelity_ground_space: 0.9999993527566289
+    zz_expectation: 0.3762189159722006
+    x_expectation: 3.9528772817206677
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 1.2010224757830201e-05
+    energy_measurement_absolute_error: 1.2010224757830201e-05
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07042041814469922
+    energy_state: -16.167274354914333
+    energy_measurement_model: -16.167274354914323
+    fidelity_ground_space: 0.9982013957019125
+    zz_expectation: 0.3383699883241789
+    x_expectation: 3.957226091647536
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.7875008963071704
+    - -0.01594815040632147
+    - -0.0278091465267698
+    - -0.048533313115576515
+    - -0.07238505224510128
+    - -0.09897723414212223
+    - -0.121783562588341
+    - -0.13895341871822753
+    - -0.14428426081224588
+    - -0.13895341871822753
+    - -0.121783562588341
+    - -0.09897723414212223
+    - -0.07238505224510128
+    - -0.048533313115576515
+    - -0.0278091465267698
+    - -0.01594815040632147
+    - 0.7875008963071704
+    energy_measurement_absolute_error: 0.020465698165306634
+    energy_state_absolute_error: 0.020465698165295976
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.020465698165306634
+    trained_energy_absolute_error: 1.2010224757830201e-05
+    absolute_error_reduction: 0.020453687940548804
+    relative_error_reduction: 0.9994131534306419
+    success_probability_change: -0.02464279957082758
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.045777618573871644
+    energy_state: -16.18772804285487
+    energy_measurement_model: -16.187728042854875
+    fidelity_ground_space: 0.9999993527566289
+    zz_expectation: 0.3762189159722006
+    x_expectation: 3.952877281720669
+    energy_absolute_error: 1.2010224757830201e-05
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 934
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 404.2574531999994
+- degree: 16
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 23
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 24
+    phase_symmetry: full
+    trainable_phases:
+    - -0.0848655816653423
+    - -0.047411342180428084
+    - 0.03736890966359602
+    - 0.003199883635074008
+    - 0.03210625371512538
+    - 0.03484365525420097
+    - 0.1870582656203706
+    - -0.20678476950451347
+    - 0.1212376353432813
+    - 0.1601836322173743
+    - 0.10608003501358276
+    - -0.045037196406751134
+    - 0.22147688732764131
+    - -0.23452543184793967
+    - 0.15146998439681775
+    - 0.05102431263099505
+    - -0.2294368842015328
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -0.8152506195801368
+  - -0.05340457973203527
+  - -0.09710492163943929
+  - -0.13626729072417954
+  - -0.16856485068146254
+  - -0.1961306626002468
+  - -0.18273377781575606
+  - -0.15494109756743146
+  - 1.4724681099417918
+  - 0.01926318635837676
+  - 1.5679671796034835
+  - -0.05855557765930275
+  - -0.06743127672279137
+  - -0.1330961029750255
+  - -0.0945114518994048
+  - -0.05094229027285291
+  - -0.8136453705072109
+  trainable_phases:
+  - -0.8152506195801368
+  - -0.05340457973203527
+  - -0.09710492163943929
+  - -0.13626729072417954
+  - -0.16856485068146254
+  - -0.1961306626002468
+  - -0.18273377781575606
+  - -0.15494109756743146
+  - 1.4724681099417918
+  - 0.01926318635837676
+  - 1.5679671796034835
+  - -0.05855557765930275
+  - -0.06743127672279137
+  - -0.1330961029750255
+  - -0.0945114518994048
+  - -0.05094229027285291
+  - -0.8136453705072109
+  best_loss: 0.0046626415183332924
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 1.968695702634087e-05
+    polish_passes: 3
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08318673286052258
+    energy_state: -16.0368004773325
+    energy_measurement_model: -16.03678479536067
+    fidelity_ground_space: 0.990115295870603
+    zz_expectation: 0.35482866994071216
+    x_expectation: 3.9204890313549896
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 0.15093957574713102
+    energy_measurement_absolute_error: 0.1509552577189588
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07099148984887907
+    energy_state: -16.012077185295347
+    energy_measurement_model: -16.012061508043757
+    fidelity_ground_space: 0.9887006713755822
+    zz_expectation: 0.334825610691776
+    x_expectation: 3.919308974337995
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.7875008963071704
+    - -0.01594815040632147
+    - -0.0278091465267698
+    - -0.048533313115576515
+    - -0.07238505224510128
+    - -0.09897723414212223
+    - -0.121783562588341
+    - -0.13895341871822753
+    - -0.14428426081224588
+    - -0.13895341871822753
+    - -0.121783562588341
+    - -0.09897723414212223
+    - -0.07238505224510128
+    - -0.048533313115576515
+    - -0.0278091465267698
+    - -0.01594815040632147
+    - 0.7875008963071704
+    energy_measurement_absolute_error: 0.175678545035872
+    energy_state_absolute_error: 0.17566286778428264
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.175678545035872
+    trained_energy_absolute_error: 0.1509552577189588
+    absolute_error_reduction: 0.0247232873169132
+    relative_error_reduction: 0.14073025998630012
+    success_probability_change: 0.012195243011643514
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08259814816848063
+    energy_state: -16.173547240741435
+    energy_measurement_model: -16.173547240741435
+    fidelity_ground_space: 0.9985936412809525
+    zz_expectation: 0.3556742350318583
+    x_expectation: 3.954468251427394
+    energy_absolute_error: 0.014192812338194472
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 802
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 301.07534519999945
+- degree: 16
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 23
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 24
+    phase_symmetry: full
+    trainable_phases:
+    - -0.0848655816653423
+    - -0.047411342180428084
+    - 0.03736890966359602
+    - 0.003199883635074008
+    - 0.03210625371512538
+    - 0.03484365525420097
+    - 0.1870582656203706
+    - -0.20678476950451347
+    - 0.1212376353432813
+    - 0.1601836322173743
+    - 0.10608003501358276
+    - -0.045037196406751134
+    - 0.22147688732764131
+    - -0.23452543184793967
+    - 0.15146998439681775
+    - 0.05102431263099505
+    - -0.2294368842015328
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - -0.8191335628191636
+  - -0.06822713005087389
+  - -0.11183615278120795
+  - -0.15466257042608422
+  - -0.18094287595772096
+  - -0.19848033745013627
+  - -0.14433320723964327
+  - -0.12419954524456545
+  - 1.4730565837573746
+  - -0.009006447233291137
+  - 1.5263457266898701
+  - -0.053989435037315125
+  - -0.06401082139323844
+  - -0.12081089862111716
+  - -0.08040618975105351
+  - -0.03882545004825255
+  - -0.7997721450319819
+  trainable_phases:
+  - -0.8191335628191636
+  - -0.06822713005087389
+  - -0.11183615278120795
+  - -0.15466257042608422
+  - -0.18094287595772096
+  - -0.19848033745013627
+  - -0.14433320723964327
+  - -0.12419954524456545
+  - 1.4730565837573746
+  - -0.009006447233291137
+  - 1.5263457266898701
+  - -0.053989435037315125
+  - -0.06401082139323844
+  - -0.12081089862111716
+  - -0.08040618975105351
+  - -0.03882545004825255
+  - -0.7997721450319819
+  best_loss: 0.039755303255742926
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 4.324975265200732e-06
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08888071494807435
+    energy_state: -14.900788499651807
+    energy_measurement_model: -14.900643023408989
+    fidelity_ground_space: 0.9195231381705388
+    zz_expectation: 0.3531642185639115
+    x_expectation: 3.6368697012112694
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 1.2869515534278229
+    energy_measurement_absolute_error: 1.2870970296706403
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07609727609930712
+    energy_state: -14.728245479071223
+    energy_measurement_model: -14.72810125186327
+    fidelity_ground_space: 0.9101663887723251
+    zz_expectation: 0.3055246847920752
+    x_expectation: 3.6056441417677987
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.7875008963071704
+    - -0.01594815040632147
+    - -0.0278091465267698
+    - -0.048533313115576515
+    - -0.07238505224510128
+    - -0.09897723414212223
+    - -0.121783562588341
+    - -0.13895341871822753
+    - -0.14428426081224588
+    - -0.13895341871822753
+    - -0.121783562588341
+    - -0.09897723414212223
+    - -0.07238505224510128
+    - -0.048533313115576515
+    - -0.0278091465267698
+    - -0.01594815040632147
+    - 0.7875008963071704
+    energy_measurement_absolute_error: 1.459638801216359
+    energy_state_absolute_error: 1.4594945740084064
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 1.459638801216359
+    trained_energy_absolute_error: 1.2870970296706403
+    absolute_error_reduction: 0.1725417715457187
+    relative_error_reduction: 0.11820853994970172
+    success_probability_change: 0.012783438848767231
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08305891197913065
+    energy_state: -16.168364628081225
+    energy_measurement_model: -16.168364628081225
+    fidelity_ground_space: 0.997841755417179
+    zz_expectation: 0.36213922893325357
+    x_expectation: 3.951556349786993
+    energy_absolute_error: 0.01937542499840461
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 829
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 440.58297159999984
+- degree: 16
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 23
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 23
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09696654032868213
+    - 0.07072911043911528
+    - -0.1856778878411819
+    - -0.19314597493433533
+    - 0.07667276066729367
+    - 0.17672855298258033
+    - -0.14911043277979685
+    - -0.140990681457132
+    - 0.1082923179617914
+    - -0.014650164665362453
+    - -0.04238903467964428
+    - -0.07542609764119024
+    - -0.218073123428154
+    - -0.022666917044220913
+    - -0.09927336020016125
+    - -0.05546162335469912
+    - 0.020148909666683923
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 0.6284099690307023
+  - -0.34472039789534215
+  - -0.45642725550792873
+  - -0.38980708371549877
+  - -0.1855393656149018
+  - -0.017245283015042467
+  - 0.08205891043337266
+  - 0.023116305675369375
+  - -0.020697444980091628
+  - -0.06914798010283496
+  - -0.10039386242257997
+  - -0.05319947752761367
+  - -0.008188279521019304
+  - 0.04655127810165682
+  - 0.06240740069380735
+  - 0.08374301438071008
+  - 0.8389058775737954
+  trainable_phases:
+  - 0.6284099690307023
+  - -0.34472039789534215
+  - -0.45642725550792873
+  - -0.38980708371549877
+  - -0.1855393656149018
+  - -0.017245283015042467
+  - 0.08205891043337266
+  - 0.023116305675369375
+  - -0.020697444980091628
+  - -0.06914798010283496
+  - -0.10039386242257997
+  - -0.05319947752761367
+  - -0.008188279521019304
+  - 0.04655127810165682
+  - 0.06240740069380735
+  - 0.08374301438071008
+  - 0.8389058775737954
+  best_loss: 0.21579251074513028
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 9.315784076688098e-07
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3493286639913321
+    energy_state: -9.202160467086292
+    energy_measurement_model: -9.2013539143925
+    fidelity_ground_space: 0.2290726973613017
+    zz_expectation: 1.136633529201896
+    x_expectation: 2.016180096297651
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 6.985579585993337
+    energy_measurement_absolute_error: 6.986386138687129
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.12394578866870119
+    energy_state: -7.849992208798595
+    energy_measurement_model: -7.849222173763409
+    fidelity_ground_space: 0.4925325337147112
+    zz_expectation: 0.14964185701367402
+    x_expectation: 1.9248950791874337
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.7875008963071704
+    - -0.01594815040632147
+    - -0.0278091465267698
+    - -0.048533313115576515
+    - -0.07238505224510128
+    - -0.09897723414212223
+    - -0.121783562588341
+    - -0.13895341871822753
+    - -0.14428426081224588
+    - -0.13895341871822753
+    - -0.121783562588341
+    - -0.09897723414212223
+    - -0.07238505224510128
+    - -0.048533313115576515
+    - -0.0278091465267698
+    - -0.01594815040632147
+    - 0.7875008963071704
+    energy_measurement_absolute_error: 8.338517879316221
+    energy_state_absolute_error: 8.337747844281035
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 8.338517879316221
+    trained_energy_absolute_error: 6.986386138687129
+    absolute_error_reduction: 1.3521317406290922
+    relative_error_reduction: 0.1621549249157418
+    success_probability_change: 0.2253828753226309
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.3400228492319597
+    energy_state: -11.420621199893631
+    energy_measurement_model: -11.42062119989363
+    fidelity_ground_space: 0.2650807714509937
+    zz_expectation: 1.4575726988072035
+    x_expectation: 2.4907621252716066
+    energy_absolute_error: 4.767118853185998
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 454
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 247.32654339999954
+- degree: 16
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 23
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 25
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1696393833839961
+    - -0.24984398241449818
+    - -0.14170076776859153
+    - -0.06598535150491736
+    - -0.2489868959928489
+    - -0.15345855981619944
+    - 0.24543108945460346
+    - 0.1434671409132025
+    - -0.18935943631441898
+    - -0.1371143423949328
+    - 0.1334132759473366
+    - 0.20841911668282898
+    - -0.0730891428775089
+    - 0.14285361931566554
+    - -0.17664036603819921
+    - 0.020864278507756018
+    - 0.04843058046576526
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - -0.6602070316829849
+  - -0.22988960175592377
+  - -0.7272434763854654
+  - 1.0115034285056508
+  - -0.05409323679450306
+  - -0.14775937916686743
+  - -0.10833412842638657
+  - 0.05439544998982759
+  - 0.017079791596774196
+  - 0.03834591468949622
+  - 0.0005502287476297774
+  - 0.0030081721010550844
+  - 0.005162382317049907
+  - -0.0009959859871817578
+  - -0.0039861368730620406
+  - 0.002213309671275976
+  - 0.785387336309026
+  trainable_phases:
+  - -0.6602070316829849
+  - -0.22988960175592377
+  - -0.7272434763854654
+  - 1.0115034285056508
+  - -0.05409323679450306
+  - -0.14775937916686743
+  - -0.10833412842638657
+  - 0.05439544998982759
+  - 0.017079791596774196
+  - 0.03834591468949622
+  - 0.0005502287476297774
+  - 0.0030081721010550844
+  - 0.005162382317049907
+  - -0.0009959859871817578
+  - -0.0039861368730620406
+  - 0.002213309671275976
+  - 0.785387336309026
+  best_loss: 0.4450800549163931
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 2.666343380767737e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.5042728652522712
+    energy_state: -1.7796671995056967
+    energy_measurement_model: -1.778059589485671
+    fidelity_ground_space: 0.08474033716364585
+    zz_expectation: 0.17205717948185242
+    x_expectation: 0.40150060250095465
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 14.408072853573932
+    energy_measurement_absolute_error: 14.409680463593958
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.38700484880723846
+    energy_state: -0.604456842661671
+    energy_measurement_model: -0.6038546423298696
+    fidelity_ground_space: 0.08446196561074067
+    zz_expectation: 0.0022565108593428085
+    x_expectation: 0.1503995328676317
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.7875008963071704
+    - -0.01594815040632147
+    - -0.0278091465267698
+    - -0.048533313115576515
+    - -0.07238505224510128
+    - -0.09897723414212223
+    - -0.121783562588341
+    - -0.13895341871822753
+    - -0.14428426081224588
+    - -0.13895341871822753
+    - -0.121783562588341
+    - -0.09897723414212223
+    - -0.07238505224510128
+    - -0.048533313115576515
+    - -0.0278091465267698
+    - -0.01594815040632147
+    - 0.7875008963071704
+    energy_measurement_absolute_error: 15.58388541074976
+    energy_state_absolute_error: 15.583283210417958
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 15.58388541074976
+    trained_energy_absolute_error: 14.409680463593958
+    absolute_error_reduction: 1.1742049471558023
+    relative_error_reduction: 0.07534738072097451
+    success_probability_change: 0.11726801644503276
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.5831901466447306
+    energy_state: -8.03841999839292
+    energy_measurement_model: -8.03841999839292
+    fidelity_ground_space: 0.15453935626662488
+    zz_expectation: 1.1481536124061056
+    x_expectation: 1.7225665964967036
+    energy_absolute_error: 8.14932005468671
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 221
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 108.5099725
+- degree: 18
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 25
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 27
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09886810823839265
+    - -0.09309286388878418
+    - -0.18940145056918634
+    - -0.08820423919293618
+    - 0.21560593268781686
+    - 0.14483365663289538
+    - -0.2449904380198416
+    - -0.15053339140676242
+    - -0.10344315328188186
+    - 0.22170785581502578
+    - -0.04828147237436203
+    - -0.15909195171596535
+    - 0.18019395617225592
+    - 0.20353507343768118
+    - -0.09912601228216222
+    - -0.07240094788050905
+    - 0.12677618808294627
+    - -0.11582894336230604
+    - 0.14471120184059777
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - 0.18558864583481416
+  - -0.42742726775057704
+  - -0.2081867814031284
+  - -0.004886697547089369
+  - -0.5054331725799579
+  - -0.2928156326381641
+  - 0.04566191341368686
+  - -0.6633798333142362
+  - 0.287252711116194
+  - 0.9501661454022408
+  - 0.24759932693926867
+  - -0.6198823998894314
+  - 0.18938605995748414
+  - -0.062149497549404575
+  - -0.24239389176300818
+  - 0.3278875658779694
+  - 0.2500963104800431
+  - 0.05271420697900808
+  - 0.41510699440282073
+  trainable_phases:
+  - 0.18558864583481416
+  - -0.42742726775057704
+  - -0.2081867814031284
+  - -0.004886697547089369
+  - -0.5054331725799579
+  - -0.2928156326381641
+  - 0.04566191341368686
+  - -0.6633798333142362
+  - 0.287252711116194
+  - 0.9501661454022408
+  - 0.24759932693926867
+  - -0.6198823998894314
+  - 0.18938605995748414
+  - -0.062149497549404575
+  - -0.24239389176300818
+  - 0.3278875658779694
+  - 0.2500963104800431
+  - 0.05271420697900808
+  - 0.41510699440282073
+  best_loss: 9.132196160539576e-07
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 2.544446194917049e-06
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08951733999563832
+    energy_state: -16.187710487156135
+    energy_measurement_model: -16.18771048715611
+    fidelity_ground_space: 0.9999981748828979
+    zz_expectation: 0.3748041950307437
+    x_expectation: 3.953226573031342
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 2.9565923494345725e-05
+    energy_measurement_absolute_error: 2.956592351921472e-05
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07066846943732759
+    energy_state: -16.15477638290797
+    energy_measurement_model: -16.154776382907954
+    fidelity_ground_space: 0.9975094640225265
+    zz_expectation: 0.326301845317456
+    x_expectation: 3.957118634397624
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.792689580588283
+    - -0.0036977031959826157
+    - -0.011635220757032716
+    - -0.02712933950053431
+    - -0.047095678472477864
+    - -0.07292697142737437
+    - -0.09890781517240388
+    - -0.12384345962768739
+    - -0.1402084884854773
+    - -0.14713126989508085
+    - -0.1402084884854773
+    - -0.12384345962768739
+    - -0.09890781517240388
+    - -0.07292697142737437
+    - -0.047095678472477864
+    - -0.02712933950053431
+    - -0.011635220757032716
+    - -0.0036977031959826157
+    - 0.792689580588283
+    energy_measurement_absolute_error: 0.03296367017167512
+    energy_state_absolute_error: 0.03296367017166091
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.03296367017167512
+    trained_energy_absolute_error: 2.956592351921472e-05
+    absolute_error_reduction: 0.032934104248155904
+    relative_error_reduction: 0.9991030754959859
+    success_probability_change: 0.018848870558310735
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08951733999563832
+    energy_state: -16.187710487156135
+    energy_measurement_model: -16.18771048715613
+    fidelity_ground_space: 0.9999981748828979
+    zz_expectation: 0.3748041950307437
+    x_expectation: 3.953226573031347
+    energy_absolute_error: 2.9565923494345725e-05
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 808
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 253.25134789999993
+- degree: 18
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 25
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 25
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1696393833839961
+    - -0.24984398241449818
+    - -0.14170076776859153
+    - -0.06598535150491736
+    - -0.2489868959928489
+    - -0.15345855981619944
+    - 0.24543108945460346
+    - 0.1434671409132025
+    - -0.18935943631441898
+    - -0.1371143423949328
+    - 0.1334132759473366
+    - 0.20841911668282898
+    - -0.0730891428775089
+    - 0.14285361931566554
+    - -0.17664036603819921
+    - 0.020864278507756018
+    - 0.04843058046576526
+    - 0.14495042370601274
+    - -0.11068386242001299
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.8140716943884243
+  - -0.17512893014422426
+  - -0.009477199893912491
+  - 0.3606781231592233
+  - -0.3272336423419162
+  - -0.9242481160268814
+  - 0.5917385419989607
+  - 0.8395526779420326
+  - -0.4597998713431002
+  - -0.23383085198771658
+  - 0.2962182418996262
+  - 0.2948961380742783
+  - 0.2047119041537786
+  - 0.2828099919178273
+  - 0.27931741197484516
+  - 0.21005627202463328
+  - 0.1537193861837136
+  - 0.08567760046552042
+  - -0.7264184752292158
+  trainable_phases:
+  - -0.8140716943884243
+  - -0.17512893014422426
+  - -0.009477199893912491
+  - 0.3606781231592233
+  - -0.3272336423419162
+  - -0.9242481160268814
+  - 0.5917385419989607
+  - 0.8395526779420326
+  - -0.4597998713431002
+  - -0.23383085198771658
+  - 0.2962182418996262
+  - 0.2948961380742783
+  - 0.2047119041537786
+  - 0.2828099919178273
+  - 0.27931741197484516
+  - 0.21005627202463328
+  - 0.1537193861837136
+  - 0.08567760046552042
+  - -0.7264184752292158
+  best_loss: 0.0057642682185065726
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 0.00024704844559222423
+    polish_passes: 3
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09071198092629001
+    energy_state: -16.001134729256552
+    energy_measurement_model: -16.001119102044797
+    fidelity_ground_space: 0.9882846422187366
+    zz_expectation: 0.37392299191796363
+    x_expectation: 3.9067990275317084
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 0.18660532382307693
+    energy_measurement_absolute_error: 0.18662095103483267
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07130945680481185
+    energy_state: -15.981512260264022
+    energy_measurement_model: -15.98149660096858
+    fidelity_ground_space: 0.9868889757300183
+    zz_expectation: 0.32221682598962964
+    x_expectation: 3.9148199437447375
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.792689580588283
+    - -0.0036977031959826157
+    - -0.011635220757032716
+    - -0.02712933950053431
+    - -0.047095678472477864
+    - -0.07292697142737437
+    - -0.09890781517240388
+    - -0.12384345962768739
+    - -0.1402084884854773
+    - -0.14713126989508085
+    - -0.1402084884854773
+    - -0.12384345962768739
+    - -0.09890781517240388
+    - -0.07292697142737437
+    - -0.047095678472477864
+    - -0.02712933950053431
+    - -0.011635220757032716
+    - -0.0036977031959826157
+    - 0.792689580588283
+    energy_measurement_absolute_error: 0.20624345211104966
+    energy_state_absolute_error: 0.2062277928156071
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.20624345211104966
+    trained_energy_absolute_error: 0.18662095103483267
+    absolute_error_reduction: 0.01962250107621699
+    relative_error_reduction: 0.09514241967619635
+    success_probability_change: 0.019402524121478165
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.0898442591240464
+    energy_state: -16.183847934465664
+    energy_measurement_model: -16.183847934465668
+    fidelity_ground_space: 0.9997194873517894
+    zz_expectation: 0.3749479047524058
+    x_expectation: 3.9522250074283156
+    energy_absolute_error: 0.003892118613965323
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 891
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 246.83562829999937
+- degree: 18
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 25
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 27
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09886810823839265
+    - -0.09309286388878418
+    - -0.18940145056918634
+    - -0.08820423919293618
+    - 0.21560593268781686
+    - 0.14483365663289538
+    - -0.2449904380198416
+    - -0.15053339140676242
+    - -0.10344315328188186
+    - 0.22170785581502578
+    - -0.04828147237436203
+    - -0.15909195171596535
+    - 0.18019395617225592
+    - 0.20353507343768118
+    - -0.09912601228216222
+    - -0.07240094788050905
+    - 0.12677618808294627
+    - -0.11582894336230604
+    - 0.14471120184059777
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - 0.7360836835455489
+  - -0.10039906915095331
+  - -0.16626418011044608
+  - -0.22971956362947843
+  - -0.25045386199468167
+  - -0.2568157662085282
+  - -0.20995124094646922
+  - -0.1863457845317842
+  - -0.12150656137959315
+  - 1.5011696218671577
+  - 0.003310922357738999
+  - -1.5635111648977553
+  - -0.020087744017036613
+  - 0.003037006897284922
+  - -0.021845118896306914
+  - 0.028227789228354894
+  - 0.0402749480121698
+  - 0.039171170021775836
+  - 0.8153172087831733
+  trainable_phases:
+  - 0.7360836835455489
+  - -0.10039906915095331
+  - -0.16626418011044608
+  - -0.22971956362947843
+  - -0.25045386199468167
+  - -0.2568157662085282
+  - -0.20995124094646922
+  - -0.1863457845317842
+  - -0.12150656137959315
+  - 1.5011696218671577
+  - 0.003310922357738999
+  - -1.5635111648977553
+  - -0.020087744017036613
+  - 0.003037006897284922
+  - -0.021845118896306914
+  - 0.028227789228354894
+  - 0.0402749480121698
+  - 0.039171170021775836
+  - 0.8153172087831733
+  best_loss: 0.04339067924697397
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 0.0001980766096274567
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09457408909391016
+    energy_state: -14.783090298912931
+    energy_measurement_model: -14.78294598032648
+    fidelity_ground_space: 0.9115679332337535
+    zz_expectation: 0.35123165352868757
+    x_expectation: 3.607928581699448
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 1.404649754166698
+    energy_measurement_absolute_error: 1.40479407275315
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07703565341189088
+    energy_state: -14.561887064844253
+    energy_measurement_model: -14.561744334067587
+    fidelity_ground_space: 0.8999445777040813
+    zz_expectation: 0.28880939906019504
+    x_expectation: 3.568233733751848
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.792689580588283
+    - -0.0036977031959826157
+    - -0.011635220757032716
+    - -0.02712933950053431
+    - -0.047095678472477864
+    - -0.07292697142737437
+    - -0.09890781517240388
+    - -0.12384345962768739
+    - -0.1402084884854773
+    - -0.14713126989508085
+    - -0.1402084884854773
+    - -0.12384345962768739
+    - -0.09890781517240388
+    - -0.07292697142737437
+    - -0.047095678472477864
+    - -0.02712933950053431
+    - -0.011635220757032716
+    - -0.0036977031959826157
+    - 0.792689580588283
+    energy_measurement_absolute_error: 1.6259957190120424
+    energy_state_absolute_error: 1.6258529882353763
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 1.6259957190120424
+    trained_energy_absolute_error: 1.40479407275315
+    absolute_error_reduction: 0.22120164625889238
+    relative_error_reduction: 0.1360407310255988
+    success_probability_change: 0.01753843568201928
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08803793246195832
+    energy_state: -16.126352706821237
+    energy_measurement_model: -16.126352706821233
+    fidelity_ground_space: 0.9937395346368357
+    zz_expectation: 0.35837484380122847
+    x_expectation: 3.9419944657550015
+    energy_absolute_error: 0.06138734625839248
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 685
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 184.32205819999945
+- degree: 18
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 25
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 25
+    phase_symmetry: full
+    trainable_phases:
+    - -0.1696393833839961
+    - -0.24984398241449818
+    - -0.14170076776859153
+    - -0.06598535150491736
+    - -0.2489868959928489
+    - -0.15345855981619944
+    - 0.24543108945460346
+    - 0.1434671409132025
+    - -0.18935943631441898
+    - -0.1371143423949328
+    - 0.1334132759473366
+    - 0.20841911668282898
+    - -0.0730891428775089
+    - 0.14285361931566554
+    - -0.17664036603819921
+    - 0.020864278507756018
+    - 0.04843058046576526
+    - 0.14495042370601274
+    - -0.11068386242001299
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.7188871484023771
+  - 0.11482979177902664
+  - 0.03693943632101693
+  - -0.13670294818388262
+  - -0.2186812163189802
+  - -0.28772739375689094
+  - -0.2346207162205225
+  - 1.356928616409629
+  - -0.14552197219592866
+  - -0.16088576033665625
+  - 1.3918811204391952
+  - -0.05662751967828994
+  - -0.04864069376854063
+  - -0.03249782706031512
+  - -0.04101654821855316
+  - 0.02284118036654892
+  - 0.03547255149874973
+  - -0.023445991596507287
+  - -0.8348875757201171
+  trainable_phases:
+  - -0.7188871484023771
+  - 0.11482979177902664
+  - 0.03693943632101693
+  - -0.13670294818388262
+  - -0.2186812163189802
+  - -0.28772739375689094
+  - -0.2346207162205225
+  - 1.356928616409629
+  - -0.14552197219592866
+  - -0.16088576033665625
+  - 1.3918811204391952
+  - -0.05662751967828994
+  - -0.04864069376854063
+  - -0.03249782706031512
+  - -0.04101654821855316
+  - 0.02284118036654892
+  - 0.03547255149874973
+  - -0.023445991596507287
+  - -0.8348875757201171
+  best_loss: 0.2239040945360618
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 7.655514024081274e-07
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3691132988569014
+    energy_state: -8.939521034429651
+    energy_measurement_model: -8.938737494739753
+    fidelity_ground_space: 0.213784864003613
+    zz_expectation: 1.1041241354705864
+    x_expectation: 1.9586533398172916
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 7.248219018649978
+    energy_measurement_absolute_error: 7.2490025583398765
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.13027287952641659
+    energy_state: -7.352250843605596
+    energy_measurement_model: -7.351527859532118
+    fidelity_ground_space: 0.46214265796052173
+    zz_expectation: 0.12241010885698406
+    x_expectation: 1.8072794376687835
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.792689580588283
+    - -0.0036977031959826157
+    - -0.011635220757032716
+    - -0.02712933950053431
+    - -0.047095678472477864
+    - -0.07292697142737437
+    - -0.09890781517240388
+    - -0.12384345962768739
+    - -0.1402084884854773
+    - -0.14713126989508085
+    - -0.1402084884854773
+    - -0.12384345962768739
+    - -0.09890781517240388
+    - -0.07292697142737437
+    - -0.047095678472477864
+    - -0.02712933950053431
+    - -0.011635220757032716
+    - -0.0036977031959826157
+    - 0.792689580588283
+    energy_measurement_absolute_error: 8.83621219354751
+    energy_state_absolute_error: 8.835489209474034
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 8.83621219354751
+    trained_energy_absolute_error: 7.2490025583398765
+    absolute_error_reduction: 1.5872096352076337
+    relative_error_reduction: 0.17962556811013047
+    success_probability_change: 0.23884041933048483
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.3580410185262112
+    energy_state: -11.29319886974417
+    energy_measurement_model: -11.293198869744169
+    fidelity_ground_space: 0.25197978376522717
+    zz_expectation: 1.4238376209840617
+    x_expectation: 2.467340312190027
+    energy_absolute_error: 4.894541183335459
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 396
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 107.70064779999939
+- degree: 18
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 25
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 27
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09886810823839265
+    - -0.09309286388878418
+    - -0.18940145056918634
+    - -0.08820423919293618
+    - 0.21560593268781686
+    - 0.14483365663289538
+    - -0.2449904380198416
+    - -0.15053339140676242
+    - -0.10344315328188186
+    - 0.22170785581502578
+    - -0.04828147237436203
+    - -0.15909195171596535
+    - 0.18019395617225592
+    - 0.20353507343768118
+    - -0.09912601228216222
+    - -0.07240094788050905
+    - 0.12677618808294627
+    - -0.11582894336230604
+    - 0.14471120184059777
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - 0.14121209415036384
+  - -0.8573610612241938
+  - -0.20733960393589257
+  - 0.230073470810499
+  - 0.11001583002452042
+  - -0.0614642861561121
+  - -0.03324695067972616
+  - -0.04630050316970369
+  - -0.010815650636070817
+  - -0.011991926298849709
+  - -0.007130580968756739
+  - 0.0018332761310286827
+  - 0.009667493308897157
+  - 0.0032699039582131384
+  - -0.0035927055312083844
+  - 0.020873824841665556
+  - 0.009874200922218357
+  - -2.8795003625070592e-05
+  - 0.7808607510484462
+  trainable_phases:
+  - 0.14121209415036384
+  - -0.8573610612241938
+  - -0.20733960393589257
+  - 0.230073470810499
+  - 0.11001583002452042
+  - -0.0614642861561121
+  - -0.03324695067972616
+  - -0.04630050316970369
+  - -0.010815650636070817
+  - -0.011991926298849709
+  - -0.007130580968756739
+  - 0.0018332761310286827
+  - 0.009667493308897157
+  - 0.0032699039582131384
+  - -0.0035927055312083844
+  - 0.020873824841665556
+  - 0.009874200922218357
+  - -2.8795003625070592e-05
+  - 0.7808607510484462
+  best_loss: 0.4536882962130176
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 1.5786299629992897e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.5013391563788606
+    energy_state: -1.5006936597690377
+    energy_measurement_model: -1.499363644637786
+    fidelity_ground_space: 0.081496908858367
+    zz_expectation: 0.1706785285214218
+    x_expectation: 0.33217127902909105
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 14.687046393310592
+    energy_measurement_absolute_error: 14.688376408441844
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.4042078003429193
+    energy_state: -0.48302999068469255
+    energy_measurement_model: -0.48254437076090817
+    fidelity_ground_space: 0.07911113718673443
+    zz_expectation: -0.00258993309933761
+    x_expectation: 0.12128357596506145
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.792689580588283
+    - -0.0036977031959826157
+    - -0.011635220757032716
+    - -0.02712933950053431
+    - -0.047095678472477864
+    - -0.07292697142737437
+    - -0.09890781517240388
+    - -0.12384345962768739
+    - -0.1402084884854773
+    - -0.14713126989508085
+    - -0.1402084884854773
+    - -0.12384345962768739
+    - -0.09890781517240388
+    - -0.07292697142737437
+    - -0.047095678472477864
+    - -0.02712933950053431
+    - -0.011635220757032716
+    - -0.0036977031959826157
+    - 0.792689580588283
+    energy_measurement_absolute_error: 15.70519568231872
+    energy_state_absolute_error: 15.704710062394938
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 15.70519568231872
+    trained_energy_absolute_error: 14.688376408441844
+    absolute_error_reduction: 1.0168192738768767
+    relative_error_reduction: 0.06474413273447052
+    success_probability_change: 0.09713135603594131
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.5724266039292801
+    energy_state: -8.13568955585948
+    energy_measurement_model: -8.135689555859479
+    fidelity_ground_space: 0.15687813147025134
+    zz_expectation: 1.4687284934280125
+    x_expectation: 1.6667402656078667
+    energy_absolute_error: 8.052050497220149
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 166
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 45.3030660000004
+- degree: 20
+  depolarizing_rate: 0.0
+  status: ok
+  seed: 27
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 29
+    phase_symmetry: full
+    trainable_phases:
+    - -0.22497651482296555
+    - 0.003161149285724696
+    - 0.009617014814855773
+    - -0.11739839303139449
+    - -0.18538917757408296
+    - -0.23963448371156704
+    - -0.05308601953817088
+    - -0.05988569906171021
+    - -0.23827402332999925
+    - -0.13089413067737443
+    - 0.1440531968992393
+    - 0.058797690914833944
+    - 0.24139666322356262
+    - 0.1805559395723922
+    - 0.06571459816614028
+    - -0.15675395152441185
+    - 0.17094713066315986
+    - -0.03937341683008372
+    - -0.23579674254968974
+    - 0.22612020436517744
+    - 0.22191683615864222
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 2
+  phi_su2:
+  - -0.4833008736430595
+  - -0.6197479195551656
+  - 0.11395390409120232
+  - 0.19679947483585813
+  - 0.7961069716024785
+  - -0.8369792354500634
+  - -0.6121428992911846
+  - 0.1408154520360152
+  - -0.2766283486020771
+  - -0.28740705010411505
+  - -0.3852465035174455
+  - 0.03343396208207983
+  - 0.5699726087224701
+  - 1.0598355390854612
+  - -0.07443196564936283
+  - -0.7184377844438785
+  - 0.6126986938135977
+  - -0.2062395321594841
+  - -0.10002068408664266
+  - 0.5631297622493117
+  - 0.641883892790807
+  trainable_phases:
+  - -0.4833008736430595
+  - -0.6197479195551656
+  - 0.11395390409120232
+  - 0.19679947483585813
+  - 0.7961069716024785
+  - -0.8369792354500634
+  - -0.6121428992911846
+  - 0.1408154520360152
+  - -0.2766283486020771
+  - -0.28740705010411505
+  - -0.3852465035174455
+  - 0.03343396208207983
+  - 0.5699726087224701
+  - 1.0598355390854612
+  - -0.07443196564936283
+  - -0.7184377844438785
+  - 0.6126986938135977
+  - -0.2062395321594841
+  - -0.10002068408664266
+  - 0.5631297622493117
+  - 0.641883892790807
+  best_loss: 9.07100718125537e-06
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 0.0008578018099890712
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08058305214537269
+    energy_state: -16.187446374867093
+    energy_measurement_model: -16.187446374867083
+    fidelity_ground_space: 0.9999754062500606
+    zz_expectation: 0.3766095160287559
+    x_expectation: 3.9527092147095817
+    depolarizing_rate: 0.0
+    energy_state_absolute_error: 0.00029367821253600823
+    energy_measurement_absolute_error: 0.00029367821254666637
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07103698387207961
+    energy_state: -16.165726705712
+    energy_measurement_model: -16.165726705711993
+    fidelity_ground_space: 0.9983592430541883
+    zz_expectation: 0.35006174588258665
+    x_expectation: 3.9539162399573513
+    depolarizing_rate: 0.0
+    trainable_phases:
+    - 0.7941994951573297
+    - 0.0036900706069404876
+    - 0.00043185067785689313
+    - -0.009434543171411569
+    - -0.024186648222120688
+    - -0.04646927248212185
+    - -0.07210744747723297
+    - -0.10093610668283537
+    - -0.12583007412319924
+    - -0.1446702661265471
+    - -0.15054486017115698
+    - -0.1446702661265471
+    - -0.12583007412319924
+    - -0.10093610668283537
+    - -0.07210744747723297
+    - -0.04646927248212185
+    - -0.024186648222120688
+    - -0.009434543171411569
+    - 0.00043185067785689313
+    - 0.0036900706069404876
+    - 0.7941994951573297
+    energy_measurement_absolute_error: 0.02201334736763627
+    energy_state_absolute_error: 0.022013347367629166
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.02201334736763627
+    trained_energy_absolute_error: 0.00029367821254666637
+    absolute_error_reduction: 0.021719669155089605
+    relative_error_reduction: 0.9866590842527462
+    success_probability_change: 0.009546068273293074
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08058305214537269
+    energy_state: -16.187446374867093
+    energy_measurement_model: -16.187446374867093
+    fidelity_ground_space: 0.9999754062500606
+    zz_expectation: 0.3766095160287559
+    x_expectation: 3.952709214709585
+    energy_absolute_error: 0.00029367821253600823
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 807
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 249.52576490000047
+- degree: 20
+  depolarizing_rate: 1.0e-05
+  status: ok
+  seed: 27
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 27
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09886810823839265
+    - -0.09309286388878418
+    - -0.18940145056918634
+    - -0.08820423919293618
+    - 0.21560593268781686
+    - 0.14483365663289538
+    - -0.2449904380198416
+    - -0.15053339140676242
+    - -0.10344315328188186
+    - 0.22170785581502578
+    - -0.04828147237436203
+    - -0.15909195171596535
+    - 0.18019395617225592
+    - 0.20353507343768118
+    - -0.09912601228216222
+    - -0.07240094788050905
+    - 0.12677618808294627
+    - -0.11582894336230604
+    - 0.14471120184059777
+    - -0.02458005282708997
+    - 0.07353365604643608
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - 0.8012703804874182
+  - -1.5850879108899154
+  - -0.1502528839340842
+  - -0.05241273283777215
+  - 1.3579251318533423
+  - -0.03683340262451873
+  - -1.3867962725418899
+  - 0.10814904106722611
+  - -1.2675870419915853
+  - 0.0030399787244719256
+  - 0.22953764920605035
+  - 0.08434423382403367
+  - -0.06627493174620769
+  - 1.1330109328781743
+  - -0.8731463848522609
+  - 0.18136786755703715
+  - 0.7248816522188744
+  - -0.5305923771245169
+  - 0.521095698448689
+  - -0.09644170385768458
+  - 0.8877549012034134
+  trainable_phases:
+  - 0.8012703804874182
+  - -1.5850879108899154
+  - -0.1502528839340842
+  - -0.05241273283777215
+  - 1.3579251318533423
+  - -0.03683340262451873
+  - -1.3867962725418899
+  - 0.10814904106722611
+  - -1.2675870419915853
+  - 0.0030399787244719256
+  - 0.22953764920605035
+  - 0.08434423382403367
+  - -0.06627493174620769
+  - 1.1330109328781743
+  - -0.8731463848522609
+  - 0.18136786755703715
+  - 0.7248816522188744
+  - -0.5305923771245169
+  - 0.521095698448689
+  - -0.09644170385768458
+  - 0.8877549012034134
+  best_loss: 0.0069201988064643135
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 0.0051854274972345585
+    polish_passes: 3
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08367958643192663
+    energy_state: -15.963710880835222
+    energy_measurement_model: -15.96369529429027
+    fidelity_ground_space: 0.9854726768111846
+    zz_expectation: 0.3771659547755768
+    x_expectation: 3.896632334878673
+    depolarizing_rate: 1.0e-05
+    energy_state_absolute_error: 0.224029172244407
+    energy_measurement_absolute_error: 0.22404475878935948
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07174827830493433
+    energy_state: -15.974514405341377
+    energy_measurement_model: -15.974498777964504
+    fidelity_ground_space: 0.986616723721885
+    zz_expectation: 0.3471375558046862
+    x_expectation: 3.9068403055399545
+    depolarizing_rate: 1.0e-05
+    trainable_phases:
+    - 0.7941994951573297
+    - 0.0036900706069404876
+    - 0.00043185067785689313
+    - -0.009434543171411569
+    - -0.024186648222120688
+    - -0.04646927248212185
+    - -0.07210744747723297
+    - -0.10093610668283537
+    - -0.12583007412319924
+    - -0.1446702661265471
+    - -0.15054486017115698
+    - -0.1446702661265471
+    - -0.12583007412319924
+    - -0.10093610668283537
+    - -0.07210744747723297
+    - -0.04646927248212185
+    - -0.024186648222120688
+    - -0.009434543171411569
+    - 0.00043185067785689313
+    - 0.0036900706069404876
+    - 0.7941994951573297
+    energy_measurement_absolute_error: 0.21324127511512536
+    energy_state_absolute_error: 0.21322564773825192
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 0.21324127511512536
+    trained_energy_absolute_error: 0.22404475878935948
+    absolute_error_reduction: -0.010803483674234116
+    relative_error_reduction: -0.05066319205042034
+    success_probability_change: 0.011931308126992307
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08275995212266532
+    energy_state: -16.173541893000234
+    energy_measurement_model: -16.173541893000237
+    fidelity_ground_space: 0.9984345427984742
+    zz_expectation: 0.37910826357328675
+    x_expectation: 3.9486084073567373
+    energy_absolute_error: 0.01419816007939545
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 901
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 276.03493379999964
+- degree: 20
+  depolarizing_rate: 0.0001
+  status: ok
+  seed: 27
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 28
+    phase_symmetry: full
+    trainable_phases:
+    - 0.17591696799107887
+    - 0.1924464770384317
+    - 0.1328542632787828
+    - -0.2339006995584223
+    - -0.22490013633586609
+    - -0.08529248276801354
+    - 0.18800188872861295
+    - 0.22543975516185955
+    - 0.016305824894779497
+    - 0.14256520229717456
+    - -0.08533180802280876
+    - 0.1590416501178905
+    - 0.15837106931647071
+    - -0.21363949156774925
+    - 0.23128882879641088
+    - -0.07814602778572394
+    - -0.16125196363766925
+    - 0.009875732456263053
+    - 0.06106425506818142
+    - -0.2416052022066913
+    - -0.17566353583412037
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 1
+  phi_su2:
+  - 0.8172264837903467
+  - 0.07318455489139364
+  - 0.11848943340767981
+  - 0.16532378479893994
+  - 0.09641919506533458
+  - -1.4882868255072534
+  - 1.5569753816085772
+  - 1.5649525914711653
+  - -1.4631846308591232
+  - 0.11799021488519745
+  - 0.17553285867589397
+  - 0.15233126095002314
+  - 0.13952632569562295
+  - 0.07554400298436681
+  - 0.044139568651346384
+  - -1.5353785272855216
+  - 0.02881775422084365
+  - 0.04124891288955279
+  - 0.022083277314279393
+  - 0.03273796428647868
+  - -0.7651487617581196
+  trainable_phases:
+  - 0.8172264837903467
+  - 0.07318455489139364
+  - 0.11848943340767981
+  - 0.16532378479893994
+  - 0.09641919506533458
+  - -1.4882868255072534
+  - 1.5569753816085772
+  - 1.5649525914711653
+  - -1.4631846308591232
+  - 0.11799021488519745
+  - 0.17553285867589397
+  - 0.15233126095002314
+  - 0.13952632569562295
+  - 0.07554400298436681
+  - 0.044139568651346384
+  - -1.5353785272855216
+  - 0.02881775422084365
+  - 0.04124891288955279
+  - 0.022083277314279393
+  - 0.03273796428647868
+  - -0.7651487617581196
+  best_loss: 0.04862137422573939
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 0.006910458850992777
+    polish_passes: 3
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09088102523581114
+    energy_state: -14.61374228535274
+    energy_measurement_model: -14.613599719100073
+    fidelity_ground_space: 0.901312611054736
+    zz_expectation: 0.35711701842181276
+    x_expectation: 3.564120675169565
+    depolarizing_rate: 0.0001
+    energy_state_absolute_error: 1.5739977677268886
+    energy_measurement_absolute_error: 1.5741403339795568
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.07809730957224077
+    energy_state: -14.42237384688566
+    energy_measurement_model: -14.42223285553801
+    fidelity_ground_space: 0.8913903984846991
+    zz_expectation: 0.3232390835675475
+    x_expectation: 3.5247484429926157
+    depolarizing_rate: 0.0001
+    trainable_phases:
+    - 0.7941994951573297
+    - 0.0036900706069404876
+    - 0.00043185067785689313
+    - -0.009434543171411569
+    - -0.024186648222120688
+    - -0.04646927248212185
+    - -0.07210744747723297
+    - -0.10093610668283537
+    - -0.12583007412319924
+    - -0.1446702661265471
+    - -0.15054486017115698
+    - -0.1446702661265471
+    - -0.12583007412319924
+    - -0.10093610668283537
+    - -0.07210744747723297
+    - -0.04646927248212185
+    - -0.024186648222120688
+    - -0.009434543171411569
+    - 0.00043185067785689313
+    - 0.0036900706069404876
+    - 0.7941994951573297
+    energy_measurement_absolute_error: 1.7655071975416199
+    energy_state_absolute_error: 1.7653662061939688
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 1.7655071975416199
+    trained_energy_absolute_error: 1.5741403339795568
+    absolute_error_reduction: 0.19136686356206312
+    relative_error_reduction: 0.10839200419490323
+    success_probability_change: 0.012783715663570366
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.08366777927115435
+    energy_state: -16.15749396885812
+    energy_measurement_model: -16.15749396885812
+    fidelity_ground_space: 0.9966684583080975
+    zz_expectation: 0.3759224148183663
+    x_expectation: 3.945392888509938
+    energy_absolute_error: 0.03024608422150976
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 891
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 264.4407656000003
+- degree: 20
+  depolarizing_rate: 0.001
+  status: ok
+  seed: 27
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 27
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09886810823839265
+    - -0.09309286388878418
+    - -0.18940145056918634
+    - -0.08820423919293618
+    - 0.21560593268781686
+    - 0.14483365663289538
+    - -0.2449904380198416
+    - -0.15053339140676242
+    - -0.10344315328188186
+    - 0.22170785581502578
+    - -0.04828147237436203
+    - -0.15909195171596535
+    - 0.18019395617225592
+    - 0.20353507343768118
+    - -0.09912601228216222
+    - -0.07240094788050905
+    - 0.12677618808294627
+    - -0.11582894336230604
+    - 0.14471120184059777
+    - -0.02458005282708997
+    - 0.07353365604643608
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.9447262635242737
+  - -0.23748450090540896
+  - -0.2871073682813332
+  - -0.2238348821258711
+  - 1.40185782547512
+  - -0.1221270398982175
+  - -0.11807352066549459
+  - -1.6863111666494546
+  - 1.5552977172893172
+  - 1.5604108114477224
+  - -1.6217737482899095
+  - -0.06604991503054691
+  - -0.1091883904654023
+  - 1.4619898289288482
+  - -1.5845071885935902
+  - -1.5697717629722046
+  - 1.58580017267973
+  - 0.02655720255103322
+  - 0.07071163049610885
+  - 0.07475943301245946
+  - 0.8247670405741667
+  trainable_phases:
+  - -0.9447262635242737
+  - -0.23748450090540896
+  - -0.2871073682813332
+  - -0.2238348821258711
+  - 1.40185782547512
+  - -0.1221270398982175
+  - -0.11807352066549459
+  - -1.6863111666494546
+  - 1.5552977172893172
+  - 1.5604108114477224
+  - -1.6217737482899095
+  - -0.06604991503054691
+  - -0.1091883904654023
+  - 1.4619898289288482
+  - -1.5845071885935902
+  - -1.5697717629722046
+  - 1.58580017267973
+  - 0.02655720255103322
+  - 0.07071163049610885
+  - 0.07475943301245946
+  - 0.8247670405741667
+  best_loss: 0.23087372228347153
+  optimization_diagnostics:
+    best_source: lbfgs_rescue
+    final_gradient_norm: 0.0005334311809326241
+    polish_passes: 2
+    rescue_triggered: true
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.35191393339990445
+    energy_state: -8.713856089398746
+    energy_measurement_model: -8.713092450256154
+    fidelity_ground_space: 0.22053789254525363
+    zz_expectation: 1.0774646635099252
+    x_expectation: 1.9089069466865571
+    depolarizing_rate: 0.001
+    energy_state_absolute_error: 7.473883963680883
+    energy_measurement_absolute_error: 7.474647602823476
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.1366534493453184
+    energy_state: -6.923093642830037
+    energy_measurement_model: -6.922421321112811
+    fidelity_ground_space: 0.4357539975298748
+    zz_expectation: 0.19987647065255776
+    x_expectation: 1.6806362126150634
+    depolarizing_rate: 0.001
+    trainable_phases:
+    - 0.7941994951573297
+    - 0.0036900706069404876
+    - 0.00043185067785689313
+    - -0.009434543171411569
+    - -0.024186648222120688
+    - -0.04646927248212185
+    - -0.07210744747723297
+    - -0.10093610668283537
+    - -0.12583007412319924
+    - -0.1446702661265471
+    - -0.15054486017115698
+    - -0.1446702661265471
+    - -0.12583007412319924
+    - -0.10093610668283537
+    - -0.07210744747723297
+    - -0.04646927248212185
+    - -0.024186648222120688
+    - -0.009434543171411569
+    - 0.00043185067785689313
+    - 0.0036900706069404876
+    - 0.7941994951573297
+    energy_measurement_absolute_error: 9.265318731966818
+    energy_state_absolute_error: 9.264646410249593
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 9.265318731966818
+    trained_energy_absolute_error: 7.474647602823476
+    absolute_error_reduction: 1.7906711291433428
+    relative_error_reduction: 0.19326600421907167
+    success_probability_change: 0.21526048405458606
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.3405112519510012
+    energy_state: -11.361210994243894
+    energy_measurement_model: -11.361210994243894
+    fidelity_ground_space: 0.26276309672526327
+    zz_expectation: 1.4041387854568654
+    x_expectation: 2.489268052196757
+    energy_absolute_error: 4.826529058835735
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 687
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 196.71561629999997
+- degree: 20
+  depolarizing_rate: 0.01
+  status: ok
+  seed: 27
+  exact_ground_energy: -16.18774005307963
+  initialization:
+    method: random_uniform
+    seed: 27
+    phase_symmetry: full
+    trainable_phases:
+    - 0.09886810823839265
+    - -0.09309286388878418
+    - -0.18940145056918634
+    - -0.08820423919293618
+    - 0.21560593268781686
+    - 0.14483365663289538
+    - -0.2449904380198416
+    - -0.15053339140676242
+    - -0.10344315328188186
+    - 0.22170785581502578
+    - -0.04828147237436203
+    - -0.15909195171596535
+    - 0.18019395617225592
+    - 0.20353507343768118
+    - -0.09912601228216222
+    - -0.07240094788050905
+    - 0.12677618808294627
+    - -0.11582894336230604
+    - 0.14471120184059777
+    - -0.02458005282708997
+    - 0.07353365604643608
+    requested_method: random_uniform
+    restart_role: configured
+  phase_symmetry: full
+  selected_restart: 0
+  phi_su2:
+  - -0.7923302268984216
+  - -0.00674737020948557
+  - 0.033085020166719215
+  - 0.06679469615880107
+  - -0.008527155429901345
+  - -0.18796011094869503
+  - -0.09579086881325516
+  - 0.4113170535328754
+  - 0.7763399520094012
+  - -1.1592177904038887
+  - 0.027313281519187882
+  - 0.11456540077573774
+  - 0.07760894534754703
+  - -0.0027500861051650283
+  - -0.01807500775596793
+  - -0.018366909648187324
+  - -0.004537289258382593
+  - 0.0010738295809202825
+  - -0.002680094727351978
+  - -0.0023061465237756984
+  - 0.7895091302392707
+  trainable_phases:
+  - -0.7923302268984216
+  - -0.00674737020948557
+  - 0.033085020166719215
+  - 0.06679469615880107
+  - -0.008527155429901345
+  - -0.18796011094869503
+  - -0.09579086881325516
+  - 0.4113170535328754
+  - 0.7763399520094012
+  - -1.1592177904038887
+  - 0.027313281519187882
+  - 0.11456540077573774
+  - 0.07760894534754703
+  - -0.0027500861051650283
+  - -0.01807500775596793
+  - -0.018366909648187324
+  - -0.004537289258382593
+  - 0.0010738295809202825
+  - -0.002680094727351978
+  - -0.0023061465237756984
+  - 0.7895091302392707
+  best_loss: 0.463853466222414
+  optimization_diagnostics:
+    best_source: lbfgs_polish
+    final_gradient_norm: 2.541967505536197e-07
+    polish_passes: 1
+    rescue_triggered: false
+  success_penalty: 0.0
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.5001736947241902
+    energy_state: -1.1712834467651834
+    energy_measurement_model: -1.170261385222844
+    fidelity_ground_space: 0.07822823006791861
+    zz_expectation: 0.14922190442783487
+    x_expectation: 0.2552598701987523
+    depolarizing_rate: 0.01
+    energy_state_absolute_error: 15.016456606314446
+    energy_measurement_absolute_error: 15.017478667856786
+  pre_qsp_baseline:
+    success_probability_ancilla0: 0.4189319692946704
+    energy_state: -0.3906382788566036
+    energy_measurement_model: -0.39027319434713914
+    fidelity_ground_space: 0.0752157470229257
+    zz_expectation: 0.02555376939193757
+    x_expectation: 0.0911798562388004
+    depolarizing_rate: 0.01
+    trainable_phases:
+    - 0.7941994951573297
+    - 0.0036900706069404876
+    - 0.00043185067785689313
+    - -0.009434543171411569
+    - -0.024186648222120688
+    - -0.04646927248212185
+    - -0.07210744747723297
+    - -0.10093610668283537
+    - -0.12583007412319924
+    - -0.1446702661265471
+    - -0.15054486017115698
+    - -0.1446702661265471
+    - -0.12583007412319924
+    - -0.10093610668283537
+    - -0.07210744747723297
+    - -0.04646927248212185
+    - -0.024186648222120688
+    - -0.009434543171411569
+    - 0.00043185067785689313
+    - 0.0036900706069404876
+    - 0.7941994951573297
+    energy_measurement_absolute_error: 15.79746685873249
+    energy_state_absolute_error: 15.797101774223027
+  improvement_over_pre_qsp:
+    baseline_energy_absolute_error: 15.79746685873249
+    trained_energy_absolute_error: 15.017478667856786
+    absolute_error_reduction: 0.779988190875704
+    relative_error_reduction: 0.049374257142026784
+    success_probability_change: 0.08124172542951974
+  ideal_phase_quality:
+    success_probability_ancilla0: 0.5718437322753916
+    energy_state: -8.22779347764771
+    energy_measurement_model: -8.227793477647708
+    fidelity_ground_space: 0.1577414832606396
+    zz_expectation: 1.7189114725471843
+    x_expectation: 1.6272205012751308
+    energy_absolute_error: 7.959946575431919
+  finite_shot_evaluation: null
+  resources:
+    training_objective_evaluations: 210
+    training_shots: 0
+    final_validation_shots: 0
+    wall_time_seconds: 60.0437380000003
+finished_at: '2026-07-14T01:57:05+08:00'
+source_result: results/dm_tfim_n4_g4_degree_scan_optimized/degree_scan_result.yml

@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+results/
+*.pt
+*.tmp
+
+# Keep only the report figures referenced by README.md.
+figures/*.png
+!figures/tfim_n2_pre_qsp_vs_density_exact_density_noisy_only.png
+!figures/tfim_n2_pre_qsp_vs_density_finite_shot_noisy_only.png
+!figures/tfim_n4_pre_qsp_vs_density_exact_density_noisy_only.png
+!figures/tfim_n4_pre_qsp_vs_density_finite_shot_noisy_only.png

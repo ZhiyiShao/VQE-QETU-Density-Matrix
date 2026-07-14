@@ -1,0 +1,47 @@
+benchmark: pre_qsp_vs_density_optimized_tfim_n4_shot20000
+
+paths:
+  qetu_repo: "../../QETU-main"
+  pre_qsp_result: "../../VQE-QSP/results/pre_qsp_tfim_n4_degree_scan.yml"
+  density_result: "../results/dm_tfim_n4_g4_degree_scan_optimized/degree_scan_result.yml"
+  output_dir: "../results/pre_qsp_vs_density_n4_optimized_shot20000"
+
+model:
+  name: tfim
+  n_qubits: 4
+  g: 4.0
+  pbc: false
+
+initial_state:
+  type: computational_basis
+  bitstring: "0000"
+
+spectral_scaling:
+  method: exact_spectrum
+  eta: 0.1
+
+oracle:
+  implementation: qetu_main_tfim_control_free
+  tau: 0.5
+  trotter:
+    order: 2
+    steps: 3
+
+ansatz:
+  phase_convention: qetu_su2
+  symmetry: full
+
+comparison:
+  degrees:
+    start: 2
+    stop: 20
+    step: 2
+  noise_rates: [0.0, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2]
+
+evaluation:
+  method: qetu_main_measure_energy_vqe_type
+  shots_per_basis: 20000
+  repetitions: 5
+  seed_simulator: 410001
+  one_qubit_rate_factor: 0.1
+  paired_simulator_seeds: true

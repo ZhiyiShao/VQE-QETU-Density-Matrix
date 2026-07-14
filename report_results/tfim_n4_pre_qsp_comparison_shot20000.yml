@@ -1,0 +1,5911 @@
+schema_version: 2
+benchmark: pre_qsp_vs_density_optimized_tfim_n4_shot20000
+status: complete
+started_at: '2026-07-14T15:25:19+08:00'
+updated_at: '2026-07-14T15:43:22+08:00'
+config:
+  benchmark: pre_qsp_vs_density_optimized_tfim_n4_shot20000
+  model:
+    name: tfim
+    n_qubits: 4
+    g: 4.0
+    pbc: false
+  initial_state:
+    type: computational_basis
+    bitstring: '0000'
+  spectral_scaling:
+    method: exact_spectrum
+    eta: 0.1
+  oracle:
+    implementation: qetu_main_tfim_control_free
+    tau: 0.5
+    trotter:
+      order: 2
+      steps: 3
+  ansatz:
+    phase_convention: qetu_su2
+    symmetry: full
+  comparison:
+    degrees:
+      start: 2
+      stop: 20
+      step: 2
+    noise_rates:
+    - 0.0
+    - 1.0e-05
+    - 0.0001
+    - 0.001
+    - 0.01
+  evaluation:
+    method: qetu_main_measure_energy_vqe_type
+    shots_per_basis: 20000
+    repetitions: 5
+    seed_simulator: 410001
+    one_qubit_rate_factor: 0.1
+    paired_simulator_seeds: true
+model:
+  name: tfim
+  n_qubits: 4
+  g: 4.0
+  pbc: false
+  exact_spectrum:
+  - -16.18774005307963
+  - -9.747963052252873
+  - -8.66466658749862
+  - -7.439777000826756
+  - -6.523073465581023
+  - -2.224889586671858
+  - -0.9999999999999989
+  - -0.08329646475426206
+  - 0.08329646475426163
+  - 0.9999999999999997
+  - 2.224889586671864
+  - 6.523073465581015
+  - 7.4397770008267585
+  - 8.664666587498617
+  - 9.747963052252882
+  - 16.187740053079633
+  exact_ground_energy: -16.18774005307963
+  exact_gap: 6.439777000826757
+  ground_degeneracy: 1
+degrees:
+- 2
+- 4
+- 6
+- 8
+- 10
+- 12
+- 14
+- 16
+- 18
+- 20
+noise_rates:
+- 0.0
+- 1.0e-05
+- 0.0001
+- 0.001
+- 0.01
+methods:
+- pre_qsp
+- density_matrix_training
+comparison_protocol:
+  same_shots: true
+  same_repetitions: true
+  paired_simulator_seeds: true
+  saved_phases_reused: true
+  phase_training_repeated: false
+records:
+- degree: 2
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 412001
+  trainable_phases:
+  - 0.39824660780739274
+  - -0.4512850440830949
+  - 0.39824679722868916
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.33800890724783866
+    energy_state: -9.345693798510268
+    energy_measurement_model: -9.345693798510258
+    fidelity_ground_space: 0.2348331401559101
+    zz_expectation: 1.8219259726353976
+    x_expectation: 1.8809419564687149
+    energy_state_absolute_error: 6.842046254569361
+    energy_measurement_absolute_error: 6.842046254569372
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -9.284049362770014
+    - -9.422418999029897
+    - -9.26024478773362
+    - -9.235996448693134
+    - -9.388697209963032
+    energy_mean: -9.31828136163794
+    energy_standard_deviation: 0.08233152460069691
+    absolute_error_of_mean: 6.8694586914416895
+    success_probability_samples:
+    - 0.338425
+    - 0.337775
+    - 0.33795
+    - 0.339325
+    - 0.344425
+    success_probability_mean: 0.33958
+    success_probability_standard_deviation: 0.0027743467699622554
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-114: 2
+- degree: 2
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 412001
+  trainable_phases:
+  - 0.5503655615666592
+  - -0.05639603551987449
+  - 0.5503655615666592
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09150355499664484
+    energy_state: -7.25013522076927
+    energy_measurement_model: -7.250135220769266
+    fidelity_ground_space: 0.2468034534709816
+    zz_expectation: 0.7521405806760599
+    x_expectation: 1.6244986600233016
+    energy_state_absolute_error: 8.93760483231036
+    energy_measurement_absolute_error: 8.937604832310363
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -7.304402191550694
+    - -7.262054497001014
+    - -7.337896535698733
+    - -7.293300980804139
+    - -7.393798326237748
+    energy_mean: -7.3182905062584656
+    energy_standard_deviation: 0.050163925468146846
+    absolute_error_of_mean: 8.869449546821164
+    success_probability_samples:
+    - 0.09154999999999999
+    - 0.090075
+    - 0.090575
+    - 0.0901
+    - 0.093125
+    success_probability_mean: 0.091085
+    success_probability_standard_deviation: 0.0012872693968241442
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-88: 2
+- degree: 2
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 412021
+  trainable_phases:
+  - -0.35196557935509
+  - 0.528352142635443
+  - -0.3519782352072669
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.37011596306015965
+    energy_state: -9.342189200966596
+    energy_measurement_model: -9.342181680298294
+    fidelity_ground_space: 0.23475653632317625
+    zz_expectation: 1.8215209118351943
+    x_expectation: 1.8801651921157752
+    energy_state_absolute_error: 6.845550852113034
+    energy_measurement_absolute_error: 6.845558372781335
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -9.320992214590017
+    - -9.355914299635954
+    - -9.277324803504865
+    - -9.341235992385856
+    - -9.296459592672567
+    energy_mean: -9.318385380557853
+    energy_standard_deviation: 0.03203153514144654
+    absolute_error_of_mean: 6.8693546725217765
+    success_probability_samples:
+    - 0.36525
+    - 0.3667
+    - 0.3696
+    - 0.37165000000000004
+    - 0.368075
+    success_probability_mean: 0.368255
+    success_probability_standard_deviation: 0.0024907579167795495
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-188: 2
+- degree: 2
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 412021
+  trainable_phases:
+  - 0.5503655615666592
+  - -0.05639603551987449
+  - 0.5503655615666592
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.0915746962228349
+    energy_state: -7.242456338359939
+    energy_measurement_model: -7.242449847557577
+    fidelity_ground_space: 0.24659904515858241
+    zz_expectation: 0.7516539848836248
+    x_expectation: 1.622698965668488
+    energy_state_absolute_error: 8.94528371471969
+    energy_measurement_absolute_error: 8.945290205522053
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -7.175770591890212
+    - -7.152993135450397
+    - -7.083071432570798
+    - -6.881481926780638
+    - -7.405779058728562
+    energy_mean: -7.1398192290841225
+    energy_standard_deviation: 0.18851999724937774
+    absolute_error_of_mean: 9.047920823995508
+    success_probability_samples:
+    - 0.09025
+    - 0.09065000000000001
+    - 0.090675
+    - 0.09212500000000001
+    - 0.0938
+    success_probability_mean: 0.0915
+    success_probability_standard_deviation: 0.0014702253228672105
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-140: 2
+- degree: 2
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 412041
+  trainable_phases:
+  - -0.3520181005005689
+  - 0.5287961526469269
+  - -0.3521446873883489
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3705535867218517
+    energy_state: -9.310727319792969
+    energy_measurement_model: -9.310652391383892
+    fidelity_ground_space: 0.2340688381022995
+    zz_expectation: 1.8178864122857554
+    x_expectation: 1.873191494774534
+    energy_state_absolute_error: 6.87701273328666
+    energy_measurement_absolute_error: 6.877087661695738
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -9.37749740723795
+    - -9.349977419163896
+    - -9.301351769932875
+    - -9.284756483122932
+    - -9.283849866588472
+    energy_mean: -9.319486589209225
+    energy_standard_deviation: 0.04213067070966833
+    absolute_error_of_mean: 6.8682534638704045
+    success_probability_samples:
+    - 0.376525
+    - 0.369925
+    - 0.3721
+    - 0.369975
+    - 0.37377499999999997
+    success_probability_mean: 0.37245999999999996
+    success_probability_standard_deviation: 0.0027831861238515787
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-284: 2
+- degree: 2
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 412041
+  trainable_phases:
+  - 0.5503655615666592
+  - -0.05639603551987449
+  - 0.5503655615666592
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09221440191604609
+    energy_state: -7.173949091894881
+    energy_measurement_model: -7.173884825479194
+    fidelity_ground_space: 0.24477558697021382
+    zz_expectation: 0.7473075237182274
+    x_expectation: 1.6066443254402416
+    energy_state_absolute_error: 9.013790961184748
+    energy_measurement_absolute_error: 9.013855227600436
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -7.291168646247866
+    - -7.1110414008964735
+    - -7.043736238107324
+    - -7.481253532888166
+    - -7.087079588433853
+    energy_mean: -7.202855881314737
+    energy_standard_deviation: 0.18197356024564726
+    absolute_error_of_mean: 8.984884171764893
+    success_probability_samples:
+    - 0.09275
+    - 0.092775
+    - 0.09355
+    - 0.091525
+    - 0.092775
+    success_probability_mean: 0.09267499999999998
+    success_probability_standard_deviation: 0.0007269370674274354
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-236: 2
+- degree: 2
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 412061
+  trainable_phases:
+  - -0.35250349054654295
+  - 0.5332148504399332
+  - -0.35380663350010444
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3748642852205298
+    energy_state: -9.003792204518813
+    energy_measurement_model: -9.003070019916509
+    fidelity_ground_space: 0.22738660733367835
+    zz_expectation: 1.781946181569883
+    x_expectation: 1.8052809595866564
+    energy_state_absolute_error: 7.183947848560816
+    energy_measurement_absolute_error: 7.184670033163121
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -8.922657190660631
+    - -9.062726896844376
+    - -9.10298978181868
+    - -9.052320770409501
+    - -8.949053167269318
+    energy_mean: -9.017949561400503
+    energy_standard_deviation: 0.07785495795463239
+    absolute_error_of_mean: 7.169790491679127
+    success_probability_samples:
+    - 0.375675
+    - 0.3788
+    - 0.3721
+    - 0.37734999999999996
+    - 0.376675
+    success_probability_mean: 0.37611999999999995
+    success_probability_standard_deviation: 0.0025180225376275006
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-380: 2
+- degree: 2
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 412061
+  trainable_phases:
+  - 0.5503655615666592
+  - -0.05639603551987449
+  - 0.5503655615666592
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09855584784854708
+    energy_state: -6.543796277682534
+    energy_measurement_model: -6.543212582609412
+    fidelity_ground_space: 0.22801855262483622
+    zz_expectation: 0.7068455464494099
+    x_expectation: 1.4590917590400005
+    energy_state_absolute_error: 9.643943775397094
+    energy_measurement_absolute_error: 9.644527470470218
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -6.4748822220768165
+    - -6.338766163793103
+    - -6.343634938356653
+    - -6.586301018819419
+    - -6.211513522633235
+    energy_mean: -6.3910195731358455
+    energy_standard_deviation: 0.14349732705159193
+    absolute_error_of_mean: 9.796720479943783
+    success_probability_samples:
+    - 0.09889999999999999
+    - 0.1005
+    - 0.09625
+    - 0.09897500000000001
+    - 0.0999
+    success_probability_mean: 0.09890499999999999
+    success_probability_standard_deviation: 0.0016269603560013389
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-332: 2
+- degree: 2
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 412081
+  trainable_phases:
+  - 0.35344849129883293
+  - -0.5750596271488253
+  - 0.3713080043859218
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.4119321338089836
+    energy_state: -6.553728994811668
+    energy_measurement_model: -6.548635146815057
+    fidelity_ground_space: 0.1759179305636597
+    zz_expectation: 1.4598809982078005
+    x_expectation: 1.2721885371518142
+    energy_state_absolute_error: 9.634011058267962
+    energy_measurement_absolute_error: 9.639104906264572
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -6.623009620161188
+    - -6.465250976058037
+    - -6.558703048148256
+    - -6.511534082341093
+    - -6.556972911143924
+    energy_mean: -6.5430941275705
+    energy_standard_deviation: 0.058903178359421694
+    absolute_error_of_mean: 9.64464592550913
+    success_probability_samples:
+    - 0.410575
+    - 0.409775
+    - 0.414025
+    - 0.410375
+    - 0.41095000000000004
+    success_probability_mean: 0.41113999999999995
+    success_probability_standard_deviation: 0.0016678579076168207
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-476: 2
+- degree: 2
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 412081
+  trainable_phases:
+  - 0.5503655615666592
+  - -0.05639603551987449
+  - 0.5503655615666592
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.15674741363472777
+    energy_state: -3.1893024486012775
+    energy_measurement_model: -3.186579034500099
+    fidelity_ground_space: 0.1396430726201197
+    zz_expectation: 0.465888347424688
+    x_expectation: 0.6801726717688528
+    energy_state_absolute_error: 12.998437604478351
+    energy_measurement_absolute_error: 13.00116101857953
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -3.4027849151967167
+    - -2.962008700610902
+    - -3.026702382754658
+    - -3.1944531019545948
+    - -3.3079100122733136
+    energy_mean: -3.178771822558037
+    energy_standard_deviation: 0.18521325937846572
+    absolute_error_of_mean: 13.008968230521592
+    success_probability_samples:
+    - 0.15252500000000002
+    - 0.15452500000000002
+    - 0.158225
+    - 0.154825
+    - 0.15792499999999998
+    success_probability_mean: 0.15560500000000002
+    success_probability_standard_deviation: 0.0024242524621004187
+    circuit:
+      num_qubits: 5
+      depth: 5
+      size: 5
+      count_ops:
+        rx: 3
+        circuit-428: 2
+- degree: 4
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 414001
+  trainable_phases:
+  - -0.7290141902132392
+  - 0.7793213621829107
+  - 1.4495754696605623
+  - 0.7793212837384091
+  - -0.7290141997966244
+  exact_density_evaluation:
+    success_probability_ancilla0: 8.926184106339053e-05
+    energy_state: -12.095095582207447
+    energy_measurement_model: -12.09509558220744
+    fidelity_ground_space: 0.4219039975011124
+    zz_expectation: 0.9886908352561676
+    x_expectation: 2.776601186737818
+    energy_state_absolute_error: 4.092644470872182
+    energy_measurement_absolute_error: 4.092644470872189
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    valid_energy_repetitions: 3
+    invalid_energy_repetitions: 2
+    invalid_repetition_details:
+    - repetition: 0
+      computational_basis_success_probability: 0.0
+      hadamard_basis_success_probability: 5.0e-05
+    - repetition: 3
+      computational_basis_success_probability: 0.0
+      hadamard_basis_success_probability: 5.0e-05
+    total_shots: 200000
+    energy_samples:
+    - -7.0
+    - -11.2
+    - -13.333333333333334
+    energy_mean: -10.511111111111111
+    energy_standard_deviation: 3.2223754752827465
+    absolute_error_of_mean: 5.676628941968518
+    success_probability_samples:
+    - 2.5e-05
+    - 0.0001
+    - 0.000225
+    - 2.5e-05
+    - 0.000125
+    success_probability_mean: 0.0001
+    success_probability_standard_deviation: 8.2915619758885e-05
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-88: 4
+- degree: 4
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 414001
+  trainable_phases:
+  - 0.5943884460497912
+  - -0.09284395217771069
+  - -0.10183780760199568
+  - -0.09284395217771069
+  - 0.5943884460497912
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08286067406196468
+    energy_state: -8.809124949751364
+    energy_measurement_model: -8.809124949751357
+    fidelity_ground_space: 0.4087658921096159
+    zz_expectation: -0.21424070828475017
+    x_expectation: 2.255841414509027
+    energy_state_absolute_error: 7.378615103328265
+    energy_measurement_absolute_error: 7.378615103328272
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -8.912107413893754
+    - -8.909033100844786
+    - -8.744517326523495
+    - -8.670736628158952
+    - -8.913701708314155
+    energy_mean: -8.830019235547029
+    energy_standard_deviation: 0.11474530670686446
+    absolute_error_of_mean: 7.3577208175326
+    success_probability_samples:
+    - 0.08407500000000001
+    - 0.083425
+    - 0.080675
+    - 0.083825
+    - 0.08595
+    success_probability_mean: 0.08359000000000001
+    success_probability_standard_deviation: 0.0018963451690027333
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-524: 4
+- degree: 4
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 414021
+  trainable_phases:
+  - -0.57970151097207
+  - 0.31815119975019757
+  - 0.4039833962966801
+  - 0.3181209896183885
+  - -0.5797268603250298
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.20742654373731934
+    energy_state: -12.08241557674975
+    energy_measurement_model: -12.082404482989073
+    fidelity_ground_space: 0.42142088967111846
+    zz_expectation: 0.9886549217664905
+    x_expectation: 2.7734373903056455
+    energy_state_absolute_error: 4.10532447632988
+    energy_measurement_absolute_error: 4.105335570090556
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -12.000248133360403
+    - -12.17111388519859
+    - -12.196398216108795
+    - -12.112152676417685
+    - -12.087250892786734
+    energy_mean: -12.113432760774442
+    energy_standard_deviation: 0.07698744638545242
+    absolute_error_of_mean: 4.074307292305187
+    success_probability_samples:
+    - 0.211075
+    - 0.20895
+    - 0.20629999999999998
+    - 0.208625
+    - 0.209625
+    success_probability_mean: 0.20891500000000002
+    success_probability_standard_deviation: 0.0017387675232761958
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-628: 4
+- degree: 4
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 414021
+  trainable_phases:
+  - 0.5943884460497912
+  - -0.09284395217771069
+  - -0.10183780760199568
+  - -0.09284395217771069
+  - 0.5943884460497912
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08300172349707235
+    energy_state: -8.790210276277394
+    energy_measurement_model: -8.790201273201665
+    fidelity_ground_space: 0.4079694796060303
+    zz_expectation: -0.21286543874206154
+    x_expectation: 2.250766677985932
+    energy_state_absolute_error: 7.3975297768022354
+    energy_measurement_absolute_error: 7.397538779877964
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -8.943215659062654
+    - -8.638114061653225
+    - -8.886991155841926
+    - -9.034790944204799
+    - -8.817359039076257
+    energy_mean: -8.864094171967773
+    energy_standard_deviation: 0.1493092868402204
+    absolute_error_of_mean: 7.323645881111856
+    success_probability_samples:
+    - 0.0837
+    - 0.08355
+    - 0.084
+    - 0.08474999999999999
+    - 0.08645
+    success_probability_mean: 0.08449
+    success_probability_standard_deviation: 0.001189222435038962
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-576: 4
+- degree: 4
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 414041
+  trainable_phases:
+  - -0.5802442474682228
+  - 0.31889119292116463
+  - 0.404626689977309
+  - 0.3185857747718783
+  - -0.5804954625385514
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.20887983135445756
+    energy_state: -11.969315808659006
+    energy_measurement_model: -11.969205998771011
+    fidelity_ground_space: 0.4171138086820048
+    zz_expectation: 0.9883270108177108
+    x_expectation: 2.745219746988325
+    energy_state_absolute_error: 4.218424244420623
+    energy_measurement_absolute_error: 4.218534054308618
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -11.881018784097428
+    - -12.031506505190716
+    - -11.93249213265553
+    - -12.005726935763658
+    - -11.885051320082722
+    energy_mean: -11.94715913555801
+    energy_standard_deviation: 0.06890521350643238
+    absolute_error_of_mean: 4.240580917521619
+    success_probability_samples:
+    - 0.209775
+    - 0.208925
+    - 0.20527499999999999
+    - 0.206025
+    - 0.20895
+    success_probability_mean: 0.20779
+    success_probability_standard_deviation: 0.002000906044770717
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-732: 4
+- degree: 4
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 414041
+  trainable_phases:
+  - 0.5943884460497912
+  - -0.09284395217771069
+  - -0.10183780760199568
+  - -0.09284395217771069
+  - 0.5943884460497912
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08426903273628983
+    energy_state: -8.623118373898597
+    energy_measurement_model: -8.62303013523959
+    fidelity_ground_space: 0.40093594203814403
+    zz_expectation: -0.2007475263728718
+    x_expectation: 2.2059444154031156
+    energy_state_absolute_error: 7.564621679181032
+    energy_measurement_absolute_error: 7.564709917840039
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -8.882267185142933
+    - -8.79853098668391
+    - -8.317560790010722
+    - -8.446815904426808
+    - -8.432223130923688
+    energy_mean: -8.575479599437612
+    energy_standard_deviation: 0.2487314910382758
+    absolute_error_of_mean: 7.612260453642017
+    success_probability_samples:
+    - 0.08315
+    - 0.08324999999999999
+    - 0.08502499999999999
+    - 0.08415
+    - 0.08327499999999999
+    success_probability_mean: 0.08377
+    success_probability_standard_deviation: 0.0008092048566339668
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-680: 4
+- degree: 4
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 414061
+  trainable_phases:
+  - -0.5855102197947986
+  - 0.32636797613956947
+  - 0.41140547342845357
+  - 0.3229235867606137
+  - -0.5884039074285417
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.22322597812463793
+    energy_state: -10.930927264441648
+    energy_measurement_model: -10.929932559738832
+    fidelity_ground_space: 0.37785927011329995
+    zz_expectation: 0.983880236416621
+    x_expectation: 2.486513080830553
+    energy_state_absolute_error: 5.256812788637982
+    energy_measurement_absolute_error: 5.257807493340797
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -10.885805117059405
+    - -10.962553977806106
+    - -10.897254138535082
+    - -10.913251671363922
+    - -10.918752783634178
+    energy_mean: -10.915523537679737
+    energy_standard_deviation: 0.02934453600649048
+    absolute_error_of_mean: 5.272216515399892
+    success_probability_samples:
+    - 0.2244
+    - 0.22039999999999998
+    - 0.222175
+    - 0.219175
+    - 0.220375
+    success_probability_mean: 0.221305
+    success_probability_standard_deviation: 0.002034499324158155
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-836: 4
+- degree: 4
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 414061
+  trainable_phases:
+  - 0.5943884460497912
+  - -0.09284395217771069
+  - -0.10183780760199568
+  - -0.09284395217771069
+  - 0.5943884460497912
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09673308800718657
+    energy_state: -7.2141886841933465
+    energy_measurement_model: -7.213457148352716
+    fidelity_ground_space: 0.34179157869736815
+    zz_expectation: -0.10116972205688995
+    x_expectation: 1.8286567176024016
+    energy_state_absolute_error: 8.973551368886284
+    energy_measurement_absolute_error: 8.974282904726913
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -7.064012958574557
+    - -7.248088853056467
+    - -7.326093606607525
+    - -7.115816596455999
+    - -7.23862486237625
+    energy_mean: -7.1985273754141605
+    energy_standard_deviation: 0.10638666876212381
+    absolute_error_of_mean: 8.989212677665469
+    success_probability_samples:
+    - 0.09620000000000001
+    - 0.09795000000000001
+    - 0.094475
+    - 0.09734999999999999
+    - 0.09492500000000001
+    success_probability_mean: 0.09618
+    success_probability_standard_deviation: 0.0014986869252782567
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-784: 4
+- degree: 4
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 414081
+  trainable_phases:
+  - -0.46442599669278506
+  - 0.5701713969639846
+  - 0.47703056060542703
+  - 0.1644636843544367
+  - -0.8257471663146387
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3935668056616518
+    energy_state: -5.4729795384963955
+    energy_measurement_model: -5.468415373528955
+    fidelity_ground_space: 0.16651085097394422
+    zz_expectation: 0.9088145710652601
+    x_expectation: 1.1399002006159236
+    energy_state_absolute_error: 10.714760514583233
+    energy_measurement_absolute_error: 10.719324679550674
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -5.586384130757862
+    - -5.353785526322566
+    - -5.353758539348797
+    - -5.583774722274937
+    - -5.488548074325147
+    energy_mean: -5.473250198605861
+    energy_standard_deviation: 0.1159731073285244
+    absolute_error_of_mean: 10.714489854473769
+    success_probability_samples:
+    - 0.392925
+    - 0.39415
+    - 0.394725
+    - 0.39432500000000004
+    - 0.3915
+    success_probability_mean: 0.393525
+    success_probability_standard_deviation: 0.0013163633616900723
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-940: 4
+- degree: 4
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 414081
+  trainable_phases:
+  - 0.5943884460497912
+  - -0.09284395217771069
+  - -0.10183780760199568
+  - -0.09284395217771069
+  - 0.5943884460497912
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.2026621571812431
+    energy_state: -2.283045212485752
+    energy_measurement_model: -2.2809202879121444
+    fidelity_ground_space: 0.14028246749348663
+    zz_expectation: 0.1581206388795253
+    x_expectation: 0.5306999122581548
+    energy_state_absolute_error: 13.904694840593876
+    energy_measurement_absolute_error: 13.906819765167485
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -2.233844940406889
+    - -2.2288528000858263
+    - -2.3116765536860298
+    - -2.6031347212919727
+    - -2.4508984790573067
+    energy_mean: -2.3656814989056048
+    energy_standard_deviation: 0.16020726545128475
+    absolute_error_of_mean: 13.822058554174024
+    success_probability_samples:
+    - 0.20155
+    - 0.20435
+    - 0.20297500000000002
+    - 0.20074999999999998
+    - 0.20829999999999999
+    success_probability_mean: 0.203585
+    success_probability_standard_deviation: 0.0029735080292476053
+    circuit:
+      num_qubits: 5
+      depth: 9
+      size: 9
+      count_ops:
+        rx: 5
+        circuit-888: 4
+- degree: 6
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 416001
+  trainable_phases:
+  - 2.0554590723202857
+  - -0.01346556030852275
+  - -1.0348457077377797
+  - 0.4432337020656978
+  - -1.034844875466682
+  - -0.01346636093867426
+  - -1.0861330947377748
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.0885963381995805
+    energy_state: -13.325430849688273
+    energy_measurement_model: -13.325430849688269
+    fidelity_ground_space: 0.5938169522366966
+    zz_expectation: 0.8414516216164026
+    x_expectation: 3.1209948070179667
+    energy_state_absolute_error: 2.862309203391357
+    energy_measurement_absolute_error: 2.8623092033913604
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -13.093352086632374
+    - -13.139367611924243
+    - -13.089221573154163
+    - -13.406192660550458
+    - -13.239542684634738
+    energy_mean: -13.193535323379194
+    energy_standard_deviation: 0.13340914578639024
+    absolute_error_of_mean: 2.994204729700435
+    success_probability_samples:
+    - 0.087325
+    - 0.08677499999999999
+    - 0.0905
+    - 0.0876
+    - 0.09012500000000001
+    success_probability_mean: 0.08846499999999999
+    success_probability_standard_deviation: 0.0017176109862247664
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1026: 6
+- degree: 6
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 416001
+  trainable_phases:
+  - 0.6515573403131056
+  - -0.09856627111071159
+  - -0.12061866125601206
+  - -0.12473854936215067
+  - -0.12061866125601206
+  - -0.09856627111071159
+  - 0.6515573403131056
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07205137239221353
+    energy_state: -11.193605821486372
+    energy_measurement_model: -11.19360582148637
+    fidelity_ground_space: 0.6541714211813126
+    zz_expectation: 0.5929385781151865
+    x_expectation: 2.650166810842796
+    energy_state_absolute_error: 4.994134231593257
+    energy_measurement_absolute_error: 4.994134231593259
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -11.155249847231422
+    - -11.032558948391387
+    - -11.308980716253444
+    - -11.411702127659574
+    - -11.224988709920217
+    energy_mean: -11.226696069891208
+    energy_standard_deviation: 0.14473657467327383
+    absolute_error_of_mean: 4.961043983188421
+    success_probability_samples:
+    - 0.069775
+    - 0.06992499999999999
+    - 0.0738
+    - 0.07125
+    - 0.07289999999999999
+    success_probability_mean: 0.07153000000000001
+    success_probability_standard_deviation: 0.001786354528082264
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-992: 6
+- degree: 6
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 416021
+  trainable_phases:
+  - 2.084167057669969
+  - 0.08182209602806045
+  - -0.8814969026595922
+  - 0.6032212966515456
+  - -0.880882493737623
+  - 0.08129746275927996
+  - -1.0570728510593366
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.14780040817131637
+    energy_state: -13.29011961142573
+    energy_measurement_model: -13.290107162837302
+    fidelity_ground_space: 0.5917537601378254
+    zz_expectation: 0.8415311937805543
+    x_expectation: 3.112143992264187
+    energy_state_absolute_error: 2.897620441653899
+    energy_measurement_absolute_error: 2.8976328902423276
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -13.30608495288267
+    - -13.131443784180222
+    - -13.216076818485313
+    - -13.31857401543043
+    - -13.26313170157897
+    energy_mean: -13.247062254511519
+    energy_standard_deviation: 0.07613075254007447
+    absolute_error_of_mean: 2.9406777985681103
+    success_probability_samples:
+    - 0.146725
+    - 0.147125
+    - 0.14800000000000002
+    - 0.14784999999999998
+    - 0.1451
+    success_probability_mean: 0.14696
+    success_probability_standard_deviation: 0.0011635882003526838
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1116: 6
+- degree: 6
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 416021
+  trainable_phases:
+  - 0.6515573403131056
+  - -0.09856627111071159
+  - -0.12061866125601206
+  - -0.12473854936215067
+  - -0.12061866125601206
+  - -0.09856627111071159
+  - 0.6515573403131056
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07226866526542575
+    energy_state: -11.153497348247603
+    energy_measurement_model: -11.153486786009267
+    fidelity_ground_space: 0.65188522921484
+    zz_expectation: 0.5912590281151635
+    x_expectation: 2.640556939473526
+    energy_state_absolute_error: 5.034242704832026
+    energy_measurement_absolute_error: 5.034253267070362
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -11.393257673770085
+    - -11.189526066612972
+    - -11.034038161939256
+    - -11.362880364696544
+    - -11.295913601156752
+    energy_mean: -11.255123173635122
+    energy_standard_deviation: 0.14623454976220396
+    absolute_error_of_mean: 4.932616879444508
+    success_probability_samples:
+    - 0.072275
+    - 0.07050000000000001
+    - 0.07072500000000001
+    - 0.0722
+    - 0.070175
+    success_probability_mean: 0.071175
+    success_probability_standard_deviation: 0.0009897916447414567
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1060: 6
+- degree: 6
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 416041
+  trainable_phases:
+  - 2.0861623415372783
+  - 0.08040071596088394
+  - -0.889797537599613
+  - 0.6131477066440834
+  - -0.8835020541402576
+  - 0.075088207772942
+  - -1.0518843510356612
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.15180560352164768
+    energy_state: -12.98166456863251
+    energy_measurement_model: -12.981543177958686
+    fidelity_ground_space: 0.5736323586076661
+    zz_expectation: 0.8425971868360446
+    x_expectation: 3.0347364977806603
+    energy_state_absolute_error: 3.206075484447119
+    energy_measurement_absolute_error: 3.206196875120943
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -12.820080862533692
+    - -12.875980538804301
+    - -13.05764821487062
+    - -12.987464304364702
+    - -12.939284437758497
+    energy_mean: -12.936091671666361
+    energy_standard_deviation: 0.09286709652915741
+    absolute_error_of_mean: 3.2516483814132684
+    success_probability_samples:
+    - 0.1512
+    - 0.1491
+    - 0.15265
+    - 0.15145
+    - 0.151425
+    success_probability_mean: 0.15116500000000002
+    success_probability_standard_deviation: 0.0012864194494798327
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1228: 6
+- degree: 6
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 416041
+  trainable_phases:
+  - 0.6515573403131056
+  - -0.09856627111071159
+  - -0.12061866125601206
+  - -0.12473854936215067
+  - -0.12061866125601206
+  - -0.09856627111071159
+  - 0.6515573403131056
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07421934250922224
+    energy_state: -10.803947504076529
+    energy_measurement_model: -10.803845230570769
+    fidelity_ground_space: 0.6319695038710701
+    zz_expectation: 0.5765969279397135
+    x_expectation: 2.556812075657764
+    energy_state_absolute_error: 5.3837925490031004
+    energy_measurement_absolute_error: 5.383894822508861
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -10.519120784685592
+    - -10.328344500489347
+    - -11.105904909705274
+    - -10.723547802185312
+    - -10.724538320261306
+    energy_mean: -10.680291263465367
+    energy_standard_deviation: 0.2893174524817687
+    absolute_error_of_mean: 5.507448789614262
+    success_probability_samples:
+    - 0.07350000000000001
+    - 0.07289999999999999
+    - 0.074475
+    - 0.075625
+    - 0.0746
+    success_probability_mean: 0.07422
+    success_probability_standard_deviation: 0.0010540694948626488
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1172: 6
+- degree: 6
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 416061
+  trainable_phases:
+  - 0.7880924746657696
+  - 1.4302985256405485
+  - -0.260248169916121
+  - -0.3554326600705311
+  - -0.3522727917061572
+  - -0.25179110790839276
+  - -0.9218504867823363
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.19419498350407277
+    energy_state: -10.951547380973674
+    energy_measurement_model: -10.950541952383324
+    fidelity_ground_space: 0.42703833466947655
+    zz_expectation: 0.8972614774916434
+    x_expectation: 2.51332011872292
+    energy_state_absolute_error: 5.236192672105956
+    energy_measurement_absolute_error: 5.237198100696306
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -11.165371394052457
+    - -10.997643257915556
+    - -11.043815379533315
+    - -10.954812295927862
+    - -10.92114603319026
+    energy_mean: -11.016557672123891
+    energy_standard_deviation: 0.09508171990173181
+    absolute_error_of_mean: 5.171182380955738
+    success_probability_samples:
+    - 0.1925
+    - 0.194325
+    - 0.19437500000000002
+    - 0.1945
+    - 0.194725
+    success_probability_mean: 0.194085
+    success_probability_standard_deviation: 0.0008994095285241331
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1340: 6
+- degree: 6
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 416061
+  trainable_phases:
+  - 0.6515573403131056
+  - -0.09856627111071159
+  - -0.12061866125601206
+  - -0.12473854936215067
+  - -0.12061866125601206
+  - -0.09856627111071159
+  - 0.6515573403131056
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09324353589686035
+    energy_state: -8.161369913277868
+    energy_measurement_model: -8.160600167413806
+    fidelity_ground_space: 0.48205831457467796
+    zz_expectation: 0.46391127269310417
+    x_expectation: 1.9241722236801753
+    energy_state_absolute_error: 8.026370139801761
+    energy_measurement_absolute_error: 8.027139885665823
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -7.929157793751045
+    - -8.47809850652077
+    - -8.261468413422786
+    - -8.055122877249465
+    - -8.182391273363379
+    energy_mean: -8.18124777286149
+    energy_standard_deviation: 0.20857484490019623
+    absolute_error_of_mean: 8.00649228021814
+    success_probability_samples:
+    - 0.090875
+    - 0.09290000000000001
+    - 0.0916
+    - 0.092325
+    - 0.09204999999999999
+    success_probability_mean: 0.09195
+    success_probability_standard_deviation: 0.0007634215742301279
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1284: 6
+- degree: 6
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 416081
+  trainable_phases:
+  - 0.45773041512322354
+  - -0.6327657665352997
+  - -0.5278119654478051
+  - -0.1331693427550169
+  - 0.10254342287638041
+  - 0.11325922177562919
+  - 0.8513574648522426
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.42558162749435946
+    energy_state: -4.579716948006792
+    energy_measurement_model: -4.5756839432720735
+    fidelity_ground_space: 0.13912282291641165
+    zz_expectation: 0.5467122132940576
+    x_expectation: 1.007242932494504
+    energy_state_absolute_error: 11.608023105072839
+    energy_measurement_absolute_error: 11.612056109807556
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -4.594884952510805
+    - -4.526238571993572
+    - -4.694577487615786
+    - -4.717781867118205
+    - -4.430991414462126
+    energy_mean: -4.592894858740098
+    energy_standard_deviation: 0.1189494306226664
+    absolute_error_of_mean: 11.59484519433953
+    success_probability_samples:
+    - 0.426575
+    - 0.4293
+    - 0.4246
+    - 0.424375
+    - 0.4208
+    success_probability_mean: 0.42512999999999995
+    success_probability_standard_deviation: 0.003125569948025481
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1452: 6
+- degree: 6
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 416081
+  trainable_phases:
+  - 0.6515573403131056
+  - -0.09856627111071159
+  - -0.12061866125601206
+  - -0.12473854936215067
+  - -0.12061866125601206
+  - -0.09856627111071159
+  - 0.6515573403131056
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.2425440095337661
+    energy_state: -1.8225486092664207
+    energy_measurement_model: -1.8208772807717408
+    fidelity_ground_space: 0.13763870316127366
+    zz_expectation: 0.15122011458798273
+    x_expectation: 0.4174142915459395
+    energy_state_absolute_error: 14.36519144381321
+    energy_measurement_absolute_error: 14.366862772307888
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -1.8028419825086677
+    - -1.847033791728621
+    - -1.9000078632786803
+    - -2.0737696798251695
+    - -1.6441749219469308
+    energy_mean: -1.853565647857614
+    energy_standard_deviation: 0.1558097610359421
+    absolute_error_of_mean: 14.334174405222015
+    success_probability_samples:
+    - 0.2433
+    - 0.24305
+    - 0.2422
+    - 0.240925
+    - 0.241875
+    success_probability_mean: 0.24226999999999999
+    success_probability_standard_deviation: 0.0009538409196506449
+    circuit:
+      num_qubits: 5
+      depth: 13
+      size: 13
+      count_ops:
+        rx: 7
+        circuit-1396: 6
+- degree: 8
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 418001
+  trainable_phases:
+  - -0.691223658607512
+  - 0.12367850171988248
+  - 0.10709653295343413
+  - 0.13561813958519098
+  - 0.12848923409223367
+  - 0.1356181413738473
+  - 0.10709657007778084
+  - 0.12367848035492113
+  - -0.6912236148856845
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.06483456144337021
+    energy_state: -15.947965714678576
+    energy_measurement_model: -15.94796571467857
+    fidelity_ground_space: 0.980512761047957
+    zz_expectation: 0.510125728716825
+    x_expectation: 3.859459996490436
+    energy_state_absolute_error: 0.23977433840105356
+    energy_measurement_absolute_error: 0.23977433840105888
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.973494057266342
+    - -15.90013087305773
+    - -15.933797358221941
+    - -15.925457533783247
+    - -15.95743892556658
+    energy_mean: -15.938063749579166
+    energy_standard_deviation: 0.0284900247474795
+    absolute_error_of_mean: 0.249676303500463
+    success_probability_samples:
+    - 0.062049999999999994
+    - 0.065975
+    - 0.066525
+    - 0.06525
+    - 0.06495000000000001
+    success_probability_mean: 0.06495000000000001
+    success_probability_standard_deviation: 0.0017343046156889546
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1546: 8
+- degree: 8
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 418001
+  trainable_phases:
+  - 0.7000611369685399
+  - -0.0838889830060876
+  - -0.11360503213146211
+  - -0.13133444703039165
+  - -0.14075320705910865
+  - -0.13133444703039165
+  - -0.11360503213146211
+  - -0.0838889830060876
+  - 0.7000611369685399
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.06211340950505759
+    energy_state: -15.351874000950117
+    energy_measurement_model: -15.351874000950101
+    fidelity_ground_space: 0.9306573135129171
+    zz_expectation: 0.6094354452835391
+    x_expectation: 3.6856096389166404
+    energy_state_absolute_error: 0.8358660521295125
+    energy_measurement_absolute_error: 0.8358660521295285
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.412667111824627
+    - -15.241419061342606
+    - -15.386910315980732
+    - -15.447482344267675
+    - -15.321280578868766
+    energy_mean: -15.361951882456882
+    energy_standard_deviation: 0.08168955516569663
+    absolute_error_of_mean: 0.8257881706227472
+    success_probability_samples:
+    - 0.059325
+    - 0.0648
+    - 0.06295
+    - 0.0624
+    - 0.061700000000000005
+    success_probability_mean: 0.062235
+    success_probability_standard_deviation: 0.001991983935678195
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1508: 8
+- degree: 8
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 418021
+  trainable_phases:
+  - 0.6693986851155773
+  - -0.16679530331821057
+  - -0.16345404258716334
+  - -0.20732914686769588
+  - -0.20371487367009422
+  - -0.20730588984643994
+  - -0.16341280179914142
+  - -0.166758040116481
+  - 0.6694168486294627
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08622008007790244
+    energy_state: -15.878189368356649
+    energy_measurement_model: -15.878173997594752
+    fidelity_ground_space: 0.9760813786558655
+    zz_expectation: 0.5074274849195504
+    x_expectation: 3.8426866281688006
+    energy_state_absolute_error: 0.3095506847229803
+    energy_measurement_absolute_error: 0.30956605548487737
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.860526357597658
+    - -15.876530354747453
+    - -15.937926920582083
+    - -15.570559825719698
+    - -15.980686769758908
+    energy_mean: -15.84524604568116
+    energy_standard_deviation: 0.16093372057608255
+    absolute_error_of_mean: 0.3424940073984697
+    success_probability_samples:
+    - 0.08415
+    - 0.08677499999999999
+    - 0.084825
+    - 0.0874
+    - 0.08445
+    success_probability_mean: 0.08552
+    success_probability_standard_deviation: 0.001467502129470346
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1644: 8
+- degree: 8
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 418021
+  trainable_phases:
+  - 0.7000611369685399
+  - -0.0838889830060876
+  - -0.11360503213146211
+  - -0.13133444703039165
+  - -0.14075320705910865
+  - -0.13133444703039165
+  - -0.11360503213146211
+  - -0.0838889830060876
+  - 0.7000611369685399
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.062414371219136164
+    energy_state: -15.265855987238945
+    energy_measurement_model: -15.265841326472712
+    fidelity_ground_space: 0.9255068823159536
+    zz_expectation: 0.6050897742976178
+    x_expectation: 3.6651878880437736
+    energy_state_absolute_error: 0.9218840658406844
+    energy_measurement_absolute_error: 0.9218987266069174
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.297029553394392
+    - -15.507972998631264
+    - -15.165364899688932
+    - -15.295967741935485
+    - -15.282216407597245
+    energy_mean: -15.309710320249462
+    energy_standard_deviation: 0.12374294486515004
+    absolute_error_of_mean: 0.8780297328301678
+    success_probability_samples:
+    - 0.063025
+    - 0.06255000000000001
+    - 0.061375
+    - 0.0622
+    - 0.061375
+    success_probability_mean: 0.062105
+    success_probability_standard_deviation: 0.0007278822020079907
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1584: 8
+- degree: 8
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 418041
+  trainable_phases:
+  - -0.6700735156114686
+  - 0.16643014120910982
+  - 0.16433930196591406
+  - 0.20830479387505152
+  - 0.20501440717127517
+  - 0.20805025630911134
+  - 0.16388894485188388
+  - 0.16603532870779247
+  - -0.6702752517904549
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08916602045340402
+    energy_state: -15.275273228544247
+    energy_measurement_model: -15.275125317668445
+    fidelity_ground_space: 0.9377581847010145
+    zz_expectation: 0.4841856483100862
+    x_expectation: 3.6977349173395897
+    energy_state_absolute_error: 0.9124668245353824
+    energy_measurement_absolute_error: 0.912614735411184
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.28327314002683
+    - -15.201702010409742
+    - -15.430406238353259
+    - -15.375215572494263
+    - -15.342695407644
+    energy_mean: -15.326658473785619
+    energy_standard_deviation: 0.08785638659216793
+    absolute_error_of_mean: 0.8610815792940105
+    success_probability_samples:
+    - 0.089425
+    - 0.088975
+    - 0.0915
+    - 0.089425
+    - 0.090625
+    success_probability_mean: 0.08999
+    success_probability_standard_deviation: 0.0010430723848324217
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1764: 8
+- degree: 8
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 418041
+  trainable_phases:
+  - 0.7000611369685399
+  - -0.0838889830060876
+  - -0.11360503213146211
+  - -0.13133444703039165
+  - -0.14075320705910865
+  - -0.13133444703039165
+  - -0.11360503213146211
+  - -0.0838889830060876
+  - 0.7000611369685399
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.06511361290066073
+    energy_state: -14.529954338653534
+    energy_measurement_model: -14.529814718783303
+    fidelity_ground_space: 0.8814615093582753
+    zz_expectation: 0.5679673163317547
+    x_expectation: 3.490461850612887
+    energy_state_absolute_error: 1.6577857144260957
+    energy_measurement_absolute_error: 1.6579253342963263
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.548316946211683
+    - -14.289854059005755
+    - -14.771982116244413
+    - -14.806972054163065
+    - -14.237337662337662
+    energy_mean: -14.530892567592517
+    energy_standard_deviation: 0.26406519430124337
+    absolute_error_of_mean: 1.6568474854871127
+    success_probability_samples:
+    - 0.06575
+    - 0.0655
+    - 0.0671
+    - 0.065875
+    - 0.06659999999999999
+    success_probability_mean: 0.066165
+    success_probability_standard_deviation: 0.0006637017402418044
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1704: 8
+- degree: 8
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 418061
+  trainable_phases:
+  - 0.6861374655210168
+  - -0.15705859849027703
+  - -0.18145630698786164
+  - -0.23165646616027225
+  - -0.23291825174653358
+  - -0.22195565249827398
+  - -0.165873813046721
+  - -0.14555270521098107
+  - 0.6928050360968614
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.12067974461332215
+    energy_state: -11.02204951052628
+    energy_measurement_model: -11.020982393637592
+    fidelity_ground_space: 0.6539455416485267
+    zz_expectation: 0.35088062379226226
+    x_expectation: 2.6675254424613324
+    energy_state_absolute_error: 5.1656905425533495
+    energy_measurement_absolute_error: 5.1667576594420375
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -10.992700512157525
+    - -11.23352037639051
+    - -10.827731582013664
+    - -10.945336990995218
+    - -10.885603812236837
+    energy_mean: -10.97697865475875
+    energy_standard_deviation: 0.15627385993222023
+    absolute_error_of_mean: 5.21076139832088
+    success_probability_samples:
+    - 0.11865
+    - 0.12329999999999999
+    - 0.119
+    - 0.12129999999999999
+    - 0.11875
+    success_probability_mean: 0.1202
+    success_probability_standard_deviation: 0.002047254258757321
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1884: 8
+- degree: 8
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 418061
+  trainable_phases:
+  - 0.7000611369685399
+  - -0.0838889830060876
+  - -0.11360503213146211
+  - -0.13133444703039165
+  - -0.14075320705910865
+  - -0.13133444703039165
+  - -0.11360503213146211
+  - -0.0838889830060876
+  - 0.7000611369685399
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09119596727328687
+    energy_state: -9.66491482379016
+    energy_measurement_model: -9.663980956600152
+    fidelity_ground_space: 0.5914444767485632
+    zz_expectation: 0.32624292385463705
+    x_expectation: 2.3344345081863787
+    energy_state_absolute_error: 6.52282522928947
+    energy_measurement_absolute_error: 6.523759096479477
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -9.541532449923995
+    - -9.701852472939285
+    - -9.7049405457634
+    - -9.163744503357918
+    - -9.679158209026797
+    energy_mean: -9.558245636202278
+    energy_standard_deviation: 0.23058222217186172
+    absolute_error_of_mean: 6.6294944168773515
+    success_probability_samples:
+    - 0.091175
+    - 0.092425
+    - 0.089575
+    - 0.094275
+    - 0.08902499999999999
+    success_probability_mean: 0.09129499999999999
+    success_probability_standard_deviation: 0.0021379312430478206
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1824: 8
+- degree: 8
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 418081
+  trainable_phases:
+  - 0.39138683196769763
+  - -0.7143564629198056
+  - -0.4805888327154526
+  - -0.034820828482517996
+  - 0.15951437568063076
+  - 0.10004929261575102
+  - 0.02270185292262017
+  - -0.06961852621925102
+  - 0.699322507231015
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.4526456898735942
+    energy_state: -3.807728399211521
+    energy_measurement_model: -3.804316508547157
+    fidelity_ground_space: 0.12247843161648986
+    zz_expectation: 0.3958377348526529
+    x_expectation: 0.852119693423626
+    energy_state_absolute_error: 12.380011653868108
+    energy_measurement_absolute_error: 12.383423544532473
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -3.98251448411067
+    - -3.8309437807061677
+    - -3.7990165514753618
+    - -3.7348491343884285
+    - -3.754384011952776
+    energy_mean: -3.82034159252668
+    energy_standard_deviation: 0.0981409361179497
+    absolute_error_of_mean: 12.367398460552948
+    success_probability_samples:
+    - 0.4505
+    - 0.45347499999999996
+    - 0.452725
+    - 0.449525
+    - 0.45235000000000003
+    success_probability_mean: 0.451715
+    success_probability_standard_deviation: 0.0016426541023599442
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-2004: 8
+- degree: 8
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 418081
+  trainable_phases:
+  - 0.7000611369685399
+  - -0.0838889830060876
+  - -0.11360503213146211
+  - -0.13133444703039165
+  - -0.14075320705910865
+  - -0.13133444703039165
+  - -0.11360503213146211
+  - -0.0838889830060876
+  - 0.7000611369685399
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.279330777113909
+    energy_state: -1.5335399348359218
+    energy_measurement_model: -1.5319942118293228
+    fidelity_ground_space: 0.12711114502668683
+    zz_expectation: -0.012183071762142589
+    x_expectation: 0.38604432089786633
+    energy_state_absolute_error: 14.654200118243708
+    energy_measurement_absolute_error: 14.655745841250306
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -1.68616876112066
+    - -1.633818186741179
+    - -1.4820335302474004
+    - -1.573308871577688
+    - -1.5595751509550255
+    energy_mean: -1.5869809001283905
+    energy_standard_deviation: 0.07743370242157518
+    absolute_error_of_mean: 14.60075915295124
+    success_probability_samples:
+    - 0.275675
+    - 0.28047500000000003
+    - 0.28159999999999996
+    - 0.2806
+    - 0.283275
+    success_probability_mean: 0.280325
+    success_probability_standard_deviation: 0.002830580770795981
+    circuit:
+      num_qubits: 5
+      depth: 17
+      size: 17
+      count_ops:
+        rx: 9
+        circuit-1944: 8
+- degree: 10
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 420001
+  trainable_phases:
+  - 0.4063775946288066
+  - 0.4056573623292876
+  - -0.3024585134390687
+  - -0.5528448650966284
+  - -0.38010248190331053
+  - 1.3059903026711055
+  - -0.3801008221102746
+  - -0.5528478630995304
+  - -0.30245610105669574
+  - 0.4056565848441851
+  - 0.406377517632976
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.0674777399408982
+    energy_state: -16.143867261841113
+    energy_measurement_model: -16.143867261841113
+    fidelity_ground_space: 0.9955474916278637
+    zz_expectation: 0.3867657048585568
+    x_expectation: 3.939275389245639
+    energy_state_absolute_error: 0.04387279123851684
+    energy_measurement_absolute_error: 0.04387279123851684
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.12392576715052
+    - -16.10908481296831
+    - -16.125652172511916
+    - -16.146912780656304
+    - -16.12573747747047
+    energy_mean: -16.126262602151506
+    energy_standard_deviation: 0.013487174385316563
+    absolute_error_of_mean: 0.06147745092812329
+    success_probability_samples:
+    - 0.06709999999999999
+    - 0.06420000000000001
+    - 0.068225
+    - 0.06737499999999999
+    - 0.068025
+    success_probability_mean: 0.066985
+    success_probability_standard_deviation: 0.0016233260609008855
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2106: 10
+- degree: 10
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 420001
+  trainable_phases:
+  - 0.7339722736997261
+  - -0.06282623157996037
+  - -0.09302440245664512
+  - -0.11827762838420774
+  - -0.1388181069408403
+  - -0.14435472304484698
+  - -0.1388181069408403
+  - -0.11827762838420774
+  - -0.09302440245664512
+  - -0.06282623157996037
+  - 0.7339722736997261
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.06670207915411934
+    energy_state: -15.812481291957171
+    energy_measurement_model: -15.812481291957146
+    fidelity_ground_space: 0.9696905545408265
+    zz_expectation: 0.6461566589796868
+    x_expectation: 3.791581158244365
+    energy_state_absolute_error: 0.37525876112245804
+    energy_measurement_absolute_error: 0.3752587611224829
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.78951365969462
+    - -15.824092526199033
+    - -15.866172106824925
+    - -15.716769255907243
+    - -16.025462089198637
+    energy_mean: -15.844401927564892
+    energy_standard_deviation: 0.11507825103376321
+    absolute_error_of_mean: 0.3433381255147374
+    success_probability_samples:
+    - 0.066375
+    - 0.065925
+    - 0.06720000000000001
+    - 0.067525
+    - 0.06385
+    success_probability_mean: 0.06617500000000001
+    success_probability_standard_deviation: 0.0014475194299214094
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2064: 10
+- degree: 10
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 420021
+  trainable_phases:
+  - 0.7311026097435818
+  - -0.09034110027641917
+  - -0.143980734651171
+  - -0.18538975366142996
+  - -0.18438081254330285
+  - -0.20617061861555186
+  - -0.18432468081678577
+  - -0.18533977023493975
+  - -0.143886106945307
+  - -0.0902248686599143
+  - 0.7312042828158911
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08416641279658031
+    energy_state: -16.057180150582962
+    energy_measurement_model: -16.057164478394643
+    fidelity_ground_space: 0.9901119744465596
+    zz_expectation: 0.38499183846888185
+    x_expectation: 3.91804315998144
+    energy_state_absolute_error: 0.1305599024966675
+    energy_measurement_absolute_error: 0.13057557468498615
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.108783862540882
+    - -16.139716651951005
+    - -15.985485652718289
+    - -15.962878230812805
+    - -16.030106579833248
+    energy_mean: -16.045394195571244
+    energy_standard_deviation: 0.07672451498342374
+    absolute_error_of_mean: 0.1423458575083849
+    success_probability_samples:
+    - 0.0854
+    - 0.08515
+    - 0.0862
+    - 0.08145
+    - 0.084175
+    success_probability_mean: 0.08447500000000001
+    success_probability_standard_deviation: 0.0018389874931603015
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2212: 10
+- degree: 10
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 420021
+  trainable_phases:
+  - 0.7339722736997261
+  - -0.06282623157996037
+  - -0.09302440245664512
+  - -0.11827762838420774
+  - -0.1388181069408403
+  - -0.14435472304484698
+  - -0.1388181069408403
+  - -0.11827762838420774
+  - -0.09302440245664512
+  - -0.06282623157996037
+  - 0.7339722736997261
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.06706798986167523
+    energy_state: -15.710614050619292
+    energy_measurement_model: -15.7105989815384
+    fidelity_ground_space: 0.9635101708699849
+    zz_expectation: 0.6415331750116163
+    x_expectation: 3.767266451631696
+    energy_state_absolute_error: 0.4771260024603379
+    energy_measurement_absolute_error: 0.4771410715412294
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.73549897817918
+    - -15.81616658132787
+    - -15.54091446871019
+    - -15.599353264290704
+    - -15.78279084756687
+    energy_mean: -15.694944828014963
+    energy_standard_deviation: 0.11928890808214103
+    absolute_error_of_mean: 0.49279522506466655
+    success_probability_samples:
+    - 0.06885
+    - 0.0663
+    - 0.0668
+    - 0.06595000000000001
+    - 0.069575
+    success_probability_mean: 0.067495
+    success_probability_standard_deviation: 0.0016171348119436394
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2148: 10
+- degree: 10
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 420041
+  trainable_phases:
+  - 0.7316869070750247
+  - -0.09129189839905161
+  - -0.14487277136668553
+  - -0.1854685997688601
+  - -0.18578389723590982
+  - -0.20677005539490656
+  - -0.18517583897537637
+  - -0.18491521710442438
+  - -0.14385508926197366
+  - -0.0900607839778349
+  - 0.7327582951484795
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08761760740267366
+    energy_state: -15.314167308093435
+    energy_measurement_model: -15.314017862547342
+    fidelity_ground_space: 0.9435367813072211
+    zz_expectation: 0.36961269801949814
+    x_expectation: 3.736101291131961
+    energy_state_absolute_error: 0.8735727449861947
+    energy_measurement_absolute_error: 0.8737221905322876
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.197136662985233
+    - -15.331122468051928
+    - -15.353097857556456
+    - -15.407516017994842
+    - -15.08210591543925
+    energy_mean: -15.274195784405544
+    energy_standard_deviation: 0.13236039352498033
+    absolute_error_of_mean: 0.9135442686740856
+    success_probability_samples:
+    - 0.08565
+    - 0.086575
+    - 0.088675
+    - 0.0898
+    - 0.086925
+    success_probability_mean: 0.087525
+    success_probability_standard_deviation: 0.0016790064026084009
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2340: 10
+- degree: 10
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 420041
+  trainable_phases:
+  - 0.7339722736997261
+  - -0.06282623157996037
+  - -0.09302440245664512
+  - -0.11827762838420774
+  - -0.1388181069408403
+  - -0.14435472304484698
+  - -0.1388181069408403
+  - -0.11827762838420774
+  - -0.09302440245664512
+  - -0.06282623157996037
+  - 0.7339722736997261
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07034737447107606
+    energy_state: -14.845056009309506
+    energy_measurement_model: -14.844913581602095
+    fidelity_ground_space: 0.9110203892869574
+    zz_expectation: 0.6022852682567426
+    x_expectation: 3.560657078336338
+    energy_state_absolute_error: 1.3426840437701237
+    energy_measurement_absolute_error: 1.3428264714775349
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.575041250794479
+    - -14.839958091553836
+    - -14.742973932052646
+    - -14.909347231633065
+    - -14.898057362069613
+    energy_mean: -14.793075573620726
+    energy_standard_deviation: 0.13855268426552586
+    absolute_error_of_mean: 1.3946644794589034
+    success_probability_samples:
+    - 0.0695
+    - 0.07045
+    - 0.0696
+    - 0.071925
+    - 0.0673
+    success_probability_mean: 0.06975500000000001
+    success_probability_standard_deviation: 0.0016813684902483464
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2276: 10
+- degree: 10
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 420061
+  trainable_phases:
+  - 0.7346704168737124
+  - -0.10352186897979943
+  - -0.16301636975287082
+  - -0.20821415427273893
+  - -0.22917225720964085
+  - -0.2318490810257572
+  - -0.19393589354018648
+  - -0.16423620918164206
+  - -0.11443623914753465
+  - -0.061055321849373456
+  - 0.7632645498509087
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.12509953430729415
+    energy_state: -10.358805152537592
+    energy_measurement_model: -10.357799480450838
+    fidelity_ground_space: 0.6185046888122194
+    zz_expectation: 0.30208428514217933
+    x_expectation: 2.513928798827165
+    energy_state_absolute_error: 5.828934900542038
+    energy_measurement_absolute_error: 5.829940572628791
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -10.359560249508846
+    - -10.715016585146454
+    - -10.46833803919669
+    - -10.274736494648668
+    - -10.046522557847526
+    energy_mean: -10.372834785269637
+    energy_standard_deviation: 0.24621556275202913
+    absolute_error_of_mean: 5.814905267809992
+    success_probability_samples:
+    - 0.1258
+    - 0.12232499999999999
+    - 0.1236
+    - 0.12027499999999999
+    - 0.1238
+    success_probability_mean: 0.12316
+    success_probability_standard_deviation: 0.002036740656048287
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2468: 10
+- degree: 10
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 420061
+  trainable_phases:
+  - 0.7339722736997261
+  - -0.06282623157996037
+  - -0.09302440245664512
+  - -0.11827762838420774
+  - -0.1388181069408403
+  - -0.14435472304484698
+  - -0.1388181069408403
+  - -0.11827762838420774
+  - -0.09302440245664512
+  - -0.06282623157996037
+  - 0.7339722736997261
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.10181120396823332
+    energy_state: -9.38051998821912
+    energy_measurement_model: -9.379617621816076
+    fidelity_ground_space: 0.5811822782989059
+    zz_expectation: 0.3568559578470421
+    x_expectation: 2.2556904159922584
+    energy_state_absolute_error: 6.807220064860509
+    energy_measurement_absolute_error: 6.808122431263554
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -9.432956952449343
+    - -9.738163695610504
+    - -9.139918406859355
+    - -9.113093416529223
+    - -9.153651482106538
+    energy_mean: -9.315556790710993
+    energy_standard_deviation: 0.26945917258757507
+    absolute_error_of_mean: 6.872183262368637
+    success_probability_samples:
+    - 0.10015
+    - 0.10114999999999999
+    - 0.10205
+    - 0.10035
+    - 0.100675
+    success_probability_mean: 0.100875
+    success_probability_standard_deviation: 0.0007578753195612058
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2404: 10
+- degree: 10
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 420081
+  trainable_phases:
+  - 0.8958404583837343
+  - 0.3502028079904429
+  - 0.43044711928541046
+  - -1.2412507278217266
+  - 0.17572176218416136
+  - 0.22247264038975256
+  - 0.14540844139895404
+  - 0.009955903937201693
+  - -0.04457276116396969
+  - -0.08434371268470109
+  - -0.8148922674545789
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.45365471660901246
+    energy_state: -3.1176441859605495
+    energy_measurement_model: -3.1149836679263005
+    fidelity_ground_space: 0.10944940449087054
+    zz_expectation: 0.45712615171302523
+    x_expectation: 0.6644643790533188
+    energy_state_absolute_error: 13.070095867119079
+    energy_measurement_absolute_error: 13.07275638515333
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -3.0624516129032258
+    - -3.2778326868803225
+    - -3.2112867918807315
+    - -3.079014591602944
+    - -3.2228504452397737
+    energy_mean: -3.170687225701399
+    energy_standard_deviation: 0.09482654667621851
+    absolute_error_of_mean: 13.01705282737823
+    success_probability_samples:
+    - 0.45442499999999997
+    - 0.456725
+    - 0.453975
+    - 0.452675
+    - 0.455925
+    success_probability_mean: 0.45474499999999995
+    success_probability_standard_deviation: 0.0016041352810782547
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2596: 10
+- degree: 10
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 420081
+  trainable_phases:
+  - 0.7339722736997261
+  - -0.06282623157996037
+  - -0.09302440245664512
+  - -0.11827762838420774
+  - -0.1388181069408403
+  - -0.14435472304484698
+  - -0.1388181069408403
+  - -0.11827762838420774
+  - -0.09302440245664512
+  - -0.06282623157996037
+  - 0.7339722736997261
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3141303794642621
+    energy_state: -1.2377122206479991
+    energy_measurement_model: -1.2364999676731863
+    fidelity_ground_space: 0.11341560415613627
+    zz_expectation: 0.025459245837016753
+    x_expectation: 0.3027601804590424
+    energy_state_absolute_error: 14.95002783243163
+    energy_measurement_absolute_error: 14.951240085406443
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -1.2307954953616052
+    - -1.4114683751637862
+    - -1.3003995299256412
+    - -1.1362919921151244
+    - -1.3222890587862461
+    energy_mean: -1.2802488902704805
+    energy_standard_deviation: 0.10315183476014293
+    absolute_error_of_mean: 14.90749116280915
+    success_probability_samples:
+    - 0.313175
+    - 0.312175
+    - 0.3149
+    - 0.31295
+    - 0.31777500000000003
+    success_probability_mean: 0.31419500000000006
+    success_probability_standard_deviation: 0.0022351873523264406
+    circuit:
+      num_qubits: 5
+      depth: 21
+      size: 21
+      count_ops:
+        rx: 11
+        circuit-2532: 10
+- degree: 12
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 422001
+  trainable_phases:
+  - -0.09335179384503745
+  - 0.4520834236533533
+  - -0.7270156559213796
+  - -0.8774187498830219
+  - 0.8991707266693707
+  - 0.0923615895239589
+  - 0.7416531819156948
+  - 0.0923600023354334
+  - 0.8991690797799787
+  - -0.8774175204885326
+  - -0.7270169398729198
+  - 0.45208586739186263
+  - -0.09335152638857735
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07824979720565477
+    energy_state: -16.173761862178214
+    energy_measurement_model: -16.173761862178193
+    fidelity_ground_space: 0.9986434450940682
+    zz_expectation: 0.35515172208564744
+    x_expectation: 3.9546525350231367
+    energy_state_absolute_error: 0.013978190901415388
+    energy_measurement_absolute_error: 0.013978190901436705
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.239462190364698
+    - -16.104990705609147
+    - -16.247135017485185
+    - -16.14544506027097
+    - -16.204099326713358
+    energy_mean: -16.18822646008867
+    energy_standard_deviation: 0.061452634362732794
+    absolute_error_of_mean: 0.0004864070090420114
+    success_probability_samples:
+    - 0.080175
+    - 0.080475
+    - 0.07765
+    - 0.0778
+    - 0.07685
+    success_probability_mean: 0.07859000000000001
+    success_probability_standard_deviation: 0.001627939648758517
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-2706: 12
+- degree: 12
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 422001
+  trainable_phases:
+  - 0.755375791554405
+  - -0.04362207624112191
+  - -0.06983959810189022
+  - -0.09621692454567476
+  - -0.12202816058447974
+  - -0.13881597482868457
+  - -0.14613437531612883
+  - -0.13881597482868457
+  - -0.12202816058447974
+  - -0.09621692454567476
+  - -0.06983959810189022
+  - -0.04362207624112191
+  - 0.755375791554405
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.0690831686512531
+    energy_state: -16.085921570083233
+    energy_measurement_model: -16.08592157008322
+    fidelity_ground_space: 0.9927580405564873
+    zz_expectation: 0.42270263465079894
+    x_expectation: 3.915804733858105
+    energy_state_absolute_error: 0.1018184829963964
+    energy_measurement_absolute_error: 0.10181848299641061
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.10806143472165
+    - -16.074796099099082
+    - -16.256082496914512
+    - -16.057969416937652
+    - -16.06923389491451
+    energy_mean: -16.113228668517486
+    energy_standard_deviation: 0.08200625581995054
+    absolute_error_of_mean: 0.07451138456214323
+    success_probability_samples:
+    - 0.068875
+    - 0.071325
+    - 0.06875
+    - 0.07
+    - 0.069275
+    success_probability_mean: 0.069645
+    success_probability_standard_deviation: 0.001058211935294625
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-2660: 12
+- degree: 12
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 422021
+  trainable_phases:
+  - -1.0595984602898882
+  - -0.16365205392625493
+  - -0.041224376574776844
+  - 0.13716176445462835
+  - 0.1958159846063925
+  - 0.20498792325536064
+  - -1.502258915445431
+  - -0.06202138838086402
+  - 0.04024830191769846
+  - 0.18425424146724811
+  - 0.4153584508431041
+  - 0.48214254655294253
+  - 1.1667599957615877
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08403408884402785
+    energy_state: -16.01745446768713
+    energy_measurement_model: -16.01743879594816
+    fidelity_ground_space: 0.9877961558967338
+    zz_expectation: 0.3457155189460944
+    x_expectation: 3.917930819250516
+    energy_state_absolute_error: 0.17028558539249872
+    energy_measurement_absolute_error: 0.17030125713147015
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.011150625948012
+    - -15.97445772749843
+    - -16.054575173227768
+    - -16.00709150452437
+    - -15.937219837646682
+    energy_mean: -15.996898973769053
+    energy_standard_deviation: 0.04387126075097707
+    absolute_error_of_mean: 0.1908410793105766
+    success_probability_samples:
+    - 0.0844
+    - 0.082325
+    - 0.08510000000000001
+    - 0.08457500000000001
+    - 0.08452499999999999
+    success_probability_mean: 0.084185
+    success_probability_standard_deviation: 0.0010736328515838218
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-2820: 12
+- degree: 12
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 422021
+  trainable_phases:
+  - 0.755375791554405
+  - -0.04362207624112191
+  - -0.06983959810189022
+  - -0.09621692454567476
+  - -0.12202816058447974
+  - -0.13881597482868457
+  - -0.14613437531612883
+  - -0.13881597482868457
+  - -0.12202816058447974
+  - -0.09621692454567476
+  - -0.06983959810189022
+  - -0.04362207624112191
+  - 0.755375791554405
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.06951646564203576
+    energy_state: -15.96665824287024
+    energy_measurement_model: -15.966642697581413
+    fidelity_ground_space: 0.9854676769461871
+    zz_expectation: 0.4213694093086161
+    x_expectation: 3.8863183220681994
+    energy_state_absolute_error: 0.22108181020938922
+    energy_measurement_absolute_error: 0.22109735549821607
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.689231935154371
+    - -15.85450402552028
+    - -16.02596732888745
+    - -16.08127226517222
+    - -15.867132409202622
+    energy_mean: -15.903621592787388
+    energy_standard_deviation: 0.1551089631304176
+    absolute_error_of_mean: 0.2841184602922411
+    success_probability_samples:
+    - 0.0697
+    - 0.066675
+    - 0.06764999999999999
+    - 0.068575
+    - 0.07045
+    success_probability_mean: 0.06860999999999999
+    success_probability_standard_deviation: 0.0015199300970768377
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-2752: 12
+- degree: 12
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 422041
+  trainable_phases:
+  - 0.7875147208792601
+  - 1.5728228836629201
+  - -1.5728845868848547
+  - -1.5015294884498183
+  - 0.1281873051558624
+  - 0.17728666528504
+  - 0.1822130251632963
+  - 0.2079537168717076
+  - 0.2078107468956416
+  - 0.1815504631720093
+  - 0.17686769528593294
+  - 0.1275721880571674
+  - -0.7149148990295018
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08938010810165872
+    energy_state: -15.105953309019034
+    energy_measurement_model: -15.10580630793859
+    fidelity_ground_space: 0.9288887126289194
+    zz_expectation: 0.4058452654816271
+    x_expectation: 3.6749902606142406
+    energy_state_absolute_error: 1.0817867440605955
+    energy_measurement_absolute_error: 1.0819337451410398
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.883458813397878
+    - -14.992054532783245
+    - -15.199440614380668
+    - -15.231130248219554
+    - -15.01673786446147
+    energy_mean: -15.064564414648563
+    energy_standard_deviation: 0.14686734392187623
+    absolute_error_of_mean: 1.123175638431066
+    success_probability_samples:
+    - 0.08754999999999999
+    - 0.0895
+    - 0.09005
+    - 0.08975
+    - 0.089975
+    success_probability_mean: 0.089365
+    success_probability_standard_deviation: 0.0010370631610466215
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-2956: 12
+- degree: 12
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 422041
+  trainable_phases:
+  - 0.755375791554405
+  - -0.04362207624112191
+  - -0.06983959810189022
+  - -0.09621692454567476
+  - -0.12202816058447974
+  - -0.13881597482868457
+  - -0.14613437531612883
+  - -0.13881597482868457
+  - -0.12202816058447974
+  - -0.09621692454567476
+  - -0.06983959810189022
+  - -0.04362207624112191
+  - 0.755375791554405
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.073396715321699
+    energy_state: -14.961546317458588
+    energy_measurement_model: -14.961400801670178
+    fidelity_ground_space: 0.924060587384026
+    zz_expectation: 0.4099674780771419
+    x_expectation: 3.637858330898259
+    energy_state_absolute_error: 1.2261937356210417
+    energy_measurement_absolute_error: 1.2263392514094509
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.667963785808526
+    - -14.989993174359515
+    - -14.928880673069056
+    - -15.035183602179107
+    - -14.998742726107574
+    energy_mean: -14.924152792304756
+    energy_standard_deviation: 0.1482241670420401
+    absolute_error_of_mean: 1.263587260774873
+    success_probability_samples:
+    - 0.070325
+    - 0.072575
+    - 0.07335
+    - 0.073575
+    - 0.07300000000000001
+    success_probability_mean: 0.072565
+    success_probability_standard_deviation: 0.001307980313307507
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-2888: 12
+- degree: 12
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 422061
+  trainable_phases:
+  - 0.7793271030171796
+  - 1.486990027353837
+  - -0.166422919010353
+  - -0.27602647588841167
+  - -0.32854629750068565
+  - -0.3014733058917929
+  - -0.24552590684476483
+  - -0.1269279229237319
+  - -0.07162835089963826
+  - -0.012117810492656478
+  - 0.024981784218233827
+  - 0.03196739719772923
+  - -0.7484912868185671
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.15901562459409047
+    energy_state: -9.758424058811663
+    energy_measurement_model: -9.757496409452632
+    fidelity_ground_space: 0.5030881007427989
+    zz_expectation: 0.48193046853113036
+    x_expectation: 2.3188914852303752
+    energy_state_absolute_error: 6.4293159942679665
+    energy_measurement_absolute_error: 6.430243643626998
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -10.061427029953043
+    - -9.827065692177253
+    - -9.6017490671927
+    - -9.88409772421583
+    - -9.910771157853459
+    energy_mean: -9.857022134278456
+    energy_standard_deviation: 0.16693197243502642
+    absolute_error_of_mean: 6.330717918801174
+    success_probability_samples:
+    - 0.158275
+    - 0.16152499999999997
+    - 0.15662500000000001
+    - 0.159825
+    - 0.157925
+    success_probability_mean: 0.158835
+    success_probability_standard_deviation: 0.0018869287214942547
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-3092: 12
+- degree: 12
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 422061
+  trainable_phases:
+  - 0.755375791554405
+  - -0.04362207624112191
+  - -0.06983959810189022
+  - -0.09621692454567476
+  - -0.12202816058447974
+  - -0.13881597482868457
+  - -0.14613437531612883
+  - -0.13881597482868457
+  - -0.12202816058447974
+  - -0.09621692454567476
+  - -0.06983959810189022
+  - -0.04362207624112191
+  - 0.755375791554405
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.11033837942233121
+    energy_state: -8.941595771212034
+    energy_measurement_model: -8.940734787077787
+    fidelity_ground_space: 0.5582923237395031
+    zz_expectation: 0.33175442879923106
+    x_expectation: 2.152245089569639
+    energy_state_absolute_error: 7.246144281867595
+    energy_measurement_absolute_error: 7.2470052660018425
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -9.043759683263852
+    - -8.868996837004149
+    - -8.767303958526545
+    - -8.98467530611655
+    - -9.220168699742539
+    energy_mean: -8.976980896930726
+    energy_standard_deviation: 0.17268750198701305
+    absolute_error_of_mean: 7.210759156148903
+    success_probability_samples:
+    - 0.112025
+    - 0.1114
+    - 0.10952500000000001
+    - 0.111625
+    - 0.10972499999999999
+    success_probability_mean: 0.11085999999999999
+    success_probability_standard_deviation: 0.0011515750084123912
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-3024: 12
+- degree: 12
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 422081
+  trainable_phases:
+  - -0.2985056872713665
+  - 0.7937827335228702
+  - 0.39807547804471444
+  - -0.09984632761496837
+  - -0.17531245613644142
+  - -0.03226494887566966
+  - 0.028366239055829023
+  - 0.06800816497730455
+  - 0.045797372210477416
+  - 0.015634803828061372
+  - 0.0021816743115121717
+  - -0.004958594564691943
+  - -0.7947397501073348
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.4812653194199936
+    energy_state: -2.5713061158706507
+    energy_measurement_model: -2.5691265130957595
+    fidelity_ground_space: 0.09895410579607032
+    zz_expectation: 0.39170334098269044
+    x_expectation: 0.5443557930282673
+    energy_state_absolute_error: 13.616433937208978
+    energy_measurement_absolute_error: 13.618613539983869
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -2.6119726929707143
+    - -2.5988509242486177
+    - -2.645629892288847
+    - -2.5708469362763386
+    - -2.4594285794395145
+    energy_mean: -2.577345805044806
+    energy_standard_deviation: 0.07118798262325304
+    absolute_error_of_mean: 13.610394248034822
+    success_probability_samples:
+    - 0.48340000000000005
+    - 0.478825
+    - 0.485325
+    - 0.477325
+    - 0.4837
+    success_probability_mean: 0.481715
+    success_probability_standard_deviation: 0.0034436808069273892
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-3228: 12
+- degree: 12
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 422081
+  trainable_phases:
+  - 0.755375791554405
+  - -0.04362207624112191
+  - -0.06983959810189022
+  - -0.09621692454567476
+  - -0.12202816058447974
+  - -0.13881597482868457
+  - -0.14613437531612883
+  - -0.13881597482868457
+  - -0.12202816058447974
+  - -0.09621692454567476
+  - -0.06983959810189022
+  - -0.04362207624112191
+  - 0.755375791554405
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3429427002719382
+    energy_state: -0.9808736793369515
+    energy_measurement_model: -0.9799922023451751
+    fidelity_ground_space: 0.10154594382666005
+    zz_expectation: 0.09939668756025577
+    x_expectation: 0.22014887869622984
+    energy_state_absolute_error: 15.206866373742677
+    energy_measurement_absolute_error: 15.207747850734455
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -0.885420998194714
+    - -1.0964170265124906
+    - -1.0611274735500555
+    - -0.9184443140888063
+    - -0.8428065214277993
+    energy_mean: -0.9608432667547732
+    energy_standard_deviation: 0.11164231892152693
+    absolute_error_of_mean: 15.226896786324856
+    success_probability_samples:
+    - 0.34450000000000003
+    - 0.343275
+    - 0.342675
+    - 0.340575
+    - 0.34377500000000005
+    success_probability_mean: 0.34296000000000004
+    success_probability_standard_deviation: 0.001492020442219215
+    circuit:
+      num_qubits: 5
+      depth: 25
+      size: 25
+      count_ops:
+        rx: 13
+        circuit-3160: 12
+- degree: 14
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 424001
+  trainable_phases:
+  - 0.7856710692767832
+  - 0.012040449028681621
+  - 0.01008274817042798
+  - -0.08048943615346493
+  - 0.0071562657111883254
+  - 0.664856097710746
+  - -0.3354444455381955
+  - -1.3194216805921797
+  - 0.46861027233096797
+  - 0.7572281750977723
+  - -0.5842177051469664
+  - -1.123355220364095
+  - -1.0308767826640057
+  - -0.45702357187259324
+  - 0.7033042518085422
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.00019841896950434688
+    energy_state: -16.168916973679963
+    energy_measurement_model: -16.168916973679945
+    fidelity_ground_space: 0.9981917033300087
+    zz_expectation: 0.3889897196551787
+    x_expectation: 3.944981813506191
+    energy_state_absolute_error: 0.018823079399666653
+    energy_measurement_absolute_error: 0.018823079399684417
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.333333333333332
+    - -17.5
+    - -17.0
+    - -18.0
+    - -16.5
+    energy_mean: -17.066666666666666
+    energy_standard_deviation: 0.6932211447695144
+    absolute_error_of_mean: 0.878926613587037
+    success_probability_samples:
+    - 0.000125
+    - 0.000225
+    - 0.00025
+    - 0.000225
+    - 0.00015000000000000001
+    success_probability_mean: 0.000195
+    success_probability_standard_deviation: 5.419870847169699e-05
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3346: 14
+- degree: 14
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 424001
+  trainable_phases:
+  - 0.7731648804229079
+  - -0.03194787324478687
+  - -0.04574836905670665
+  - -0.07439637429353096
+  - -0.0974524508871828
+  - -0.12275643381496604
+  - -0.13773634919117894
+  - -0.14494174269417615
+  - -0.13773634919117894
+  - -0.12275643381496604
+  - -0.0974524508871828
+  - -0.07439637429353096
+  - -0.04574836905670665
+  - -0.03194787324478687
+  - 0.7731648804229079
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07038532957357434
+    energy_state: -16.170512474271906
+    energy_measurement_model: -16.170512474271884
+    fidelity_ground_space: 0.9983747575786148
+    zz_expectation: 0.3441437082137627
+    x_expectation: 3.9565921915145306
+    energy_state_absolute_error: 0.01722757880772363
+    energy_measurement_absolute_error: 0.017227578807744948
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.197108267049458
+    - -16.193318573116972
+    - -16.276011098123075
+    - -16.152895117283798
+    - -16.30606819872372
+    energy_mean: -16.225080250859406
+    energy_standard_deviation: 0.06355101978504132
+    absolute_error_of_mean: 0.03734019777977693
+    success_probability_samples:
+    - 0.07072500000000001
+    - 0.070775
+    - 0.069925
+    - 0.0692
+    - 0.071475
+    success_probability_mean: 0.07042000000000001
+    success_probability_standard_deviation: 0.00087542846652368
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3296: 14
+- degree: 14
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 424021
+  trainable_phases:
+  - -0.814420371319879
+  - -0.05193210716819241
+  - -0.09537483312398498
+  - -0.04986155666480219
+  - 1.5376400092006808
+  - 1.4867676634113387
+  - -0.1336528179664258
+  - -0.19562057200847427
+  - -0.18584912155817213
+  - -0.1958408330819097
+  - -0.1677400303753025
+  - -0.13479666334308238
+  - -0.09582375999444359
+  - -0.052065942452237834
+  - -0.8144717421463468
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.0831048755672546
+    energy_state: -16.053355546412277
+    energy_measurement_model: -16.05333984791276
+    fidelity_ground_space: 0.9910769208460712
+    zz_expectation: 0.3548560496491329
+    x_expectation: 3.9246209495659063
+    energy_state_absolute_error: 0.13438450666735235
+    energy_measurement_absolute_error: 0.13440020516686957
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.996655419579387
+    - -16.07270532772505
+    - -16.083598975668938
+    - -16.16046618415586
+    - -15.955203255153354
+    energy_mean: -16.053725832456518
+    energy_standard_deviation: 0.0800154030036745
+    absolute_error_of_mean: 0.1340142206231114
+    success_probability_samples:
+    - 0.082275
+    - 0.0829
+    - 0.083875
+    - 0.08282500000000001
+    - 0.0827
+    success_probability_mean: 0.082915
+    success_probability_standard_deviation: 0.0005885894154671847
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3468: 14
+- degree: 14
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 424021
+  trainable_phases:
+  - 0.7731648804229079
+  - -0.03194787324478687
+  - -0.04574836905670665
+  - -0.07439637429353096
+  - -0.0974524508871828
+  - -0.12275643381496604
+  - -0.13773634919117894
+  - -0.14494174269417615
+  - -0.13773634919117894
+  - -0.12275643381496604
+  - -0.0974524508871828
+  - -0.07439637429353096
+  - -0.04574836905670665
+  - -0.03194787324478687
+  - 0.7731648804229079
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07088658388093515
+    energy_state: -16.033985683816198
+    energy_measurement_model: -16.033969992868915
+    fidelity_ground_space: 0.9900221673634503
+    zz_expectation: 0.3430384428857467
+    x_expectation: 3.922732887495792
+    energy_state_absolute_error: 0.15375436926343156
+    energy_measurement_absolute_error: 0.15377006021071438
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.87524225742228
+    - -15.97729813222771
+    - -16.05113522666051
+    - -16.05675469034876
+    - -16.028553808202282
+    energy_mean: -15.997796822972308
+    energy_standard_deviation: 0.07534392051357028
+    absolute_error_of_mean: 0.18994323010732117
+    success_probability_samples:
+    - 0.07012499999999999
+    - 0.071925
+    - 0.0721
+    - 0.07022500000000001
+    - 0.06975
+    success_probability_mean: 0.070825
+    success_probability_standard_deviation: 0.0011001420362844047
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3396: 14
+- degree: 14
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 424041
+  trainable_phases:
+  - -0.8102656850835541
+  - -0.05220136766245087
+  - -0.095048451446619
+  - -0.04538290681176127
+  - 1.5184360854443124
+  - 1.4796166917845772
+  - -0.1176547100455152
+  - -0.19502002697269916
+  - -0.190381852338541
+  - -0.1951577927729251
+  - -0.170782813448088
+  - -0.13609773490648536
+  - -0.09529150005565645
+  - -0.05144589646882558
+  - -0.8093140925710216
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08795830265834974
+    energy_state: -15.041365585369778
+    energy_measurement_model: -15.04121869563068
+    fidelity_ground_space: 0.9275321345115437
+    zz_expectation: 0.35239167640435676
+    x_expectation: 3.672206754806581
+    energy_state_absolute_error: 1.146374467709851
+    energy_measurement_absolute_error: 1.1465213574489486
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.998684656586887
+    - -14.892068091271279
+    - -15.168680704393703
+    - -15.173906714473967
+    - -15.210272534671807
+    energy_mean: -15.088722540279528
+    energy_standard_deviation: 0.13711659773077123
+    absolute_error_of_mean: 1.099017512800101
+    success_probability_samples:
+    - 0.088025
+    - 0.08902499999999999
+    - 0.08812500000000001
+    - 0.0885
+    - 0.088325
+    success_probability_mean: 0.08839999999999999
+    success_probability_standard_deviation: 0.00039449334595148143
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3612: 14
+- degree: 14
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 424041
+  trainable_phases:
+  - 0.7731648804229079
+  - -0.03194787324478687
+  - -0.04574836905670665
+  - -0.07439637429353096
+  - -0.0974524508871828
+  - -0.12275643381496604
+  - -0.13773634919117894
+  - -0.14494174269417615
+  - -0.13773634919117894
+  - -0.12275643381496604
+  - -0.0974524508871828
+  - -0.07439637429353096
+  - -0.04574836905670665
+  - -0.03194787324478687
+  - 0.7731648804229079
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.075371802151471
+    energy_state: -14.893352876032838
+    energy_measurement_model: -14.89320727857585
+    fidelity_ground_space: 0.9202840655158624
+    zz_expectation: 0.33360717843443
+    x_expectation: 3.639900025035355
+    energy_state_absolute_error: 1.2943871770467918
+    energy_measurement_absolute_error: 1.2945327745037787
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.735678551420175
+    - -14.938483680548941
+    - -14.859800065766693
+    - -14.937166905319039
+    - -14.812607432161201
+    energy_mean: -14.856747327043212
+    energy_standard_deviation: 0.08626041679015557
+    absolute_error_of_mean: 1.330992726036417
+    success_probability_samples:
+    - 0.0731
+    - 0.07685
+    - 0.075725
+    - 0.07567499999999999
+    - 0.07635
+    success_probability_mean: 0.07554000000000001
+    success_probability_standard_deviation: 0.0014472603428547345
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3540: 14
+- degree: 14
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 424061
+  trainable_phases:
+  - -0.6505212627835211
+  - 0.3233911402714189
+  - 0.4759087787222578
+  - 0.4436302885771264
+  - 0.23443294358304545
+  - 0.03965438590159209
+  - -0.09061074756234255
+  - -0.06347485138708331
+  - 0.004748596980288067
+  - 0.03235078289544946
+  - 0.043254570416615845
+  - 0.008306772625167547
+  - -0.01637095948450762
+  - -0.03113750961308437
+  - -0.813833966223164
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.29957900900444606
+    energy_state: -9.398475633201084
+    energy_measurement_model: -9.397643622683038
+    fidelity_ground_space: 0.27107713134437217
+    zz_expectation: 1.0783704528172722
+    x_expectation: 2.0798182924664412
+    energy_state_absolute_error: 6.7892644198785455
+    energy_measurement_absolute_error: 6.790096430396591
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -9.351889063579284
+    - -9.365892684397739
+    - -9.480420935535903
+    - -9.38282324290945
+    - -9.341452821625575
+    energy_mean: -9.384495749609588
+    energy_standard_deviation: 0.05582652199504341
+    absolute_error_of_mean: 6.803244303470041
+    success_probability_samples:
+    - 0.3005
+    - 0.29857500000000003
+    - 0.299825
+    - 0.300325
+    - 0.29764999999999997
+    success_probability_mean: 0.299375
+    success_probability_standard_deviation: 0.0012233407129659387
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3756: 14
+- degree: 14
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 424061
+  trainable_phases:
+  - 0.7731648804229079
+  - -0.03194787324478687
+  - -0.04574836905670665
+  - -0.07439637429353096
+  - -0.0974524508871828
+  - -0.12275643381496604
+  - -0.13773634919117894
+  - -0.14494174269417615
+  - -0.13773634919117894
+  - -0.12275643381496604
+  - -0.0974524508871828
+  - -0.07439637429353096
+  - -0.04574836905670665
+  - -0.03194787324478687
+  - 0.7731648804229079
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.11773955385747499
+    energy_state: -8.417408745637047
+    energy_measurement_model: -8.416593896756574
+    fidelity_ground_space: 0.5268909156704873
+    zz_expectation: 0.26891994097918526
+    x_expectation: 2.0369184889443472
+    energy_state_absolute_error: 7.770331307442582
+    energy_measurement_absolute_error: 7.771146156323056
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -8.338468138468139
+    - -8.40527273006254
+    - -8.685145429248811
+    - -8.388513190661698
+    - -8.202587437544612
+    energy_mean: -8.403997385197162
+    energy_standard_deviation: 0.17617154895816894
+    absolute_error_of_mean: 7.783742667882468
+    success_probability_samples:
+    - 0.116775
+    - 0.1177
+    - 0.116875
+    - 0.11929999999999999
+    - 0.114775
+    success_probability_mean: 0.117085
+    success_probability_standard_deviation: 0.0016401791060734752
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3684: 14
+- degree: 14
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 424081
+  trainable_phases:
+  - -0.23976728380149037
+  - 0.82746165597823
+  - 0.3298481944136018
+  - -0.16068675036290925
+  - -0.15733970125098384
+  - 0.007870099316005685
+  - 0.036209614927115386
+  - 0.05797542182266868
+  - 0.029695079175712458
+  - 0.010335643554113982
+  - 0.0052582312279558785
+  - -0.002050205523616011
+  - -0.0062910751413194355
+  - -0.0026415541824502675
+  - -0.7867476579786015
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.49150994307106644
+    energy_state: -2.146149495904193
+    energy_measurement_model: -2.1442678951250116
+    fidelity_ground_space: 0.09159078710400884
+    zz_expectation: 0.2645487167263655
+    x_expectation: 0.4699297945996615
+    energy_state_absolute_error: 14.041590557175436
+    energy_measurement_absolute_error: 14.043472157954618
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -2.2242869376895875
+    - -2.1154454921822747
+    - -2.056837521825441
+    - -2.127430434437305
+    - -2.1441467150981945
+    energy_mean: -2.133629420246561
+    energy_standard_deviation: 0.060405871585382694
+    absolute_error_of_mean: 14.05411063283307
+    success_probability_samples:
+    - 0.49205
+    - 0.492575
+    - 0.492275
+    - 0.494175
+    - 0.484675
+    success_probability_mean: 0.49115000000000003
+    success_probability_standard_deviation: 0.0037142462223175086
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3900: 14
+- degree: 14
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 424081
+  trainable_phases:
+  - 0.7731648804229079
+  - -0.03194787324478687
+  - -0.04574836905670665
+  - -0.07439637429353096
+  - -0.0974524508871828
+  - -0.12275643381496604
+  - -0.13773634919117894
+  - -0.14494174269417615
+  - -0.13773634919117894
+  - -0.12275643381496604
+  - -0.0974524508871828
+  - -0.07439637429353096
+  - -0.04574836905670665
+  - -0.03194787324478687
+  - 0.7731648804229079
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.36691512682934013
+    energy_state: -0.770280652853855
+    energy_measurement_model: -0.7695792484518459
+    fidelity_ground_space: 0.09194070578840477
+    zz_expectation: 0.06887625084654755
+    x_expectation: 0.17517574940132458
+    energy_state_absolute_error: 15.417459400225773
+    energy_measurement_absolute_error: 15.418160804627783
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -0.8411599538237193
+    - -0.7181446700234357
+    - -0.6359399746195379
+    - -0.7550699953770243
+    - -0.8226205117075406
+    energy_mean: -0.7545870211102514
+    energy_standard_deviation: 0.08295906879194812
+    absolute_error_of_mean: 15.433153031969377
+    success_probability_samples:
+    - 0.3686
+    - 0.3705
+    - 0.367825
+    - 0.367425
+    - 0.36429999999999996
+    success_probability_mean: 0.36773
+    success_probability_standard_deviation: 0.002252595724936026
+    circuit:
+      num_qubits: 5
+      depth: 29
+      size: 29
+      count_ops:
+        rx: 15
+        circuit-3828: 14
+- degree: 16
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 426001
+  trainable_phases:
+  - -0.8124817852105464
+  - -0.04356363490087434
+  - 0.0038272409644921623
+  - -0.004812156139317292
+  - -0.27048203967527495
+  - -0.1991214270848265
+  - 0.6250619135025928
+  - 0.07492352829818127
+  - 2.0131902738509995
+  - -0.03746111814720621
+  - 0.6825859116284647
+  - -0.16225324602303548
+  - -0.29800879481200004
+  - -0.011935589732845031
+  - 0.011760534711743986
+  - -0.04292155935907438
+  - -0.814841777652171
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.045777618573871644
+    energy_state: -16.18772804285487
+    energy_measurement_model: -16.18772804285487
+    fidelity_ground_space: 0.9999993527566289
+    zz_expectation: 0.3762189159722006
+    x_expectation: 3.9528772817206677
+    energy_state_absolute_error: 1.2010224757830201e-05
+    energy_measurement_absolute_error: 1.2010224757830201e-05
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.125697730686326
+    - -16.11871769140802
+    - -16.217663942242837
+    - -16.19341037585063
+    - -16.150974245497572
+    energy_mean: -16.161292797137076
+    energy_standard_deviation: 0.04299815622316484
+    absolute_error_of_mean: 0.026447255942553483
+    success_probability_samples:
+    - 0.0446
+    - 0.045924999999999994
+    - 0.046375
+    - 0.046049999999999994
+    - 0.045125
+    success_probability_mean: 0.045615
+    success_probability_standard_deviation: 0.0007302824795926556
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4026: 16
+- degree: 16
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 426001
+  trainable_phases:
+  - 0.7875008963071704
+  - -0.01594815040632147
+  - -0.0278091465267698
+  - -0.048533313115576515
+  - -0.07238505224510128
+  - -0.09897723414212223
+  - -0.121783562588341
+  - -0.13895341871822753
+  - -0.14428426081224588
+  - -0.13895341871822753
+  - -0.121783562588341
+  - -0.09897723414212223
+  - -0.07238505224510128
+  - -0.048533313115576515
+  - -0.0278091465267698
+  - -0.01594815040632147
+  - 0.7875008963071704
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07042041814469922
+    energy_state: -16.167274354914333
+    energy_measurement_model: -16.167274354914323
+    fidelity_ground_space: 0.9982013957019125
+    zz_expectation: 0.3383699883241789
+    x_expectation: 3.957226091647536
+    energy_state_absolute_error: 0.020465698165295976
+    energy_measurement_absolute_error: 0.020465698165306634
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.087488702311862
+    - -16.16932283408136
+    - -16.2185353012789
+    - -16.139817955389958
+    - -16.212533380655547
+    energy_mean: -16.165539634743524
+    energy_standard_deviation: 0.05427895141263771
+    absolute_error_of_mean: 0.022200418336105088
+    success_probability_samples:
+    - 0.071075
+    - 0.070875
+    - 0.07114999999999999
+    - 0.070275
+    - 0.0683
+    success_probability_mean: 0.070335
+    success_probability_standard_deviation: 0.0011883023605126746
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-3972: 16
+- degree: 16
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 426021
+  trainable_phases:
+  - -0.8152506195801368
+  - -0.05340457973203527
+  - -0.09710492163943929
+  - -0.13626729072417954
+  - -0.16856485068146254
+  - -0.1961306626002468
+  - -0.18273377781575606
+  - -0.15494109756743146
+  - 1.4724681099417918
+  - 0.01926318635837676
+  - 1.5679671796034835
+  - -0.05855557765930275
+  - -0.06743127672279137
+  - -0.1330961029750255
+  - -0.0945114518994048
+  - -0.05094229027285291
+  - -0.8136453705072109
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08318673286052258
+    energy_state: -16.0368004773325
+    energy_measurement_model: -16.03678479536067
+    fidelity_ground_space: 0.990115295870603
+    zz_expectation: 0.35482866994071216
+    x_expectation: 3.9204890313549896
+    energy_state_absolute_error: 0.15093957574713102
+    energy_measurement_absolute_error: 0.1509552577189588
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.05979762162035
+    - -16.016606664675333
+    - -16.076766905524526
+    - -16.0528246557898
+    - -16.084194285124724
+    energy_mean: -16.058038026546946
+    energy_standard_deviation: 0.026371167619934823
+    absolute_error_of_mean: 0.1297020265326836
+    success_probability_samples:
+    - 0.082475
+    - 0.08172499999999999
+    - 0.080925
+    - 0.08274999999999999
+    - 0.08324999999999999
+    success_probability_mean: 0.082225
+    success_probability_standard_deviation: 0.0009122431145259456
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4156: 16
+- degree: 16
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 426021
+  trainable_phases:
+  - 0.7875008963071704
+  - -0.01594815040632147
+  - -0.0278091465267698
+  - -0.048533313115576515
+  - -0.07238505224510128
+  - -0.09897723414212223
+  - -0.121783562588341
+  - -0.13895341871822753
+  - -0.14428426081224588
+  - -0.13895341871822753
+  - -0.121783562588341
+  - -0.09897723414212223
+  - -0.07238505224510128
+  - -0.048533313115576515
+  - -0.0278091465267698
+  - -0.01594815040632147
+  - 0.7875008963071704
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07099148984887907
+    energy_state: -16.012077185295347
+    energy_measurement_model: -16.012061508043757
+    fidelity_ground_space: 0.9887006713755822
+    zz_expectation: 0.334825610691776
+    x_expectation: 3.919308974337995
+    energy_state_absolute_error: 0.17566286778428264
+    energy_measurement_absolute_error: 0.175678545035872
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.988716268235386
+    - -16.074663528288333
+    - -16.011586719864237
+    - -15.873326059319913
+    - -16.06952303323776
+    energy_mean: -16.003563121789128
+    energy_standard_deviation: 0.08162793233598276
+    absolute_error_of_mean: 0.1841769312905015
+    success_probability_samples:
+    - 0.07117499999999999
+    - 0.06912499999999999
+    - 0.06964999999999999
+    - 0.07067499999999999
+    - 0.07122500000000001
+    success_probability_mean: 0.07037
+    success_probability_standard_deviation: 0.0009408108205160092
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4080: 16
+- degree: 16
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 426041
+  trainable_phases:
+  - -0.8191335628191636
+  - -0.06822713005087389
+  - -0.11183615278120795
+  - -0.15466257042608422
+  - -0.18094287595772096
+  - -0.19848033745013627
+  - -0.14433320723964327
+  - -0.12419954524456545
+  - 1.4730565837573746
+  - -0.009006447233291137
+  - 1.5263457266898701
+  - -0.053989435037315125
+  - -0.06401082139323844
+  - -0.12081089862111716
+  - -0.08040618975105351
+  - -0.03882545004825255
+  - -0.7997721450319819
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08888071494807435
+    energy_state: -14.900788499651807
+    energy_measurement_model: -14.900643023408989
+    fidelity_ground_space: 0.9195231381705388
+    zz_expectation: 0.3531642185639115
+    x_expectation: 3.6368697012112694
+    energy_state_absolute_error: 1.2869515534278229
+    energy_measurement_absolute_error: 1.2870970296706403
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.873625221767407
+    - -14.939080365843378
+    - -15.024204495835592
+    - -14.787954441679046
+    - -14.811935744306984
+    energy_mean: -14.887360053886482
+    energy_standard_deviation: 0.09638508674647263
+    absolute_error_of_mean: 1.3003799991931473
+    success_probability_samples:
+    - 0.09140000000000001
+    - 0.088
+    - 0.089425
+    - 0.088175
+    - 0.091775
+    success_probability_mean: 0.089755
+    success_probability_standard_deviation: 0.0017657682464015496
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4308: 16
+- degree: 16
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 426041
+  trainable_phases:
+  - 0.7875008963071704
+  - -0.01594815040632147
+  - -0.0278091465267698
+  - -0.048533313115576515
+  - -0.07238505224510128
+  - -0.09897723414212223
+  - -0.121783562588341
+  - -0.13895341871822753
+  - -0.14428426081224588
+  - -0.13895341871822753
+  - -0.121783562588341
+  - -0.09897723414212223
+  - -0.07238505224510128
+  - -0.048533313115576515
+  - -0.0278091465267698
+  - -0.01594815040632147
+  - 0.7875008963071704
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07609727609930712
+    energy_state: -14.728245479071223
+    energy_measurement_model: -14.72810125186327
+    fidelity_ground_space: 0.9101663887723251
+    zz_expectation: 0.3055246847920752
+    x_expectation: 3.6056441417677987
+    energy_state_absolute_error: 1.4594945740084064
+    energy_measurement_absolute_error: 1.459638801216359
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.828779579534025
+    - -14.683346569978596
+    - -14.742484019940669
+    - -14.655818586481145
+    - -14.822421296737508
+    energy_mean: -14.746570010534388
+    energy_standard_deviation: 0.07867901654238729
+    absolute_error_of_mean: 1.4411700425452416
+    success_probability_samples:
+    - 0.074425
+    - 0.076025
+    - 0.076725
+    - 0.076125
+    - 0.07685
+    success_probability_mean: 0.07603
+    success_probability_standard_deviation: 0.0009670186140917853
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4232: 16
+- degree: 16
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 426061
+  trainable_phases:
+  - 0.6284099690307023
+  - -0.34472039789534215
+  - -0.45642725550792873
+  - -0.38980708371549877
+  - -0.1855393656149018
+  - -0.017245283015042467
+  - 0.08205891043337266
+  - 0.023116305675369375
+  - -0.020697444980091628
+  - -0.06914798010283496
+  - -0.10039386242257997
+  - -0.05319947752761367
+  - -0.008188279521019304
+  - 0.04655127810165682
+  - 0.06240740069380735
+  - 0.08374301438071008
+  - 0.8389058775737954
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3493286639913321
+    energy_state: -9.202160467086292
+    energy_measurement_model: -9.2013539143925
+    fidelity_ground_space: 0.2290726973613017
+    zz_expectation: 1.136633529201896
+    x_expectation: 2.016180096297651
+    energy_state_absolute_error: 6.985579585993337
+    energy_measurement_absolute_error: 6.986386138687129
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -9.18712258013689
+    - -9.277955716439754
+    - -9.15021087321861
+    - -9.16173629409481
+    - -9.239169628634166
+    energy_mean: -9.203239018504846
+    energy_standard_deviation: 0.05400878078188571
+    absolute_error_of_mean: 6.984501034574784
+    success_probability_samples:
+    - 0.34872499999999995
+    - 0.34915
+    - 0.3543
+    - 0.349125
+    - 0.34425
+    success_probability_mean: 0.34911
+    success_probability_standard_deviation: 0.0035603985029768817
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4460: 16
+- degree: 16
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 426061
+  trainable_phases:
+  - 0.7875008963071704
+  - -0.01594815040632147
+  - -0.0278091465267698
+  - -0.048533313115576515
+  - -0.07238505224510128
+  - -0.09897723414212223
+  - -0.121783562588341
+  - -0.13895341871822753
+  - -0.14428426081224588
+  - -0.13895341871822753
+  - -0.121783562588341
+  - -0.09897723414212223
+  - -0.07238505224510128
+  - -0.048533313115576515
+  - -0.0278091465267698
+  - -0.01594815040632147
+  - 0.7875008963071704
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.12394578866870119
+    energy_state: -7.849992208798595
+    energy_measurement_model: -7.849222173763409
+    fidelity_ground_space: 0.4925325337147112
+    zz_expectation: 0.14964185701367402
+    x_expectation: 1.9248950791874337
+    energy_state_absolute_error: 8.337747844281035
+    energy_measurement_absolute_error: 8.338517879316221
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -7.743971652794662
+    - -7.898641798204522
+    - -7.775606842135662
+    - -7.910666157291924
+    - -7.883857782443082
+    energy_mean: -7.842548846573971
+    energy_standard_deviation: 0.07696023407632958
+    absolute_error_of_mean: 8.345191206505659
+    success_probability_samples:
+    - 0.124275
+    - 0.12382499999999999
+    - 0.126275
+    - 0.12254999999999999
+    - 0.12537500000000001
+    success_probability_mean: 0.12446000000000002
+    success_probability_standard_deviation: 0.001433265502270956
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4384: 16
+- degree: 16
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 426081
+  trainable_phases:
+  - -0.6602070316829849
+  - -0.22988960175592377
+  - -0.7272434763854654
+  - 1.0115034285056508
+  - -0.05409323679450306
+  - -0.14775937916686743
+  - -0.10833412842638657
+  - 0.05439544998982759
+  - 0.017079791596774196
+  - 0.03834591468949622
+  - 0.0005502287476297774
+  - 0.0030081721010550844
+  - 0.005162382317049907
+  - -0.0009959859871817578
+  - -0.0039861368730620406
+  - 0.002213309671275976
+  - 0.785387336309026
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.5042728652522712
+    energy_state: -1.7796671995056967
+    energy_measurement_model: -1.778059589485671
+    fidelity_ground_space: 0.08474033716364585
+    zz_expectation: 0.17205717948185242
+    x_expectation: 0.40150060250095465
+    energy_state_absolute_error: 14.408072853573932
+    energy_measurement_absolute_error: 14.409680463593958
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -1.8536406409429373
+    - -1.6854216243695528
+    - -1.7170573806093397
+    - -1.8356318866295045
+    - -1.7726161043184652
+    energy_mean: -1.7728735273739598
+    energy_standard_deviation: 0.07284449556432432
+    absolute_error_of_mean: 14.41486652570567
+    success_probability_samples:
+    - 0.501825
+    - 0.506225
+    - 0.503625
+    - 0.50745
+    - 0.50535
+    success_probability_mean: 0.504895
+    success_probability_standard_deviation: 0.002210302581096086
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4612: 16
+- degree: 16
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 426081
+  trainable_phases:
+  - 0.7875008963071704
+  - -0.01594815040632147
+  - -0.0278091465267698
+  - -0.048533313115576515
+  - -0.07238505224510128
+  - -0.09897723414212223
+  - -0.121783562588341
+  - -0.13895341871822753
+  - -0.14428426081224588
+  - -0.13895341871822753
+  - -0.121783562588341
+  - -0.09897723414212223
+  - -0.07238505224510128
+  - -0.048533313115576515
+  - -0.0278091465267698
+  - -0.01594815040632147
+  - 0.7875008963071704
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.38700484880723846
+    energy_state: -0.604456842661671
+    energy_measurement_model: -0.6038546423298696
+    fidelity_ground_space: 0.08446196561074067
+    zz_expectation: 0.0022565108593428085
+    x_expectation: 0.1503995328676317
+    energy_state_absolute_error: 15.583283210417958
+    energy_measurement_absolute_error: 15.58388541074976
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -0.6388768658816504
+    - -0.43157074040695315
+    - -0.5165912150666857
+    - -0.6705319082229099
+    - -0.5296087433205502
+    energy_mean: -0.5574358945797498
+    energy_standard_deviation: 0.09709275891543098
+    absolute_error_of_mean: 15.630304158499879
+    success_probability_samples:
+    - 0.387725
+    - 0.386
+    - 0.3886
+    - 0.388625
+    - 0.392625
+    success_probability_mean: 0.38871500000000003
+    success_probability_standard_deviation: 0.0024321158483920943
+    circuit:
+      num_qubits: 5
+      depth: 33
+      size: 33
+      count_ops:
+        rx: 17
+        circuit-4536: 16
+- degree: 18
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 428001
+  trainable_phases:
+  - 0.18558864583481416
+  - -0.42742726775057704
+  - -0.2081867814031284
+  - -0.004886697547089369
+  - -0.5054331725799579
+  - -0.2928156326381641
+  - 0.04566191341368686
+  - -0.6633798333142362
+  - 0.287252711116194
+  - 0.9501661454022408
+  - 0.24759932693926867
+  - -0.6198823998894314
+  - 0.18938605995748414
+  - -0.062149497549404575
+  - -0.24239389176300818
+  - 0.3278875658779694
+  - 0.2500963104800431
+  - 0.05271420697900808
+  - 0.41510699440282073
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08951733999563832
+    energy_state: -16.187710487156135
+    energy_measurement_model: -16.18771048715611
+    fidelity_ground_space: 0.9999981748828979
+    zz_expectation: 0.3748041950307437
+    x_expectation: 3.953226573031342
+    energy_state_absolute_error: 2.9565923494345725e-05
+    energy_measurement_absolute_error: 2.956592351921472e-05
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.227400293829454
+    - -16.202239402825914
+    - -16.191101437537963
+    - -16.26692013514409
+    - -16.16377758376735
+    energy_mean: -16.210287770620955
+    energy_standard_deviation: 0.039038930071583225
+    absolute_error_of_mean: 0.02254771754132534
+    success_probability_samples:
+    - 0.088825
+    - 0.084975
+    - 0.0889
+    - 0.092375
+    - 0.086475
+    success_probability_mean: 0.08831
+    success_probability_standard_deviation: 0.0028118943792397343
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-4746: 18
+- degree: 18
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 428001
+  trainable_phases:
+  - 0.792689580588283
+  - -0.0036977031959826157
+  - -0.011635220757032716
+  - -0.02712933950053431
+  - -0.047095678472477864
+  - -0.07292697142737437
+  - -0.09890781517240388
+  - -0.12384345962768739
+  - -0.1402084884854773
+  - -0.14713126989508085
+  - -0.1402084884854773
+  - -0.12384345962768739
+  - -0.09890781517240388
+  - -0.07292697142737437
+  - -0.047095678472477864
+  - -0.02712933950053431
+  - -0.011635220757032716
+  - -0.0036977031959826157
+  - 0.792689580588283
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07066846943732759
+    energy_state: -16.15477638290797
+    energy_measurement_model: -16.154776382907954
+    fidelity_ground_space: 0.9975094640225265
+    zz_expectation: 0.326301845317456
+    x_expectation: 3.957118634397624
+    energy_state_absolute_error: 0.03296367017166091
+    energy_measurement_absolute_error: 0.03296367017167512
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.19289615307953
+    - -16.156985144955904
+    - -16.27732419619082
+    - -16.158504508549406
+    - -16.13790261624363
+    energy_mean: -16.184722523803856
+    energy_standard_deviation: 0.05543177833513931
+    absolute_error_of_mean: 0.0030175292757732564
+    success_probability_samples:
+    - 0.07085
+    - 0.0676
+    - 0.07192499999999999
+    - 0.07314999999999999
+    - 0.06795000000000001
+    success_probability_mean: 0.070295
+    success_probability_standard_deviation: 0.002443256024243054
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-4688: 18
+- degree: 18
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 428021
+  trainable_phases:
+  - -0.8140716943884243
+  - -0.17512893014422426
+  - -0.009477199893912491
+  - 0.3606781231592233
+  - -0.3272336423419162
+  - -0.9242481160268814
+  - 0.5917385419989607
+  - 0.8395526779420326
+  - -0.4597998713431002
+  - -0.23383085198771658
+  - 0.2962182418996262
+  - 0.2948961380742783
+  - 0.2047119041537786
+  - 0.2828099919178273
+  - 0.27931741197484516
+  - 0.21005627202463328
+  - 0.1537193861837136
+  - 0.08567760046552042
+  - -0.7264184752292158
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09071198092629001
+    energy_state: -16.001134729256552
+    energy_measurement_model: -16.001119102044797
+    fidelity_ground_space: 0.9882846422187366
+    zz_expectation: 0.37392299191796363
+    x_expectation: 3.9067990275317084
+    energy_state_absolute_error: 0.18660532382307693
+    energy_measurement_absolute_error: 0.18662095103483267
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.00008959302131
+    - -16.05618903971845
+    - -16.063925569308374
+    - -15.968759632632295
+    - -16.074992628038387
+    energy_mean: -16.032791292543763
+    energy_standard_deviation: 0.046008708693872365
+    absolute_error_of_mean: 0.15494876053586637
+    success_probability_samples:
+    - 0.08854999999999999
+    - 0.0892
+    - 0.09032499999999999
+    - 0.08990000000000001
+    - 0.09135
+    success_probability_mean: 0.08986499999999999
+    success_probability_standard_deviation: 0.0010711559176889254
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-4884: 18
+- degree: 18
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 428021
+  trainable_phases:
+  - 0.792689580588283
+  - -0.0036977031959826157
+  - -0.011635220757032716
+  - -0.02712933950053431
+  - -0.047095678472477864
+  - -0.07292697142737437
+  - -0.09890781517240388
+  - -0.12384345962768739
+  - -0.1402084884854773
+  - -0.14713126989508085
+  - -0.1402084884854773
+  - -0.12384345962768739
+  - -0.09890781517240388
+  - -0.07292697142737437
+  - -0.047095678472477864
+  - -0.02712933950053431
+  - -0.011635220757032716
+  - -0.0036977031959826157
+  - 0.792689580588283
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07130945680481185
+    energy_state: -15.981512260264022
+    energy_measurement_model: -15.98149660096858
+    fidelity_ground_space: 0.9868889757300183
+    zz_expectation: 0.32221682598962964
+    x_expectation: 3.9148199437447375
+    energy_state_absolute_error: 0.2062277928156071
+    energy_measurement_absolute_error: 0.20624345211104966
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.997507204320577
+    - -16.002901353965182
+    - -15.949593258215765
+    - -15.932981002238854
+    - -16.091914362918313
+    energy_mean: -15.994979436331738
+    energy_standard_deviation: 0.06198636417851438
+    absolute_error_of_mean: 0.1927606167478917
+    success_probability_samples:
+    - 0.07045000000000001
+    - 0.0728
+    - 0.072575
+    - 0.07045
+    - 0.07192499999999999
+    success_probability_mean: 0.07164
+    success_probability_standard_deviation: 0.001132833836005967
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-4804: 18
+- degree: 18
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 428041
+  trainable_phases:
+  - 0.7360836835455489
+  - -0.10039906915095331
+  - -0.16626418011044608
+  - -0.22971956362947843
+  - -0.25045386199468167
+  - -0.2568157662085282
+  - -0.20995124094646922
+  - -0.1863457845317842
+  - -0.12150656137959315
+  - 1.5011696218671577
+  - 0.003310922357738999
+  - -1.5635111648977553
+  - -0.020087744017036613
+  - 0.003037006897284922
+  - -0.021845118896306914
+  - 0.028227789228354894
+  - 0.0402749480121698
+  - 0.039171170021775836
+  - 0.8153172087831733
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09457408909391016
+    energy_state: -14.783090298912931
+    energy_measurement_model: -14.78294598032648
+    fidelity_ground_space: 0.9115679332337535
+    zz_expectation: 0.35123165352868757
+    x_expectation: 3.607928581699448
+    energy_state_absolute_error: 1.404649754166698
+    energy_measurement_absolute_error: 1.40479407275315
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.791067086835858
+    - -14.855064748278656
+    - -14.706662383323518
+    - -14.650764782249498
+    - -14.790643603819172
+    energy_mean: -14.758840520901341
+    energy_standard_deviation: 0.08017482911675428
+    absolute_error_of_mean: 1.4288995321782885
+    success_probability_samples:
+    - 0.09340000000000001
+    - 0.096525
+    - 0.09475
+    - 0.09204999999999999
+    - 0.09545000000000001
+    success_probability_mean: 0.094435
+    success_probability_standard_deviation: 0.0017504999285918312
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-5044: 18
+- degree: 18
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 428041
+  trainable_phases:
+  - 0.792689580588283
+  - -0.0036977031959826157
+  - -0.011635220757032716
+  - -0.02712933950053431
+  - -0.047095678472477864
+  - -0.07292697142737437
+  - -0.09890781517240388
+  - -0.12384345962768739
+  - -0.1402084884854773
+  - -0.14713126989508085
+  - -0.1402084884854773
+  - -0.12384345962768739
+  - -0.09890781517240388
+  - -0.07292697142737437
+  - -0.047095678472477864
+  - -0.02712933950053431
+  - -0.011635220757032716
+  - -0.0036977031959826157
+  - 0.792689580588283
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07703565341189088
+    energy_state: -14.561887064844253
+    energy_measurement_model: -14.561744334067587
+    fidelity_ground_space: 0.8999445777040813
+    zz_expectation: 0.28880939906019504
+    x_expectation: 3.568233733751848
+    energy_state_absolute_error: 1.6258529882353763
+    energy_measurement_absolute_error: 1.6259957190120424
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.433036341662216
+    - -14.76850816053803
+    - -14.625091598185032
+    - -14.384890665756563
+    - -14.334631094116624
+    energy_mean: -14.509231572051693
+    energy_standard_deviation: 0.18193377641348335
+    absolute_error_of_mean: 1.6785084810279365
+    success_probability_samples:
+    - 0.076625
+    - 0.07727500000000001
+    - 0.073975
+    - 0.078475
+    - 0.07865
+    success_probability_mean: 0.077
+    success_probability_standard_deviation: 0.0018884517468021266
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-4964: 18
+- degree: 18
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 428061
+  trainable_phases:
+  - -0.7188871484023771
+  - 0.11482979177902664
+  - 0.03693943632101693
+  - -0.13670294818388262
+  - -0.2186812163189802
+  - -0.28772739375689094
+  - -0.2346207162205225
+  - 1.356928616409629
+  - -0.14552197219592866
+  - -0.16088576033665625
+  - 1.3918811204391952
+  - -0.05662751967828994
+  - -0.04864069376854063
+  - -0.03249782706031512
+  - -0.04101654821855316
+  - 0.02284118036654892
+  - 0.03547255149874973
+  - -0.023445991596507287
+  - -0.8348875757201171
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.3691132988569014
+    energy_state: -8.939521034429651
+    energy_measurement_model: -8.938737494739753
+    fidelity_ground_space: 0.213784864003613
+    zz_expectation: 1.1041241354705864
+    x_expectation: 1.9586533398172916
+    energy_state_absolute_error: 7.248219018649978
+    energy_measurement_absolute_error: 7.2490025583398765
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -8.942433573894528
+    - -8.941904469239613
+    - -8.81706892633906
+    - -9.001505709495806
+    - -9.02203860068787
+    energy_mean: -8.944990255931376
+    energy_standard_deviation: 0.0798598290577299
+    absolute_error_of_mean: 7.242749797148253
+    success_probability_samples:
+    - 0.36972499999999997
+    - 0.37285
+    - 0.37135
+    - 0.36245
+    - 0.368925
+    success_probability_mean: 0.36906
+    success_probability_standard_deviation: 0.0039925164370356765
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-5204: 18
+- degree: 18
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 428061
+  trainable_phases:
+  - 0.792689580588283
+  - -0.0036977031959826157
+  - -0.011635220757032716
+  - -0.02712933950053431
+  - -0.047095678472477864
+  - -0.07292697142737437
+  - -0.09890781517240388
+  - -0.12384345962768739
+  - -0.1402084884854773
+  - -0.14713126989508085
+  - -0.1402084884854773
+  - -0.12384345962768739
+  - -0.09890781517240388
+  - -0.07292697142737437
+  - -0.047095678472477864
+  - -0.02712933950053431
+  - -0.011635220757032716
+  - -0.0036977031959826157
+  - 0.792689580588283
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.13027287952641659
+    energy_state: -7.352250843605596
+    energy_measurement_model: -7.351527859532118
+    fidelity_ground_space: 0.46214265796052173
+    zz_expectation: 0.12241010885698406
+    x_expectation: 1.8072794376687835
+    energy_state_absolute_error: 8.835489209474034
+    energy_measurement_absolute_error: 8.83621219354751
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -7.086839721968581
+    - -7.379544603665041
+    - -7.211986379325285
+    - -7.100872687779849
+    - -7.291843079828945
+    energy_mean: -7.21421729451354
+    energy_standard_deviation: 0.12493588810140561
+    absolute_error_of_mean: 8.973522758566089
+    success_probability_samples:
+    - 0.1295
+    - 0.133025
+    - 0.12924999999999998
+    - 0.129025
+    - 0.130275
+    success_probability_mean: 0.130215
+    success_probability_standard_deviation: 0.0016399885670333242
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-5124: 18
+- degree: 18
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 428081
+  trainable_phases:
+  - 0.14121209415036384
+  - -0.8573610612241938
+  - -0.20733960393589257
+  - 0.230073470810499
+  - 0.11001583002452042
+  - -0.0614642861561121
+  - -0.03324695067972616
+  - -0.04630050316970369
+  - -0.010815650636070817
+  - -0.011991926298849709
+  - -0.007130580968756739
+  - 0.0018332761310286827
+  - 0.009667493308897157
+  - 0.0032699039582131384
+  - -0.0035927055312083844
+  - 0.020873824841665556
+  - 0.009874200922218357
+  - -2.8795003625070592e-05
+  - 0.7808607510484462
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.5013391563788606
+    energy_state: -1.5006936597690377
+    energy_measurement_model: -1.499363644637786
+    fidelity_ground_space: 0.081496908858367
+    zz_expectation: 0.1706785285214218
+    x_expectation: 0.33217127902909105
+    energy_state_absolute_error: 14.687046393310592
+    energy_measurement_absolute_error: 14.688376408441844
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -1.4815366552445977
+    - -1.4625129720619396
+    - -1.4539724817797435
+    - -1.5186855500037164
+    - -1.4952422463308996
+    energy_mean: -1.4823899810841794
+    energy_standard_deviation: 0.025912964730715533
+    absolute_error_of_mean: 14.70535007199545
+    success_probability_samples:
+    - 0.49997500000000006
+    - 0.501
+    - 0.5024500000000001
+    - 0.50535
+    - 0.49724999999999997
+    success_probability_mean: 0.501205
+    success_probability_standard_deviation: 0.002996998498498121
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-5364: 18
+- degree: 18
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 428081
+  trainable_phases:
+  - 0.792689580588283
+  - -0.0036977031959826157
+  - -0.011635220757032716
+  - -0.02712933950053431
+  - -0.047095678472477864
+  - -0.07292697142737437
+  - -0.09890781517240388
+  - -0.12384345962768739
+  - -0.1402084884854773
+  - -0.14713126989508085
+  - -0.1402084884854773
+  - -0.12384345962768739
+  - -0.09890781517240388
+  - -0.07292697142737437
+  - -0.047095678472477864
+  - -0.02712933950053431
+  - -0.011635220757032716
+  - -0.0036977031959826157
+  - 0.792689580588283
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.4042078003429193
+    energy_state: -0.48302999068469255
+    energy_measurement_model: -0.48254437076090817
+    fidelity_ground_space: 0.07911113718673443
+    zz_expectation: -0.00258993309933761
+    x_expectation: 0.12128357596506145
+    energy_state_absolute_error: 15.704710062394938
+    energy_measurement_absolute_error: 15.70519568231872
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -0.3881716933995048
+    - -0.39861761863446704
+    - -0.4857724496511072
+    - -0.5504106292236923
+    - -0.5273806404134712
+    energy_mean: -0.4700706062644485
+    energy_standard_deviation: 0.07382152219831127
+    absolute_error_of_mean: 15.717669446815181
+    success_probability_samples:
+    - 0.40327500000000005
+    - 0.4014
+    - 0.40945
+    - 0.40232500000000004
+    - 0.402125
+    success_probability_mean: 0.40371500000000005
+    success_probability_standard_deviation: 0.003275028625829081
+    circuit:
+      num_qubits: 5
+      depth: 37
+      size: 37
+      count_ops:
+        rx: 19
+        circuit-5284: 18
+- degree: 20
+  depolarizing_rate: 0.0
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 430001
+  trainable_phases:
+  - -0.4833008736430595
+  - -0.6197479195551656
+  - 0.11395390409120232
+  - 0.19679947483585813
+  - 0.7961069716024785
+  - -0.8369792354500634
+  - -0.6121428992911846
+  - 0.1408154520360152
+  - -0.2766283486020771
+  - -0.28740705010411505
+  - -0.3852465035174455
+  - 0.03343396208207983
+  - 0.5699726087224701
+  - 1.0598355390854612
+  - -0.07443196564936283
+  - -0.7184377844438785
+  - 0.6126986938135977
+  - -0.2062395321594841
+  - -0.10002068408664266
+  - 0.5631297622493117
+  - 0.641883892790807
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08058305214537269
+    energy_state: -16.187446374867093
+    energy_measurement_model: -16.187446374867083
+    fidelity_ground_space: 0.9999754062500606
+    zz_expectation: 0.3766095160287559
+    x_expectation: 3.9527092147095817
+    energy_state_absolute_error: 0.00029367821253600823
+    energy_measurement_absolute_error: 0.00029367821254666637
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.17706888580675
+    - -16.3725388301865
+    - -16.08492985829638
+    - -16.07039874001229
+    - -16.283208020050125
+    energy_mean: -16.19762886687041
+    energy_standard_deviation: 0.1296423650484607
+    absolute_error_of_mean: 0.00988881379078066
+    success_probability_samples:
+    - 0.08215
+    - 0.07905000000000001
+    - 0.08180000000000001
+    - 0.080675
+    - 0.0791
+    success_probability_mean: 0.08055500000000002
+    success_probability_standard_deviation: 0.0014569231276906815
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-5506: 20
+- degree: 20
+  depolarizing_rate: 0.0
+  method: pre_qsp
+  status: ok
+  seed_simulator: 430001
+  trainable_phases:
+  - 0.7941994951573297
+  - 0.0036900706069404876
+  - 0.00043185067785689313
+  - -0.009434543171411569
+  - -0.024186648222120688
+  - -0.04646927248212185
+  - -0.07210744747723297
+  - -0.10093610668283537
+  - -0.12583007412319924
+  - -0.1446702661265471
+  - -0.15054486017115698
+  - -0.1446702661265471
+  - -0.12583007412319924
+  - -0.10093610668283537
+  - -0.07210744747723297
+  - -0.04646927248212185
+  - -0.024186648222120688
+  - -0.009434543171411569
+  - 0.00043185067785689313
+  - 0.0036900706069404876
+  - 0.7941994951573297
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07103698387207961
+    energy_state: -16.165726705712
+    energy_measurement_model: -16.165726705711993
+    fidelity_ground_space: 0.9983592430541883
+    zz_expectation: 0.35006174588258665
+    x_expectation: 3.9539162399573513
+    energy_state_absolute_error: 0.022013347367629166
+    energy_measurement_absolute_error: 0.02201334736763627
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -16.161230626879483
+    - -16.121263310635364
+    - -16.115111752887998
+    - -16.267165517470424
+    - -16.175798932705685
+    energy_mean: -16.168114028115788
+    energy_standard_deviation: 0.06107754788435017
+    absolute_error_of_mean: 0.01962602496384136
+    success_probability_samples:
+    - 0.07225000000000001
+    - 0.07117499999999999
+    - 0.0714
+    - 0.06995000000000001
+    - 0.071025
+    success_probability_mean: 0.07116
+    success_probability_standard_deviation: 0.0008258707525999438
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-5444: 20
+- degree: 20
+  depolarizing_rate: 1.0e-05
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 430021
+  trainable_phases:
+  - 0.8012703804874182
+  - -1.5850879108899154
+  - -0.1502528839340842
+  - -0.05241273283777215
+  - 1.3579251318533423
+  - -0.03683340262451873
+  - -1.3867962725418899
+  - 0.10814904106722611
+  - -1.2675870419915853
+  - 0.0030399787244719256
+  - 0.22953764920605035
+  - 0.08434423382403367
+  - -0.06627493174620769
+  - 1.1330109328781743
+  - -0.8731463848522609
+  - 0.18136786755703715
+  - 0.7248816522188744
+  - -0.5305923771245169
+  - 0.521095698448689
+  - -0.09644170385768458
+  - 0.8877549012034134
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.08367958643192663
+    energy_state: -15.963710880835222
+    energy_measurement_model: -15.96369529429027
+    fidelity_ground_space: 0.9854726768111846
+    zz_expectation: 0.3771659547755768
+    x_expectation: 3.896632334878673
+    energy_state_absolute_error: 0.224029172244407
+    energy_measurement_absolute_error: 0.22404475878935948
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.922877288911867
+    - -15.942306133571838
+    - -15.939044079824479
+    - -15.964840698716353
+    - -16.0708058366179
+    energy_mean: -15.967974807528487
+    energy_standard_deviation: 0.05940054123319647
+    absolute_error_of_mean: 0.21976524555114274
+    success_probability_samples:
+    - 0.08275
+    - 0.08465
+    - 0.084525
+    - 0.083975
+    - 0.085525
+    success_probability_mean: 0.084285
+    success_probability_standard_deviation: 0.0010223441201474193
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-5652: 20
+- degree: 20
+  depolarizing_rate: 1.0e-05
+  method: pre_qsp
+  status: ok
+  seed_simulator: 430021
+  trainable_phases:
+  - 0.7941994951573297
+  - 0.0036900706069404876
+  - 0.00043185067785689313
+  - -0.009434543171411569
+  - -0.024186648222120688
+  - -0.04646927248212185
+  - -0.07210744747723297
+  - -0.10093610668283537
+  - -0.12583007412319924
+  - -0.1446702661265471
+  - -0.15054486017115698
+  - -0.1446702661265471
+  - -0.12583007412319924
+  - -0.10093610668283537
+  - -0.07210744747723297
+  - -0.04646927248212185
+  - -0.024186648222120688
+  - -0.009434543171411569
+  - 0.00043185067785689313
+  - 0.0036900706069404876
+  - 0.7941994951573297
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07174827830493433
+    energy_state: -15.974514405341377
+    energy_measurement_model: -15.974498777964504
+    fidelity_ground_space: 0.986616723721885
+    zz_expectation: 0.3471375558046862
+    x_expectation: 3.9068403055399545
+    energy_state_absolute_error: 0.21322564773825192
+    energy_measurement_absolute_error: 0.21324127511512536
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 1.0e-05
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -15.950398922871658
+    - -15.903084423655848
+    - -15.91409029250492
+    - -16.010755520102773
+    - -15.96332906698172
+    energy_mean: -15.948331645223382
+    energy_standard_deviation: 0.042853581375428926
+    absolute_error_of_mean: 0.2394084078562475
+    success_probability_samples:
+    - 0.0716
+    - 0.073025
+    - 0.07235
+    - 0.07267499999999999
+    - 0.073025
+    success_probability_mean: 0.07253499999999999
+    success_probability_standard_deviation: 0.0005933485484940569
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-5568: 20
+- degree: 20
+  depolarizing_rate: 0.0001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 430041
+  trainable_phases:
+  - 0.8172264837903467
+  - 0.07318455489139364
+  - 0.11848943340767981
+  - 0.16532378479893994
+  - 0.09641919506533458
+  - -1.4882868255072534
+  - 1.5569753816085772
+  - 1.5649525914711653
+  - -1.4631846308591232
+  - 0.11799021488519745
+  - 0.17553285867589397
+  - 0.15233126095002314
+  - 0.13952632569562295
+  - 0.07554400298436681
+  - 0.044139568651346384
+  - -1.5353785272855216
+  - 0.02881775422084365
+  - 0.04124891288955279
+  - 0.022083277314279393
+  - 0.03273796428647868
+  - -0.7651487617581196
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.09088102523581114
+    energy_state: -14.61374228535274
+    energy_measurement_model: -14.613599719100073
+    fidelity_ground_space: 0.901312611054736
+    zz_expectation: 0.35711701842181276
+    x_expectation: 3.564120675169565
+    energy_state_absolute_error: 1.5739977677268886
+    energy_measurement_absolute_error: 1.5741403339795568
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.584932814227932
+    - -14.35357881773399
+    - -14.575425123422928
+    - -14.564723826328963
+    - -14.520244377847977
+    energy_mean: -14.51978099191236
+    energy_standard_deviation: 0.09615646769217623
+    absolute_error_of_mean: 1.66795906116727
+    success_probability_samples:
+    - 0.090875
+    - 0.09015
+    - 0.09115
+    - 0.09385
+    - 0.09295
+    success_probability_mean: 0.091795
+    success_probability_standard_deviation: 0.0015431704377676543
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-5820: 20
+- degree: 20
+  depolarizing_rate: 0.0001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 430041
+  trainable_phases:
+  - 0.7941994951573297
+  - 0.0036900706069404876
+  - 0.00043185067785689313
+  - -0.009434543171411569
+  - -0.024186648222120688
+  - -0.04646927248212185
+  - -0.07210744747723297
+  - -0.10093610668283537
+  - -0.12583007412319924
+  - -0.1446702661265471
+  - -0.15054486017115698
+  - -0.1446702661265471
+  - -0.12583007412319924
+  - -0.10093610668283537
+  - -0.07210744747723297
+  - -0.04646927248212185
+  - -0.024186648222120688
+  - -0.009434543171411569
+  - 0.00043185067785689313
+  - 0.0036900706069404876
+  - 0.7941994951573297
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.07809730957224077
+    energy_state: -14.42237384688566
+    energy_measurement_model: -14.42223285553801
+    fidelity_ground_space: 0.8913903984846991
+    zz_expectation: 0.3232390835675475
+    x_expectation: 3.5247484429926157
+    energy_state_absolute_error: 1.7653662061939688
+    energy_measurement_absolute_error: 1.7655071975416199
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.0001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -14.714472595788953
+    - -14.331248697102355
+    - -14.401539252082841
+    - -14.686199279704303
+    - -14.558453580967308
+    energy_mean: -14.538382681129153
+    energy_standard_deviation: 0.1694777694061249
+    absolute_error_of_mean: 1.649357371950476
+    success_probability_samples:
+    - 0.0766
+    - 0.076875
+    - 0.077875
+    - 0.079625
+    - 0.076675
+    success_probability_mean: 0.07753
+    success_probability_standard_deviation: 0.0012779866978963452
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-5736: 20
+- degree: 20
+  depolarizing_rate: 0.001
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 430061
+  trainable_phases:
+  - -0.9447262635242737
+  - -0.23748450090540896
+  - -0.2871073682813332
+  - -0.2238348821258711
+  - 1.40185782547512
+  - -0.1221270398982175
+  - -0.11807352066549459
+  - -1.6863111666494546
+  - 1.5552977172893172
+  - 1.5604108114477224
+  - -1.6217737482899095
+  - -0.06604991503054691
+  - -0.1091883904654023
+  - 1.4619898289288482
+  - -1.5845071885935902
+  - -1.5697717629722046
+  - 1.58580017267973
+  - 0.02655720255103322
+  - 0.07071163049610885
+  - 0.07475943301245946
+  - 0.8247670405741667
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.35191393339990445
+    energy_state: -8.713856089398746
+    energy_measurement_model: -8.713092450256154
+    fidelity_ground_space: 0.22053789254525363
+    zz_expectation: 1.0774646635099252
+    x_expectation: 1.9089069466865571
+    energy_state_absolute_error: 7.473883963680883
+    energy_measurement_absolute_error: 7.474647602823476
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -8.70081328521939
+    - -8.6721275840653
+    - -8.770594690632732
+    - -8.745413035574108
+    - -8.817784343671775
+    energy_mean: -8.741346587832663
+    energy_standard_deviation: 0.05733440750466154
+    absolute_error_of_mean: 7.446393465246967
+    success_probability_samples:
+    - 0.355575
+    - 0.3489
+    - 0.353375
+    - 0.3529
+    - 0.35095
+    success_probability_mean: 0.35234
+    success_probability_standard_deviation: 0.0025306002252430126
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-5988: 20
+- degree: 20
+  depolarizing_rate: 0.001
+  method: pre_qsp
+  status: ok
+  seed_simulator: 430061
+  trainable_phases:
+  - 0.7941994951573297
+  - 0.0036900706069404876
+  - 0.00043185067785689313
+  - -0.009434543171411569
+  - -0.024186648222120688
+  - -0.04646927248212185
+  - -0.07210744747723297
+  - -0.10093610668283537
+  - -0.12583007412319924
+  - -0.1446702661265471
+  - -0.15054486017115698
+  - -0.1446702661265471
+  - -0.12583007412319924
+  - -0.10093610668283537
+  - -0.07210744747723297
+  - -0.04646927248212185
+  - -0.024186648222120688
+  - -0.009434543171411569
+  - 0.00043185067785689313
+  - 0.0036900706069404876
+  - 0.7941994951573297
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.1366534493453184
+    energy_state: -6.923093642830037
+    energy_measurement_model: -6.922421321112811
+    fidelity_ground_space: 0.4357539975298748
+    zz_expectation: 0.19987647065255776
+    x_expectation: 1.6806362126150634
+    energy_state_absolute_error: 9.264646410249593
+    energy_measurement_absolute_error: 9.265318731966818
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.001
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -6.855670898827333
+    - -6.999102981653891
+    - -6.860228803503261
+    - -6.646563091575254
+    - -6.881535901756549
+    energy_mean: -6.8486203354632575
+    energy_standard_deviation: 0.12722033847870634
+    absolute_error_of_mean: 9.339119717616372
+    success_probability_samples:
+    - 0.13805
+    - 0.13505
+    - 0.137675
+    - 0.1375
+    - 0.135675
+    success_probability_mean: 0.13679000000000002
+    success_probability_standard_deviation: 0.0013365767841766543
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-5904: 20
+- degree: 20
+  depolarizing_rate: 0.01
+  method: density_matrix_training
+  status: ok
+  seed_simulator: 430081
+  trainable_phases:
+  - -0.7923302268984216
+  - -0.00674737020948557
+  - 0.033085020166719215
+  - 0.06679469615880107
+  - -0.008527155429901345
+  - -0.18796011094869503
+  - -0.09579086881325516
+  - 0.4113170535328754
+  - 0.7763399520094012
+  - -1.1592177904038887
+  - 0.027313281519187882
+  - 0.11456540077573774
+  - 0.07760894534754703
+  - -0.0027500861051650283
+  - -0.01807500775596793
+  - -0.018366909648187324
+  - -0.004537289258382593
+  - 0.0010738295809202825
+  - -0.002680094727351978
+  - -0.0023061465237756984
+  - 0.7895091302392707
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.5001736947241902
+    energy_state: -1.1712834467651834
+    energy_measurement_model: -1.170261385222844
+    fidelity_ground_space: 0.07822823006791861
+    zz_expectation: 0.14922190442783487
+    x_expectation: 0.2552598701987523
+    energy_state_absolute_error: 15.016456606314446
+    energy_measurement_absolute_error: 15.017478667856786
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -1.1567676310599149
+    - -1.25347651747453
+    - -1.1130549249289352
+    - -1.2047754260708095
+    - -1.1775558460428233
+    energy_mean: -1.1811260691154026
+    energy_standard_deviation: 0.05252056770998588
+    absolute_error_of_mean: 15.006613983964227
+    success_probability_samples:
+    - 0.500875
+    - 0.50455
+    - 0.499
+    - 0.49987499999999996
+    - 0.497975
+    success_probability_mean: 0.5004549999999999
+    success_probability_standard_deviation: 0.002527313296763999
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-6156: 20
+- degree: 20
+  depolarizing_rate: 0.01
+  method: pre_qsp
+  status: ok
+  seed_simulator: 430081
+  trainable_phases:
+  - 0.7941994951573297
+  - 0.0036900706069404876
+  - 0.00043185067785689313
+  - -0.009434543171411569
+  - -0.024186648222120688
+  - -0.04646927248212185
+  - -0.07210744747723297
+  - -0.10093610668283537
+  - -0.12583007412319924
+  - -0.1446702661265471
+  - -0.15054486017115698
+  - -0.1446702661265471
+  - -0.12583007412319924
+  - -0.10093610668283537
+  - -0.07210744747723297
+  - -0.04646927248212185
+  - -0.024186648222120688
+  - -0.009434543171411569
+  - 0.00043185067785689313
+  - 0.0036900706069404876
+  - 0.7941994951573297
+  exact_density_evaluation:
+    success_probability_ancilla0: 0.4189319692946704
+    energy_state: -0.3906382788566036
+    energy_measurement_model: -0.39027319434713914
+    fidelity_ground_space: 0.0752157470229257
+    zz_expectation: 0.02555376939193757
+    x_expectation: 0.0911798562388004
+    energy_state_absolute_error: 15.797101774223027
+    energy_measurement_absolute_error: 15.79746685873249
+  finite_shot_evaluation:
+    method: QETU-main.measure_energy_VQEType
+    backend: AerSimulator
+    depolarizing_rate: 0.01
+    shots_per_basis: 20000
+    repetitions: 5
+    total_shots: 200000
+    energy_samples:
+    - -0.40495436782126115
+    - -0.5098534270732852
+    - -0.37922873625293635
+    - -0.4220702338703879
+    - -0.3860922416875223
+    energy_mean: -0.42043980134107856
+    energy_standard_deviation: 0.05271470422937545
+    absolute_error_of_mean: 15.76730025173855
+    success_probability_samples:
+    - 0.42025
+    - 0.4209
+    - 0.418075
+    - 0.418875
+    - 0.416775
+    success_probability_mean: 0.418975
+    success_probability_standard_deviation: 0.0016576527078975285
+    circuit:
+      num_qubits: 5
+      depth: 41
+      size: 41
+      count_ops:
+        rx: 21
+        circuit-6072: 20
+runtime:
+  qiskit_aer_version: 0.11.2
+finished_at: '2026-07-14T15:51:21+08:00'
+resources:
+  phase_training_repeated: false
+  total_finite_shots: 20000000
+source_result: results/pre_qsp_vs_density_n4_optimized_shot20000/comparison_shot20000.yml
